@@ -537,8 +537,6 @@
       "System.Threading.Channels/6.0.0": {},
       "Utb_sc_Application/1.0.0": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "8.0.8",
-          "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
           "Utb_sc_Domain": "1.0.0",
           "Utb_sc_Infrasctucture": "1.0.0"
         },
@@ -547,10 +545,6 @@
         }
       },
       "Utb_sc_Domain/1.0.0": {
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "8.0.8",
-          "Pomelo.EntityFrameworkCore.MySql": "8.0.2"
-        },
         "runtime": {
           "Utb_sc_Domain.dll": {}
         }

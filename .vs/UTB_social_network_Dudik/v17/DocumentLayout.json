@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_social_network_dudik\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|solutionrelative:utb_social_network_dudik\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_social_network_dudik\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|solutionrelative:utb_social_network_dudik\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_social_network_dudik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|solutionrelative:utb_social_network_dudik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "UTB_social_network_Dudik\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\appsettings.Development.json",
+              "RelativeToolTip": "UTB_social_network_Dudik\\appsettings.Development.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-27T19:39:22.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\appsettings.json",
+              "RelativeDocumentMoniker": "UTB_social_network_Dudik\\appsettings.json",
+              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\appsettings.json",
+              "RelativeToolTip": "UTB_social_network_Dudik\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-27T19:39:11.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\Program.cs",
+              "RelativeDocumentMoniker": "UTB_social_network_Dudik\\Program.cs",
+              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\Program.cs",
+              "RelativeToolTip": "UTB_social_network_Dudik\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-27T19:21:42.716Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Utb_sc_Infrasctucture")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+beb89d37f3d8aee6b1192e3eb2ba8685d93500c6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Utb_sc_Infrasctucture")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Utb_sc_Infrasctucture")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
