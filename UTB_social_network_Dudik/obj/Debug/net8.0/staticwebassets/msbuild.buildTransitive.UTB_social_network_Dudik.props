@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\UTB_social_network_Dudik.props" />
+</Project>
