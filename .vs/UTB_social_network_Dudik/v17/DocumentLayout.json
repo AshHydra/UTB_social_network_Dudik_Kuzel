@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_social_network_dudik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|solutionrelative:utb_social_network_dudik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_sc_domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|solutionrelative:utb_sc_domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -47,10 +51,6 @@
       "RelativeMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|solutionrelative:utb_social_network_dudik\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_social_network_dudik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|solutionrelative:utb_social_network_dudik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_sc_domain\\entities\\interfaces\\iuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|solutionrelative:utb_sc_domain\\entities\\interfaces\\iuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -62,37 +62,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Notification.cs",
-              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Notification.cs",
-              "RelativeDocumentMoniker": "Utb_sc_domain\\Entities\\Notification.cs",
-              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Notification.cs",
-              "RelativeToolTip": "Utb_sc_domain\\Entities\\Notification.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T02:08:01.898Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FriendRequest.cs",
-              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Interfaces\\FriendRequest.cs",
-              "RelativeDocumentMoniker": "Utb_sc_domain\\Entities\\Interfaces\\FriendRequest.cs",
-              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Interfaces\\FriendRequest.cs",
-              "RelativeToolTip": "Utb_sc_domain\\Entities\\Interfaces\\FriendRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T02:07:26.904Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Chat.cs",
               "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Chat.cs",
               "RelativeDocumentMoniker": "Utb_sc_domain\\Entities\\Chat.cs",
@@ -100,12 +74,11 @@
               "RelativeToolTip": "Utb_sc_domain\\Entities\\Chat.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T02:06:33.274Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-28T02:06:33.274Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Message.cs",
               "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Message.cs",
               "RelativeDocumentMoniker": "Utb_sc_domain\\Entities\\Message.cs",
@@ -113,12 +86,11 @@
               "RelativeToolTip": "Utb_sc_domain\\Entities\\Message.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T02:05:36.769Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-28T02:05:36.769Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\User.cs",
               "RelativeDocumentMoniker": "Utb_sc_domain\\Entities\\User.cs",
@@ -131,7 +103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Entity.cs",
               "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Entity.cs",
               "RelativeDocumentMoniker": "Utb_sc_domain\\Entities\\Entity.cs",
@@ -139,8 +111,7 @@
               "RelativeToolTip": "Utb_sc_domain\\Entities\\Entity.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T01:57:12.205Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-28T01:57:12.205Z"
             },
             {
               "$type": "Document",
@@ -152,12 +123,11 @@
               "RelativeToolTip": "Utb_sc_domain\\Entities\\Interfaces\\IUser.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T00:48:46.334Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-28T00:48:46.334Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Entity.cs",
               "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Interfaces\\Entity.cs",
               "RelativeDocumentMoniker": "Utb_sc_domain\\Entities\\Interfaces\\Entity.cs",
@@ -165,12 +135,11 @@
               "RelativeToolTip": "Utb_sc_domain\\Entities\\Interfaces\\Entity.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T00:47:17.307Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-28T00:47:17.307Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Class1.cs",
               "RelativeDocumentMoniker": "Utb_sc_Infrasctucture\\Class1.cs",
@@ -178,12 +147,11 @@
               "RelativeToolTip": "Utb_sc_Infrasctucture\\Class1.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T00:15:34.462Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-28T00:15:34.462Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Social_network_DbContext.cs",
               "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Database\\Social_network_DbContext.cs",
               "RelativeDocumentMoniker": "Utb_sc_Infrasctucture\\Database\\Social_network_DbContext.cs",
@@ -191,12 +159,11 @@
               "RelativeToolTip": "Utb_sc_Infrasctucture\\Database\\Social_network_DbContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T00:04:04.391Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-28T00:04:04.391Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\appsettings.Development.json",
               "RelativeDocumentMoniker": "UTB_social_network_Dudik\\appsettings.Development.json",
@@ -204,12 +171,36 @@
               "RelativeToolTip": "UTB_social_network_Dudik\\appsettings.Development.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-10-27T19:39:22.249Z",
+              "WhenOpened": "2024-10-27T19:39:22.249Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\Program.cs",
+              "RelativeDocumentMoniker": "UTB_social_network_Dudik\\Program.cs",
+              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\Program.cs",
+              "RelativeToolTip": "UTB_social_network_Dudik\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEUAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-27T19:21:42.716Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 3,
+              "Title": "FriendRequest.cs",
+              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Interfaces\\FriendRequest.cs",
+              "RelativeDocumentMoniker": "Utb_sc_domain\\Entities\\Interfaces\\FriendRequest.cs",
+              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Interfaces\\FriendRequest.cs",
+              "RelativeToolTip": "Utb_sc_domain\\Entities\\Interfaces\\FriendRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T02:07:26.904Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\appsettings.json",
               "RelativeDocumentMoniker": "UTB_social_network_Dudik\\appsettings.json",
@@ -217,21 +208,19 @@
               "RelativeToolTip": "UTB_social_network_Dudik\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-10-27T19:39:11.925Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-27T19:39:11.925Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\Program.cs",
-              "RelativeDocumentMoniker": "UTB_social_network_Dudik\\Program.cs",
-              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\Program.cs",
-              "RelativeToolTip": "UTB_social_network_Dudik\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACcAAAAjAAAA",
+              "DocumentIndex": 2,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Notification.cs",
+              "RelativeDocumentMoniker": "Utb_sc_domain\\Entities\\Notification.cs",
+              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Notification.cs",
+              "RelativeToolTip": "Utb_sc_domain\\Entities\\Notification.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T19:21:42.716Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-28T02:08:01.898Z"
             }
           ]
         }
