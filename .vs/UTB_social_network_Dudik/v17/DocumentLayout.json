@@ -3,16 +3,56 @@
   "WorkspaceRootPath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_social_network_dudik\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|solutionrelative:utb_social_network_dudik\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_sc_domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|solutionrelative:utb_sc_domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_sc_domain\\entities\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|solutionrelative:utb_sc_domain\\entities\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_sc_domain\\entities\\interfaces\\friendrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|solutionrelative:utb_sc_domain\\entities\\interfaces\\friendrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_sc_domain\\entities\\chat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|solutionrelative:utb_sc_domain\\entities\\chat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_sc_domain\\entities\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|solutionrelative:utb_sc_domain\\entities\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_sc_domain\\entities\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|solutionrelative:utb_sc_domain\\entities\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_sc_domain\\entities\\interfaces\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|solutionrelative:utb_sc_domain\\entities\\interfaces\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8B18286-2A88-4776-BA81-2DA4909D2FB7}|Utb_sc_Infrasctucture\\Utb_sc_Infrasctucture.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_sc_infrasctucture\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8B18286-2A88-4776-BA81-2DA4909D2FB7}|Utb_sc_Infrasctucture\\Utb_sc_Infrasctucture.csproj|solutionrelative:utb_sc_infrasctucture\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8B18286-2A88-4776-BA81-2DA4909D2FB7}|Utb_sc_Infrasctucture\\Utb_sc_Infrasctucture.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_sc_infrasctucture\\database\\social_network_dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8B18286-2A88-4776-BA81-2DA4909D2FB7}|Utb_sc_Infrasctucture\\Utb_sc_Infrasctucture.csproj|solutionrelative:utb_sc_infrasctucture\\database\\social_network_dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_social_network_dudik\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|solutionrelative:utb_social_network_dudik\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_social_network_dudik\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|solutionrelative:utb_social_network_dudik\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_social_network_dudik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{08361903-6D2E-4610-A61F-E96507E202D5}|UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj|solutionrelative:utb_social_network_dudik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|c:\\users\\ash31\\onedrive\\dokumenty\\github\\utb_social_network_dudik_kuzel\\utb_sc_domain\\entities\\interfaces\\iuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66920A5E-EA48-47F1-A74F-2E6299ECD197}|Utb_sc_domain\\Utb_sc_Domain.csproj|solutionrelative:utb_sc_domain\\entities\\interfaces\\iuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,11 +62,141 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Notification.cs",
+              "RelativeDocumentMoniker": "Utb_sc_domain\\Entities\\Notification.cs",
+              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Notification.cs",
+              "RelativeToolTip": "Utb_sc_domain\\Entities\\Notification.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T02:08:01.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FriendRequest.cs",
+              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Interfaces\\FriendRequest.cs",
+              "RelativeDocumentMoniker": "Utb_sc_domain\\Entities\\Interfaces\\FriendRequest.cs",
+              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Interfaces\\FriendRequest.cs",
+              "RelativeToolTip": "Utb_sc_domain\\Entities\\Interfaces\\FriendRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T02:07:26.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Chat.cs",
+              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Chat.cs",
+              "RelativeDocumentMoniker": "Utb_sc_domain\\Entities\\Chat.cs",
+              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Chat.cs",
+              "RelativeToolTip": "Utb_sc_domain\\Entities\\Chat.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T02:06:33.274Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Message.cs",
+              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Message.cs",
+              "RelativeDocumentMoniker": "Utb_sc_domain\\Entities\\Message.cs",
+              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Message.cs",
+              "RelativeToolTip": "Utb_sc_domain\\Entities\\Message.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T02:05:36.769Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "Utb_sc_domain\\Entities\\User.cs",
+              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\User.cs",
+              "RelativeToolTip": "Utb_sc_domain\\Entities\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T02:00:47.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Entity.cs",
+              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Entity.cs",
+              "RelativeDocumentMoniker": "Utb_sc_domain\\Entities\\Entity.cs",
+              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Entity.cs",
+              "RelativeToolTip": "Utb_sc_domain\\Entities\\Entity.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T01:57:12.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IUser.cs",
+              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Interfaces\\IUser.cs",
+              "RelativeDocumentMoniker": "Utb_sc_domain\\Entities\\Interfaces\\IUser.cs",
+              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Interfaces\\IUser.cs",
+              "RelativeToolTip": "Utb_sc_domain\\Entities\\Interfaces\\IUser.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T00:48:46.334Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Entity.cs",
+              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Interfaces\\Entity.cs",
+              "RelativeDocumentMoniker": "Utb_sc_domain\\Entities\\Interfaces\\Entity.cs",
+              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Entities\\Interfaces\\Entity.cs",
+              "RelativeToolTip": "Utb_sc_domain\\Entities\\Interfaces\\Entity.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T00:47:17.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Class1.cs",
+              "RelativeDocumentMoniker": "Utb_sc_Infrasctucture\\Class1.cs",
+              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Class1.cs",
+              "RelativeToolTip": "Utb_sc_Infrasctucture\\Class1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T00:15:34.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Social_network_DbContext.cs",
+              "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Database\\Social_network_DbContext.cs",
+              "RelativeDocumentMoniker": "Utb_sc_Infrasctucture\\Database\\Social_network_DbContext.cs",
+              "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Database\\Social_network_DbContext.cs",
+              "RelativeToolTip": "Utb_sc_Infrasctucture\\Database\\Social_network_DbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T00:04:04.391Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\appsettings.Development.json",
               "RelativeDocumentMoniker": "UTB_social_network_Dudik\\appsettings.Development.json",
@@ -39,26 +209,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 10,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\appsettings.json",
               "RelativeDocumentMoniker": "UTB_social_network_Dudik\\appsettings.json",
               "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\appsettings.json",
               "RelativeToolTip": "UTB_social_network_Dudik\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-10-27T19:39:11.925Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\Program.cs",
               "RelativeDocumentMoniker": "UTB_social_network_Dudik\\Program.cs",
               "ToolTip": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\Program.cs",
               "RelativeToolTip": "UTB_social_network_Dudik\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAUAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACcAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-27T19:21:42.716Z",
               "EditorCaption": ""

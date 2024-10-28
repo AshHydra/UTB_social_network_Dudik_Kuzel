@@ -21,4 +21,9 @@
     <ProjectReference Include="..\Utb_sc_domain\Utb_sc_Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+    <Folder Include="Identity\" />
+  </ItemGroup>
+
 </Project>
