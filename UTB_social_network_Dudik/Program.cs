@@ -12,7 +12,7 @@ builder.Services.AddControllersWithViews();
 // Nastavení pøipojení k databázi MySQL (v pøípadì, že používáte MySQL)
 string connectionString = builder.Configuration.GetConnectionString("MySQL");
 ServerVersion serverVersion = new MySqlServerVersion("8.0.38");
-builder.Services.AddDbContext<Social_network_DbContext>(optionsBuilder => optionsBuilder.UseMySql(connectionString, serverVersion));
+builder.Services.AddDbContext<SocialNetworkDbContext>(optionsBuilder => optionsBuilder.UseMySql(connectionString, serverVersion));
 
 // Konfigurace Identity
 builder.Services.AddIdentity<User, Role>()
@@ -45,7 +45,16 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 // Registrace služeb aplikace (pokud máte nìjaké služby ve své aplikaci)
-builder.Services.AddScoped<IFileUploadService, FileUploadService>(); // Replace or add other services as needed
+//builder.Services.AddScoped<IFileUploadService, FileUploadService>(); // Replace or add other services as needed
+
+builder.Services.AddDbContext<Social_network_DbContext>(options =>
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("MySQL"),
+        new MySqlServerVersion("8.0.38"),
+        mySqlOptions => mySqlOptions.MigrationsAssembly("Utb_sc_Infrastructure") // Pøidání MigrationsAssembly
+    )
+);
+
 
 var app = builder.Build();
 

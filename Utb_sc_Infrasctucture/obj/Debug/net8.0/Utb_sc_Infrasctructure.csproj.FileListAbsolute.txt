@@ -1,0 +1,7 @@
+C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_Infrasctucture\obj\Debug\net8.0\Utb_sc_Infrasctructure.csproj.AssemblyReference.cache
+C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_Infrasctucture\obj\Debug\net8.0\Utb_sc_Infrasctructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_Infrasctucture\obj\Debug\net8.0\Utb_sc_Infrasctructure.AssemblyInfoInputs.cache
+C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_Infrasctucture\obj\Debug\net8.0\Utb_sc_Infrasctructure.AssemblyInfo.cs
+C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_Infrasctucture\obj\Debug\net8.0\Utb_sc_Infrasctructure.csproj.CoreCompileInputs.cache
+C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_Infrasctucture\obj\Debug\net8.0\EFCoreMySqlJsonNewtonsoft.cs
+C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_Infrasctucture\obj\Debug\net8.0\Utb_sc_Infrasctructure.sourcelink.json

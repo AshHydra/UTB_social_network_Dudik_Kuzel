@@ -20,7 +20,9 @@ namespace Utb_sc_Domain.Entities
         // Vztahy
         public ICollection<Message> Messages { get; set; } = new List<Message>();
         public ICollection<Chat> Chats { get; set; } = new List<Chat>();
-        public ICollection<FriendRequest> SentFriendRequests { get; set; } = new List<FriendRequest>();
-        public ICollection<FriendRequest> ReceivedFriendRequests { get; set; } = new List<FriendRequest>();
+
+        // Vztahy pro seznam přátel
+        public ICollection<FriendList> Friends { get; set; } = new List<FriendList>();
+        public ICollection<FriendList> FriendOf { get; set; } = new List<FriendList>();
     }
 }
