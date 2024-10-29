@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6IMy9bwSWzldYO15ni0wzaUk61FKPN6DCRHy3UNmUsyP3n1Ak3qfLqy7pOPyE3P0vuD4jtbdTeJCluXPk6u97Q==",
+  "dgSpecHash": "I6PyrRYrPjXAMPPbM4t7v3+cCXPv6HK+3RzPFzuKlPSUN1Oa94qiSViS/W/D6ydtoYL/PNE0xJKE/SjXf1AZVg==",
   "success": true,
   "projectFilePath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj",
   "expectedPackageFiles": [
@@ -14,7 +14,6 @@
     "C:\\Users\\ash31\\.nuget\\packages\\microsoft.codeanalysis.csharp\\4.5.0\\microsoft.codeanalysis.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\ash31\\.nuget\\packages\\microsoft.codeanalysis.csharp.workspaces\\4.5.0\\microsoft.codeanalysis.csharp.workspaces.4.5.0.nupkg.sha512",
     "C:\\Users\\ash31\\.nuget\\packages\\microsoft.codeanalysis.workspaces.common\\4.5.0\\microsoft.codeanalysis.workspaces.common.4.5.0.nupkg.sha512",
-    "C:\\Users\\ash31\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\ash31\\.nuget\\packages\\microsoft.entityframeworkcore\\8.0.10\\microsoft.entityframeworkcore.8.0.10.nupkg.sha512",
     "C:\\Users\\ash31\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\8.0.10\\microsoft.entityframeworkcore.abstractions.8.0.10.nupkg.sha512",
     "C:\\Users\\ash31\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\8.0.10\\microsoft.entityframeworkcore.analyzers.8.0.10.nupkg.sha512",
@@ -35,10 +34,7 @@
     "C:\\Users\\ash31\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\ash31\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\ash31\\.nuget\\packages\\mysqlconnector\\2.3.5\\mysqlconnector.2.3.5.nupkg.sha512",
-    "C:\\Users\\ash31\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\ash31\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\8.0.2\\pomelo.entityframeworkcore.mysql.8.0.2.nupkg.sha512",
-    "C:\\Users\\ash31\\.nuget\\packages\\pomelo.entityframeworkcore.mysql.json.newtonsoft\\8.0.2\\pomelo.entityframeworkcore.mysql.json.newtonsoft.8.0.2.nupkg.sha512",
-    "C:\\Users\\ash31\\.nuget\\packages\\pomelo.jsonobject\\2.2.1\\pomelo.jsonobject.2.2.1.nupkg.sha512",
     "C:\\Users\\ash31\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\ash31\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\ash31\\.nuget\\packages\\system.composition\\6.0.0\\system.composition.6.0.0.nupkg.sha512",

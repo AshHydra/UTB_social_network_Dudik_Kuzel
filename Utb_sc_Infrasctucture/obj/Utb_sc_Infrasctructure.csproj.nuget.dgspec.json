@@ -94,8 +94,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Domain\\Utb_sc_Domain.csproj": {
-                "projectPath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Domain\\Utb_sc_Domain.csproj"
+              "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj": {
+                "projectPath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj"
               }
             }
           }

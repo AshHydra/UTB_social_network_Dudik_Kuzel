@@ -8,10 +8,6 @@ using System.Collections.Generic;
 using IdentityUser = Utb_sc_Infrastructure.Identity.User;
 using DomainUser = Utb_sc_Domain.Entities.User;
 
-
-
-
-
 namespace Utb_sc_Infrastructure.Database
 {
     public class SocialNetworkDbContext : IdentityDbContext<IdentityUser, Role, int>
@@ -44,9 +40,7 @@ namespace Utb_sc_Infrastructure.Database
             // Seeding dat pro přiřazení rolí k uživatelům
             UserRolesInit userRolesInit = new UserRolesInit();
             modelBuilder.Entity<IdentityUserRole<int>>().HasData(
-                userRolesInit.GetRolesForAdmin(),
-                userRolesInit.GetRolesForStandardUser(),
-                userRolesInit.GetRolesForModerator()
+                userRolesInit.GetUserRoles()
             );
 
             // Konfigurace vztahů mezi entitami
@@ -63,5 +57,4 @@ namespace Utb_sc_Infrastructure.Database
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }
-
 }
