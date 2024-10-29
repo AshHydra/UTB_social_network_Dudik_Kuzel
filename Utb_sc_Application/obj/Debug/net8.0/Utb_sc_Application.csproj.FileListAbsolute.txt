@@ -21,9 +21,7 @@ C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_A
 C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_Application\bin\Debug\net8.0\Utb_sc_Application.dll
 C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_Application\bin\Debug\net8.0\Utb_sc_Application.pdb
 C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_Application\bin\Debug\net8.0\Utb_sc_Domain.dll
-C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_Application\bin\Debug\net8.0\Utb_sc_Infrasctucture.dll
 C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_Application\bin\Debug\net8.0\Utb_sc_Domain.pdb
-C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_Application\bin\Debug\net8.0\Utb_sc_Infrasctucture.pdb
 C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_Application\obj\Debug\net8.0\Utb_sc_Application.csproj.AssemblyReference.cache
 C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_Application\obj\Debug\net8.0\Utb_sc_Application.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_Application\obj\Debug\net8.0\Utb_sc_Application.AssemblyInfoInputs.cache

@@ -24,3 +24,4 @@ C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_d
 C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_domain\obj\Debug\net8.0\refint\Utb_sc_Domain.dll
 C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_domain\obj\Debug\net8.0\Utb_sc_Domain.pdb
 C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_domain\obj\Debug\net8.0\ref\Utb_sc_Domain.dll
+C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\Utb_sc_domain\obj\Debug\net8.0\Utb_sc_Domain.csproj.AssemblyReference.cache

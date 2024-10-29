@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Utb_sc_Domain.Entities;
+﻿using Utb_sc_Infrastructure.Identity;
 
 namespace Utb_sc_Infrastructure.Database.Seeding
 {

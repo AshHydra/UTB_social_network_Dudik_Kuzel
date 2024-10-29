@@ -5,16 +5,23 @@ using Utb_sc_Infrastructure.Identity;
 using Utb_sc_Infrastructure.Database.Seeding;
 using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
+using IdentityUser = Utb_sc_Infrastructure.Identity.User;
+using DomainUser = Utb_sc_Domain.Entities.User;
+
+
+
+
 
 namespace Utb_sc_Infrastructure.Database
 {
-    public class SocialNetworkDbContext : IdentityDbContext<User, Role, int>
+    public class SocialNetworkDbContext : IdentityDbContext<IdentityUser, Role, int>
     {
         // Definice DbSet pro entity aplikace
         public DbSet<Message> Messages { get; set; }
         public DbSet<Chat> Chats { get; set; }
         public DbSet<FriendList> FriendLists { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<IdentityUser> Users { get; set; } // Použití aliasu IdentityUser
 
         public SocialNetworkDbContext(DbContextOptions<SocialNetworkDbContext> options) : base(options) { }
 
@@ -28,7 +35,7 @@ namespace Utb_sc_Infrastructure.Database
 
             // Seeding dat pro uživatele
             UserInit userInit = new UserInit();
-            modelBuilder.Entity<User>().HasData(
+            modelBuilder.Entity<IdentityUser>().HasData(
                 userInit.GetAdmin(),
                 userInit.GetStandardUser(),
                 userInit.GetModerator()
@@ -54,8 +61,7 @@ namespace Utb_sc_Infrastructure.Database
                 .WithMany(u => u.FriendOf)
                 .HasForeignKey(fl => fl.FriendId)
                 .OnDelete(DeleteBehavior.Restrict);
-
-            
         }
     }
+
 }

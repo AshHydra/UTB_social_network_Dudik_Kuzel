@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Utb_sc_Infrastructure.Database;
-using Utb_sc_Domain.Entities; // Adjust to your actual namespace for entities
 using Microsoft.AspNetCore.Identity;
+using Utb_sc_Infrastructure.Identity;
 using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +16,7 @@ builder.Services.AddDbContext<SocialNetworkDbContext>(optionsBuilder => optionsB
 
 // Konfigurace Identity
 builder.Services.AddIdentity<User, Role>()
-     .AddEntityFrameworkStores<Social_network_DbContext>()
+     .AddEntityFrameworkStores<SocialNetworkDbContext>()
      .AddDefaultTokenProviders();
 
 // Konfigurace možností Identity
@@ -47,7 +47,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 // Registrace služeb aplikace (pokud máte nìjaké služby ve své aplikaci)
 //builder.Services.AddScoped<IFileUploadService, FileUploadService>(); // Replace or add other services as needed
 
-builder.Services.AddDbContext<Social_network_DbContext>(options =>
+builder.Services.AddDbContext<SocialNetworkDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("MySQL"),
         new MySqlServerVersion("8.0.38"),
