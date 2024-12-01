@@ -57,7 +57,7 @@ builder.Services.AddDbContext<SocialNetworkDbContext>(options =>
 
 
 var app = builder.Build();
-
+//test 2
 // Konfigurace HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
