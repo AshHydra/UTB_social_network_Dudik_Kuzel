@@ -273,6 +273,8 @@ namespace Utb_sc_Infrasctructure.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+
+                    //ok
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("longtext");

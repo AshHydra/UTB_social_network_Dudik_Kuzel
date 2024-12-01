@@ -915,6 +915,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctucture.csproj": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10",
           "Utb_sc_Domain": "1.0.0"
         },
@@ -2389,19 +2390,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ash31\\.nuget\\packages\\": {}
+    "C:\\Users\\pepin\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj",
+      "projectUniqueName": "C:\\Users\\pepin\\Desktop\\UTB\\UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj",
       "projectName": "UTB_social_network_Dudik",
-      "projectPath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj",
-      "packagesPath": "C:\\Users\\ash31\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\obj\\",
+      "projectPath": "C:\\Users\\pepin\\Desktop\\UTB\\UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj",
+      "packagesPath": "C:\\Users\\pepin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pepin\\Desktop\\UTB\\UTB_social_network_Dudik\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\ash31\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pepin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2415,14 +2421,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Application\\Utb_sc_Application.csproj": {
-              "projectPath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Application\\Utb_sc_Application.csproj"
+            "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Application\\Utb_sc_Application.csproj": {
+              "projectPath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Application\\Utb_sc_Application.csproj"
             },
-            "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj": {
-              "projectPath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj"
+            "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_domain\\Utb_sc_Domain.csproj": {
+              "projectPath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_domain\\Utb_sc_Domain.csproj"
             },
-            "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctructure.csproj": {
-              "projectPath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctructure.csproj"
+            "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctructure.csproj": {
+              "projectPath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctructure.csproj"
             }
           }
         }
@@ -2435,8 +2441,9 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
-      }
+        "auditMode": "all"
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -2480,8 +2487,19 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Nepovedlo se najít projekt C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctucture.csproj. Zkontrolujte, že odkaz na projekt je platný a že existuje soubor projektu.",
+      "libraryId": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctucture.csproj",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }
