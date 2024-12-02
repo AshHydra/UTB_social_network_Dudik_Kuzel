@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "y3oZ4/i9/H78IxYlC5hC4xftKQRzQu5gj2Pu+tUauHo=",
+  "Hash": "eDlj2YJrm+OXryLznP3nda2sGepkdpf4FIfJGGgfUtY=",
   "Source": "UTB_social_network_Dudik",
   "BasePath": "_content/UTB_social_network_Dudik",
   "Mode": "Default",
@@ -59,12 +59,12 @@
       "OriginalItemSpec": "C:\\Users\\pepin\\Desktop\\UTB\\UTB_social_network_Dudik\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\UTB_social_network_Dudik.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\pepin\\Desktop\\UTB\\UTB_social_network_Dudik\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\pepin\\Desktop\\UTB\\UTB_social_network_Dudik\\wwwroot\\css\\indexmain.css",
       "SourceId": "UTB_social_network_Dudik",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\pepin\\Desktop\\UTB\\UTB_social_network_Dudik\\wwwroot\\",
       "BasePath": "_content/UTB_social_network_Dudik",
-      "RelativePath": "css/site#[.{fingerprint}]?.css",
+      "RelativePath": "css/indexmain#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -73,11 +73,11 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "c2tiyv64ts",
-      "Integrity": "pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=",
+      "Fingerprint": "gcpc415pgf",
+      "Integrity": "UMO1ZB7m9rcrUUyaFBB91ZAOtGQViwgGOdXV3VE0TnQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\site.css"
+      "OriginalItemSpec": "wwwroot\\css\\indexmain.css"
     },
     {
       "Identity": "C:\\Users\\pepin\\Desktop\\UTB\\UTB_social_network_Dudik\\wwwroot\\favicon.ico",
@@ -1321,8 +1321,8 @@
   ],
   "Endpoints": [
     {
-      "Route": "css/site.c2tiyv64ts.css",
-      "AssetFile": "C:\\Users\\pepin\\Desktop\\UTB\\UTB_social_network_Dudik\\wwwroot\\css\\site.css",
+      "Route": "css/indexmain.css",
+      "AssetFile": "C:\\Users\\pepin\\Desktop\\UTB\\UTB_social_network_Dudik\\wwwroot\\css\\indexmain.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -1331,7 +1331,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "2238"
         },
         {
           "Name": "Content-Type",
@@ -1339,56 +1339,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"UMO1ZB7m9rcrUUyaFBB91ZAOtGQViwgGOdXV3VE0TnQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 01 Dec 2024 19:10:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "c2tiyv64ts"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css",
-      "AssetFile": "C:\\Users\\pepin\\Desktop\\UTB\\UTB_social_network_Dudik\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "362"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 01 Dec 2024 19:10:43 GMT"
+          "Value": "Mon, 02 Dec 2024 19:32:39 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1398,7 +1353,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-UMO1ZB7m9rcrUUyaFBB91ZAOtGQViwgGOdXV3VE0TnQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/indexmain.gcpc415pgf.css",
+      "AssetFile": "C:\\Users\\pepin\\Desktop\\UTB\\UTB_social_network_Dudik\\wwwroot\\css\\indexmain.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2238"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UMO1ZB7m9rcrUUyaFBB91ZAOtGQViwgGOdXV3VE0TnQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 02 Dec 2024 19:32:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "gcpc415pgf"
+        },
+        {
+          "Name": "label",
+          "Value": "css/indexmain.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UMO1ZB7m9rcrUUyaFBB91ZAOtGQViwgGOdXV3VE0TnQ="
         }
       ]
     },

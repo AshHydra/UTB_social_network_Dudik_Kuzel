@@ -1,0 +1,111 @@
+/* Obecné stylování stránky */
+html, body {
+    font-family: 'Rubik', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #081823;
+    color: #FFFFFF;
+}
+
+.page-background {
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    background-color: #E8DEF8;
+    border-radius: 5px; /* Menší zaoblení rohù */
+    padding: 15px;
+    margin: 0 auto;
+    max-width: 100%; /* Rozšíøení do bokù */
+    text-align: center;
+}
+
+.header-title {
+    font-weight: bold;
+    font-size: 42px; /* Menší velikost fontu */
+    letter-spacing: 0.1em;
+    color: #081823;
+}
+
+/* Welcome Text */
+.welcome-text {
+    text-align: center;
+    margin: 30px 0; /* Posunutí textu více nahoru */
+    color: #C1E6FF; /* Barva textu */
+}
+
+    .welcome-text h2 {
+        font-size: 36px;
+        font-weight: bold;
+    }
+
+    .welcome-text p {
+        font-size: 18px;
+    }
+
+/* Form Container */
+.form-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px; /* Vìtší odsazení od vršku stránky */
+}
+
+/* Form Box */
+.form-box {
+    background-color: #E8DEF8;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.form-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #081823;
+    margin-bottom: 20px;
+}
+
+label {
+    color: #000000; /* Èerná barva nadpisù políèek */
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    text-align: left; /* Zarovnání textu vlevo */
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+}
+
+    .form-control::placeholder {
+        color: #BBBBBB;
+    }
+
+/* Submit Button */
+.submit-button {
+    width: 100%;
+    background-color: #081823;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Plynulý pøechod barvy pøi hoveru */
+}
+
+    .submit-button:hover {
+        background-color: #062030; /* Svìtlejší odstín */
+        color: #FFFFFF;
+        
+    }

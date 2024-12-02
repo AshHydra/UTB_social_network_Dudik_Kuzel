@@ -2,7 +2,61 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container-fluid page-background" >
+    <!-- Header -->
+    <div class="header">
+        <h1 class="header-title">UTB Chatter 2024</h1>
+    </div>
+
+    <!-- Welcome Text -->
+    <div class="welcome-text">
+        <h2>Welcome to realtime UTB Chatter</h2>
+        <p>Safe chatting with your friends</p>
+    </div>
+
+    <!-- Registration and Login Forms -->
+    <div class="form-container">
+        <!-- Register Form -->
+        <div class="form-box">
+            <h3 class="form-title">Register</h3>
+            <form>
+                <!-- Email -->
+                <label for="register-email">E-mail</label>
+                <input id="register-email" type="email" placeholder="example@example.com" class="form-control" />
+
+                <!-- Password -->
+                <label for="register-password">Password</label>
+                <input id="register-password" type="password" placeholder="*********" class="form-control" />
+
+                <!-- Nickname -->
+                <label for="register-nickname">Nickname</label>
+                <input id="register-nickname" type="text" placeholder="FAIn00b" class="form-control" />
+
+                <!-- Register Button -->
+                <button type="submit" class="btn submit-button">Register</button>
+            </form>
+        </div>
+
+        <!-- Login Form -->
+        <div class="form-box">
+            <h3 class="form-title">Login</h3>
+            <form>
+                <!-- Email -->
+                <label for="login-email">E-mail</label>
+                <input id="login-email" type="email" placeholder="example@example.com" class="form-control" />
+
+                <!-- Password -->
+                <label for="login-password">Password</label>
+                <input id="login-password" type="password" placeholder="*********" class="form-control" />
+
+                <!-- Login Button -->
+                <button type="submit" class="btn submit-button">Login</button>
+            </form>
+        </div>
+    </div>
 </div>
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/indexmain.css" asp-append-version="true" />
+}
