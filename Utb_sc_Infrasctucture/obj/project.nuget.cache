@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YoCB3g6bHI8=",
+  "dgSpecHash": "o1upYNEPWok=",
   "success": true,
-  "projectFilePath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctructure.csproj",
+  "projectFilePath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pepin\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\pepin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.10\\microsoft.aspnetcore.cryptography.internal.8.0.10.nupkg.sha512",

@@ -35,8 +35,8 @@
               "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_domain\\Utb_sc_Domain.csproj": {
                 "projectPath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_domain\\Utb_sc_Domain.csproj"
               },
-              "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctucture.csproj": {
-                "projectPath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctucture.csproj"
+              "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj"
               }
             }
           }
@@ -153,12 +153,12 @@
         }
       }
     },
-    "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctructure.csproj": {
+    "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctructure.csproj",
-        "projectName": "Utb_sc_Infrasctructure",
-        "projectPath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctructure.csproj",
+        "projectUniqueName": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj",
+        "projectName": "Utb_sc_Infrastructure",
+        "projectPath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj",
         "packagesPath": "C:\\Users\\pepin\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\obj\\",
         "projectStyle": "PackageReference",
@@ -278,8 +278,8 @@
               "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_domain\\Utb_sc_Domain.csproj": {
                 "projectPath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_domain\\Utb_sc_Domain.csproj"
               },
-              "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctructure.csproj": {
-                "projectPath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctructure.csproj"
+              "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj"
               }
             }
           }

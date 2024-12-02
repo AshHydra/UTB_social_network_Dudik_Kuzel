@@ -14,7 +14,7 @@
           "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
           "Utb_sc_Application": "1.0.0",
           "Utb_sc_Domain": "1.0.0",
-          "Utb_sc_Infrasctructure": "1.0.0"
+          "Utb_sc_Infrastructure": "1.0.0"
         },
         "runtime": {
           "UTB_social_network_Dudik.dll": {}
@@ -581,10 +581,14 @@
       "Utb_sc_Application/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10",
-          "Utb_sc_Domain": "1.0.0"
+          "Utb_sc_Domain": "1.0.0",
+          "Utb_sc_Infrastructure": "1.0.0"
         },
         "runtime": {
-          "Utb_sc_Application.dll": {}
+          "Utb_sc_Application.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Utb_sc_Domain/1.0.0": {
@@ -592,10 +596,13 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10"
         },
         "runtime": {
-          "Utb_sc_Domain.dll": {}
+          "Utb_sc_Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
-      "Utb_sc_Infrasctructure/1.0.0": {
+      "Utb_sc_Infrastructure/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10",
           "Microsoft.EntityFrameworkCore": "8.0.10",
@@ -605,7 +612,10 @@
           "Utb_sc_Domain": "1.0.0"
         },
         "runtime": {
-          "Utb_sc_Infrasctructure.dll": {}
+          "Utb_sc_Infrastructure.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
@@ -934,7 +944,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Utb_sc_Infrasctructure/1.0.0": {
+    "Utb_sc_Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

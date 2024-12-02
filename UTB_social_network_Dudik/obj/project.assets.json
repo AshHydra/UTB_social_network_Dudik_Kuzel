@@ -915,9 +915,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctucture.csproj": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.10",
-          "Utb_sc_Domain": "1.0.0"
+          "Utb_sc_Domain": "1.0.0",
+          "Utb_sc_Infrastructure": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Utb_sc_Application.dll": {}
@@ -939,7 +939,7 @@
           "bin/placeholder/Utb_sc_Domain.dll": {}
         }
       },
-      "Utb_sc_Infrasctructure/1.0.0": {
+      "Utb_sc_Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
@@ -951,10 +951,10 @@
           "Utb_sc_Domain": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/Utb_sc_Infrasctructure.dll": {}
+          "bin/placeholder/Utb_sc_Infrastructure.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Utb_sc_Infrasctructure.dll": {}
+          "bin/placeholder/Utb_sc_Infrastructure.dll": {}
         }
       }
     }
@@ -2372,10 +2372,10 @@
       "path": "../Utb_sc_domain/Utb_sc_Domain.csproj",
       "msbuildProject": "../Utb_sc_domain/Utb_sc_Domain.csproj"
     },
-    "Utb_sc_Infrasctructure/1.0.0": {
+    "Utb_sc_Infrastructure/1.0.0": {
       "type": "project",
-      "path": "../Utb_sc_Infrasctucture/Utb_sc_Infrasctructure.csproj",
-      "msbuildProject": "../Utb_sc_Infrasctucture/Utb_sc_Infrasctructure.csproj"
+      "path": "../Utb_sc_Infrasctucture/Utb_sc_Infrastructure.csproj",
+      "msbuildProject": "../Utb_sc_Infrasctucture/Utb_sc_Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2386,7 +2386,7 @@
       "Pomelo.EntityFrameworkCore.MySql >= 8.0.2",
       "Utb_sc_Application >= 1.0.0",
       "Utb_sc_Domain >= 1.0.0",
-      "Utb_sc_Infrasctructure >= 1.0.0"
+      "Utb_sc_Infrastructure >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2427,8 +2427,8 @@
             "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_domain\\Utb_sc_Domain.csproj": {
               "projectPath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_domain\\Utb_sc_Domain.csproj"
             },
-            "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctructure.csproj": {
-              "projectPath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctructure.csproj"
+            "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj"
             }
           }
         }
@@ -2490,16 +2490,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Nepovedlo se najít projekt C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctucture.csproj. Zkontrolujte, že odkaz na projekt je platný a že existuje soubor projektu.",
-      "libraryId": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctucture.csproj",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }

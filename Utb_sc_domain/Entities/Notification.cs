@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Utb_sc_Domain.Entities
 {
-    //test 2
+
     public class Notification : Entity<int>
     {   
         public string Content { get; set; }

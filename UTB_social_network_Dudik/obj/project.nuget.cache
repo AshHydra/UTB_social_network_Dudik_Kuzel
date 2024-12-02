@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "cNo8U3Dol8E=",
-  "success": false,
+  "dgSpecHash": "2LFBCrBQ1YU=",
+  "success": true,
   "projectFilePath": "C:\\Users\\pepin\\Desktop\\UTB\\UTB_social_network_Dudik\\UTB_social_network_Dudik.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pepin\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
@@ -49,15 +49,5 @@
     "C:\\Users\\pepin\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512",
     "C:\\Users\\pepin\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Nepovedlo se najít projekt C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctucture.csproj. Zkontrolujte, že odkaz na projekt je platný a že existuje soubor projektu.",
-      "libraryId": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctucture.csproj",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  "logs": []
 }

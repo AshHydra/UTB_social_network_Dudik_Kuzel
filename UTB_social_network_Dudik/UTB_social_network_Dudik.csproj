@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -19,7 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Utb_sc_Application\Utb_sc_Application.csproj" />
     <ProjectReference Include="..\Utb_sc_domain\Utb_sc_Domain.csproj" />
-    <ProjectReference Include="..\Utb_sc_Infrasctucture\Utb_sc_Infrasctructure.csproj" />
+    <ProjectReference Include="..\Utb_sc_Infrasctucture\Utb_sc_Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

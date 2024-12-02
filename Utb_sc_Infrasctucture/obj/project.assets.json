@@ -2352,9 +2352,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctructure.csproj",
-      "projectName": "Utb_sc_Infrasctructure",
-      "projectPath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrasctructure.csproj",
+      "projectUniqueName": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj",
+      "projectName": "Utb_sc_Infrastructure",
+      "projectPath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj",
       "packagesPath": "C:\\Users\\pepin\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\pepin\\Desktop\\UTB\\Utb_sc_Infrasctucture\\obj\\",
       "projectStyle": "PackageReference",

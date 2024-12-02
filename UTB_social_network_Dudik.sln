@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utb_sc_Domain", "Utb_sc_dom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utb_sc_Application", "Utb_sc_Application\Utb_sc_Application.csproj", "{364F8E47-C7F3-43CF-840F-8E707693D4E2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utb_sc_Infrasctructure", "Utb_sc_Infrasctucture\Utb_sc_Infrasctructure.csproj", "{D8B18286-2A88-4776-BA81-2DA4909D2FB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utb_sc_Infrastructure", "Utb_sc_Infrasctucture\Utb_sc_Infrastructure.csproj", "{D8B18286-2A88-4776-BA81-2DA4909D2FB7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Položky řešení", "Položky řešení", "{6592F26F-3C9C-46B5-80F6-F89630125A27}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
