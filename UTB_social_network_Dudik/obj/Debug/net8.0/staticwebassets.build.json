@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "eDlj2YJrm+OXryLznP3nda2sGepkdpf4FIfJGGgfUtY=",
+  "Hash": "TYnswsuVBeXNyb5rBFp2mA0ilahFyoWDVxuqz2WXpzU=",
   "Source": "UTB_social_network_Dudik",
   "BasePath": "_content/UTB_social_network_Dudik",
   "Mode": "Default",
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "gcpc415pgf",
-      "Integrity": "UMO1ZB7m9rcrUUyaFBB91ZAOtGQViwgGOdXV3VE0TnQ=",
+      "Fingerprint": "3vrt67flws",
+      "Integrity": "sVt5FeZQ0uCD1oaWTFv8xhHl0H5PZDUak86cXe1wReI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\indexmain.css"
@@ -1321,6 +1321,51 @@
   ],
   "Endpoints": [
     {
+      "Route": "css/indexmain.3vrt67flws.css",
+      "AssetFile": "C:\\Users\\pepin\\Desktop\\UTB\\UTB_social_network_Dudik\\wwwroot\\css\\indexmain.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2228"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sVt5FeZQ0uCD1oaWTFv8xhHl0H5PZDUak86cXe1wReI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 02 Dec 2024 20:05:41 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3vrt67flws"
+        },
+        {
+          "Name": "label",
+          "Value": "css/indexmain.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-sVt5FeZQ0uCD1oaWTFv8xhHl0H5PZDUak86cXe1wReI="
+        }
+      ]
+    },
+    {
       "Route": "css/indexmain.css",
       "AssetFile": "C:\\Users\\pepin\\Desktop\\UTB\\UTB_social_network_Dudik\\wwwroot\\css\\indexmain.css",
       "Selectors": [],
@@ -1331,7 +1376,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2238"
+          "Value": "2228"
         },
         {
           "Name": "Content-Type",
@@ -1339,11 +1384,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"UMO1ZB7m9rcrUUyaFBB91ZAOtGQViwgGOdXV3VE0TnQ=\""
+          "Value": "\"sVt5FeZQ0uCD1oaWTFv8xhHl0H5PZDUak86cXe1wReI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 02 Dec 2024 19:32:39 GMT"
+          "Value": "Mon, 02 Dec 2024 20:05:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1353,52 +1398,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-UMO1ZB7m9rcrUUyaFBB91ZAOtGQViwgGOdXV3VE0TnQ="
-        }
-      ]
-    },
-    {
-      "Route": "css/indexmain.gcpc415pgf.css",
-      "AssetFile": "C:\\Users\\pepin\\Desktop\\UTB\\UTB_social_network_Dudik\\wwwroot\\css\\indexmain.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2238"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"UMO1ZB7m9rcrUUyaFBB91ZAOtGQViwgGOdXV3VE0TnQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 02 Dec 2024 19:32:39 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "gcpc415pgf"
-        },
-        {
-          "Name": "label",
-          "Value": "css/indexmain.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-UMO1ZB7m9rcrUUyaFBB91ZAOtGQViwgGOdXV3VE0TnQ="
+          "Value": "sha256-sVt5FeZQ0uCD1oaWTFv8xhHl0H5PZDUak86cXe1wReI="
         }
       ]
     },

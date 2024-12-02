@@ -105,7 +105,6 @@ label {
 }
 
     .submit-button:hover {
-        background-color: #062030; /* Svìtlejší odstín */
+        background-color: #184767; /* Svìtlejší odstín */
         color: #FFFFFF;
-        
     }
