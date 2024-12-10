@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Utb_sc_Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+435430099922cc5bad4cc0cb6e64c8cc1a876477")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4eb209249562a2873fbd27d1b358114bdb337cd")]
 [assembly: System.Reflection.AssemblyProductAttribute("Utb_sc_Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Utb_sc_Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
