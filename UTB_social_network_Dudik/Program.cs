@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Utb_sc_Infrastructure.Identity;
 using System.Data;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Pøidání služeb pro MVC
@@ -48,12 +49,10 @@ builder.Services.ConfigureApplicationCookie(options =>
 //builder.Services.AddScoped<IFileUploadService, FileUploadService>(); // Replace or add other services as needed
 
 builder.Services.AddDbContext<SocialNetworkDbContext>(options =>
-    options.UseMySql(
-        builder.Configuration.GetConnectionString("MySQL"),
-        new MySqlServerVersion("8.0.38"),
-        mySqlOptions => mySqlOptions.MigrationsAssembly("Utb_sc_Infrastructure") // Pøidání MigrationsAssembly
-    )
-);
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        sqlOptions => sqlOptions.MigrationsAssembly("Utb_sc_Infrastructure") // Specifies where migrations are stored
+    ));
 
 
 var app = builder.Build();

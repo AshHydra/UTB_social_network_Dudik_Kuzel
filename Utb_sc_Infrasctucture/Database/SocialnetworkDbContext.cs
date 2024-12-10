@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using IdentityUser = Utb_sc_Infrastructure.Identity.User;
 using DomainUser = Utb_sc_Domain.Entities.User;
+using Microsoft.EntityFrameworkCore;
 
 namespace Utb_sc_Infrastructure.Database
 {
