@@ -20,30 +20,29 @@ namespace UTB_social_network_Dudik.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Create a new user
                 var user = new User
                 {
                     UserName = model.Nickname,
                     Email = model.Email
                 };
 
-                // Save user with password
                 var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
-                    // Redirect to a success page or login page
-                    return RedirectToAction("Login", "Account");
+                    // Můžeš přidat informaci o úspěchu
+                    ViewBag.Message = "Registration successful!";
                 }
-
-                // Add errors to the ModelState if registration fails
-                foreach (var error in result.Errors)
+                else
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
                 }
             }
 
-            // Return the same view if validation fails
+            // Pokud je něco špatně, nebo úspěšná registrace, vrátí stejnou stránku
             return View(model);
         }
     }
