@@ -58,6 +58,16 @@ html, body {
     margin-top: 20px;
 }
 
+.center-container {
+    flex: 1; /* Allows the container to expand and fill remaining space */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin: 0 auto; /* Center container horizontally in case of other content */
+    padding: 20px; /* Optional spacing */
+    box-sizing: border-box;
+}
+
 /* Form Box */
 .form-box {
     background-color: #E8DEF8;
@@ -114,6 +124,23 @@ label {
         background-color: #184767;
         color: #FFFFFF;
     }
+.register-link {
+    margin-top: 10px; /* Add space between button and link */
+    font-size: 14px; /* Smaller font size */
+    color: #081823;
+}
+
+    .register-link a {
+        color: #184767; /* Link color */
+        text-decoration: none; /* Remove underline */
+        font-weight: bold;
+        transition: color 0.3s; /* Smooth color transition */
+    }
+
+        .register-link a:hover {
+            color: #C1E6FF; /* Light blue color on hover */
+            text-decoration: underline; /* Underline on hover */
+        }
 
 /* Footer */
 footer {

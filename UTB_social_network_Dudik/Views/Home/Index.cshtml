@@ -16,30 +16,8 @@
         <p>Safe chatting with your friends</p>
     </div>
 
-    <!-- Registration and Login Forms -->
-    <div class="form-container">
-        <!-- Register Form -->
-        <div class="form-box">
-            <h3 class="form-title">Register</h3>
-            <form asp-controller="Account" asp-action="Register" method="post">
-                <!-- Email -->
-                <label for="register-email">E-mail</label>
-                <input id="register-email" name="Email" type="email" placeholder="example@example.com" class="form-control" required />
-
-                <!-- Password -->
-                <label for="register-password">Password</label>
-                <input id="register-password" name="Password" type="password" placeholder="*********" class="form-control" required />
-
-                <!-- Nickname -->
-                <label for="register-nickname">Nickname</label>
-                <input id="register-nickname" name="Nickname" type="text" placeholder="FAIn00b" class="form-control" required />
-
-                <!-- Register Button -->
-                <button type="submit" class="btn submit-button">Register</button>
-            </form>
-        </div>
-
-        <!-- Login Form -->
+    <!-- Login Form -->
+    <div class="center-container">
         <div class="form-box">
             <h3 class="form-title">Login</h3>
             <form>
@@ -53,6 +31,12 @@
 
                 <!-- Login Button -->
                 <button type="submit" class="btn submit-button">Login</button>
+
+                <div class ="register-link">
+                    <p>Don´t have an account?
+                        <a href="/Account/Register" class="link-register">Register</a>
+                    </p>
+                    </div>
             </form>
         </div>
     </div>
