@@ -77,6 +77,7 @@ app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
+
 // Výchozí route
 app.MapControllerRoute(
     name: "default",

@@ -12,5 +12,6 @@ namespace Utb_sc_Domain.Entities.Interfaces
         string? Email { get; set; }
         string? FirstName { get; set; }
         string? LastName { get; set; }
+        string? PasswordHash { get; set; }
     }
 }

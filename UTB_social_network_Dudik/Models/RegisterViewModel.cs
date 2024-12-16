@@ -1,9 +1,30 @@
-﻿namespace UTB_social_network_Dudik.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace UTB_social_network_Dudik.Models
 {
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
         public string Email { get; set; }
-        public string Password { get; set; }
-        public string Nickname { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string PasswordHash { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
     }
 }
+
