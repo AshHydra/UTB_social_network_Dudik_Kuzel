@@ -1,5 +1,7 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model UTB_social_network_Dudik.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
 }
 
 <div class="container-fluid page-background">
@@ -20,31 +22,45 @@
     <div class="center-container">
         <div class="form-box">
             <h3 class="form-title">Login</h3>
-            <form>
+            <form method="post" asp-controller="Account" asp-action="Login">
                 <!-- Email -->
                 <label for="login-email">E-mail</label>
-                <input id="login-email" type="email" placeholder="example@example.com" class="form-control" />
+                <input id="login-email" name="Email" type="email" placeholder="example@example.com" class="form-control" required />
 
                 <!-- Password -->
                 <label for="login-password">Password</label>
-                <input id="login-password" type="password" placeholder="*********" class="form-control" />
+                <input id="login-password" name="Password" type="password" placeholder="*********" class="form-control" required />
+
+                <!-- Error Message -->
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="text-danger">
+                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <p>@error.ErrorMessage</p>
+                        }
+                    </div>
+                }
 
                 <!-- Login Button -->
                 <button type="submit" class="btn submit-button">Login</button>
 
-                <div class ="register-link">
-                    <p>Don´t have an account?
+                <div class="register-link">
+                    <p>
+                        Don´t have an account?
                         <a asp-controller="Account" asp-action="Register" class="link-register">Register</a>
                     </p>
-                    </div>
+                </div>
             </form>
         </div>
     </div>
-</div>
-
-
 
 @section Styles
 {
     <link rel="stylesheet" href="~/css/indexmain.css" asp-append-version="true" />
+}
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
 }

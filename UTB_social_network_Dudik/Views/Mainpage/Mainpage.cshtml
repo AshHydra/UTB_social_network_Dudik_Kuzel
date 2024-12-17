@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="page-container">
+    <!-- Celá stránka rozdělená na dvě sekce -->
+    <div class="chat-container">
+        <!-- Levý panel: Seznam chatů -->
+        <div class="chat-sidebar">
+            <div class="chat-search">
+                <input type="text" placeholder="Search" class="search-input" />
+            </div>
+            <div class="chat-list">
+                <!-- Jednotlivé položky chatu -->
+                <div class="chat-item active">
+                    <div class="chat-avatar">💬</div>
+                    <div class="chat-info">
+                        <h5>Chat 1</h5>
+                        <p>Hello</p>
+                    </div>
+                    <div class="chat-time">2:57</div>
+                </div>
+                <div class="chat-item">
+                    <div class="chat-avatar">🌄</div>
+                    <div class="chat-info">
+                        <h5>Chat 2</h5>
+                        <p>Hi</p>
+                    </div>
+                    <div class="chat-time">3:09</div>
+                </div>
+                <!-- Další položky mohou následovat -->
+            </div>
+        </div>
+
+        <!-- Pravý panel: Obsah aktuálního chatu -->
+        <div class="chat-content">
+            <div class="chat-header">
+                <h3>Select a chat to start messaging</h3>
+            </div>
+            <!-- Prázdná oblast pro zobrazení zpráv -->
+        </div>
+    </div>
+</div>
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/Mainpage.css" asp-append-version="true" />
+}

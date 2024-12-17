@@ -18,13 +18,15 @@ namespace Utb_sc_Infrastructure.Database
         public DbSet<Chat> Chats { get; set; }
         public DbSet<FriendList> FriendLists { get; set; }
         public DbSet<Notification> Notifications { get; set; }
-        public DbSet<IdentityUser> Users { get; set; } // Použití aliasu IdentityUser
+
 
         public SocialNetworkDbContext(DbContextOptions<SocialNetworkDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+
 
             // Seeding dat pro role
             RolesInit rolesInit = new RolesInit();
