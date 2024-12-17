@@ -55,7 +55,7 @@ namespace UTB_social_network_Dudik.Controllers
                 {
                     await _userManager.AddToRoleAsync(user, "User");
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("MainPage", "Home"); // Přesměruj na hlavní stránku
+                    return View("~/Views/Home/Index.cshtml");
                 }
 
                 foreach (var error in result.Errors)
