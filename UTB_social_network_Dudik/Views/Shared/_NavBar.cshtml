@@ -1,9 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Main Page";
-}
-
-<!-- Navigační lišta pouze pro MainPage -->
-<header>
+﻿<header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">UTB Chatter</a>
@@ -34,35 +29,3 @@
         </div>
     </nav>
 </header>
-
-<!-- Hlavní obsah stránky -->
-<div class="container-fluid chat-container mt-4">
-    <div class="row">
-        <div class="col-3">
-            <!-- Levý panel: Seznam chatů -->
-            <div class="chat-sidebar">
-                <input type="text" placeholder="Search" class="form-control mb-3 search-input" />
-                <ul class="list-group chat-list">
-                    <li class="list-group-item active">Chat 1</li>
-                    <li class="list-group-item">Chat 2</li>
-                    <li class="list-group-item">Chat 3</li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-9">
-            <!-- Pravý panel: Obsah chatu -->
-            <div class="chat-content rounded">
-                <h3>Select a chat to start messaging</h3>
-            </div>
-        </div>
-    </div>
-</div>
-
-@section Styles
-{
-    <link rel="stylesheet" href="~/css/Mainpage.css" asp-append-version="true" />
-}
-
-@section Scripts {
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-}

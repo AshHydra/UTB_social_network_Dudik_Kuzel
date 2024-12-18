@@ -1,24 +1,21 @@
-﻿/* Obecné nastavení */
+﻿/* Globální styl */
 html, body {
     font-family: 'Rubik', sans-serif;
     background-color: #081823;
     color: #FFFFFF;
     margin: 0;
     padding: 0;
-    height: 100vh; /* Celá výška okna */
+    height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* Kontejner pro celou stránku */
 .chat-container {
     display: flex;
-    height: 100%; /* Celá výška rodiče */
-    margin: 0;
-    padding: 0;
+    height: 100%;
 }
 
-/* Levý panel: Sidebar */
+/* Levý panel */
 .chat-sidebar {
     width: 300px; /* Pevná šířka sidebaru */
     background-color: #0D1B2A;
@@ -27,66 +24,33 @@ html, body {
     border-right: 1px solid #1B263B;
     box-sizing: border-box; /* Zahrnutí paddingu a borderu do šířky */
     overflow-y: auto; /* Scroll při přeplnění */
-}
-
-/* Vyhledávací pole */
-.chat-search {
-    padding: 10px; /* Uvnitř sidebaru */
-    background-color: #1B263B;
+    position: absolute; /* Absolutní pozice pro fixaci na levý okraj */
+    left: 0; /* Posunutí úplně doleva */
+    top: 0; /* Zarovnání nahoru */
+    bottom: 0; /* Roztažení na výšku */
 }
 
 .search-input {
-    width: calc(100% - 20px);
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-    background-color: #0D1B2A;
+    background-color: #1B263B;
     color: #FFFFFF;
+    border: none;
 }
 
-/* Seznam chatů */
-.chat-list {
-    flex: 1; /* Zabírá celý prostor */
-    overflow-y: auto;
-    margin: 0;
+.list-group-item {
+    background-color: #1B263B;
+    color: #FFFFFF;
+    border: none;
+    transition: background 0.3s ease;
 }
 
-.chat-item {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #1B263B;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-    .chat-item:hover, .chat-item.active {
-        background-color: #1B263B;
+    .list-group-item:hover, .list-group-item.active {
+        background-color: #415A77;
+        color: #C1E6FF;
     }
-
-.chat-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #415A77;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 10px;
-}
-
-.chat-info h5, .chat-info p {
-    margin: 0;
-}
-
-.chat-time {
-    margin-left: auto;
-    font-size: 12px;
-    color: #A9A9A9;
-}
 
 /* Pravý panel */
 .chat-content {
+    margin-left: 300px; /* Posun pravého panelu o šířku sidebaru */
     flex: 1; /* Zabírá zbytek prostoru */
     background-color: #081823;
     display: flex;
@@ -97,11 +61,17 @@ html, body {
     margin: 0;
 }
 
-/* Footer pro případ, že ho použiješ */
-footer {
-    background-color: #081823;
-    color: #FFFFFF;
-    text-align: center;
-    padding: 10px;
-    width: 100%;
+/* Navigační lišta */
+.navbar {
+    background-color: #081823 !important;
+    border-bottom: 2px solid #C1E6FF;
 }
+
+.nav-link {
+    color: #C1E6FF !important;
+    transition: color 0.3s ease;
+}
+
+    .nav-link:hover {
+        color: #FFFFFF !important;
+    }

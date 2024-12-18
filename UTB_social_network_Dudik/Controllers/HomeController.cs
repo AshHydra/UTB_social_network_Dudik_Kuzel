@@ -11,6 +11,21 @@ namespace UTB_social_network_Dudik.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        public IActionResult Contacts()
+        {
+            return View("~/Views/Contacts/Contactspage.cshtml");
+        }
+
+        public IActionResult Profile()
+        {
+            return View("~/Views/Profile/Profile.cshtml");
+        }
+
+        public IActionResult Admin()
+        {
+            return View("~/Views/Admin/Adminpage.cshtml");
+        }
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -19,7 +34,7 @@ namespace UTB_social_network_Dudik.Controllers
         // Úvodní stránka po pøihlášení
         public IActionResult MainPage()
         {
-            return View();
+            return View("~/Views/Mainpage/Mainpage.cshtml");
         }
 
         // Výchozí index stránka
