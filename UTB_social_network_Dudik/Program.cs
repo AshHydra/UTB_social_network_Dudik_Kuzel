@@ -2,40 +2,41 @@ using Microsoft.EntityFrameworkCore;
 using Utb_sc_Infrastructure.Database;
 using Microsoft.AspNetCore.Identity;
 using Utb_sc_Infrastructure.Identity;
-using System.Data;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Pøidání služeb pro MVC
+// Add services for MVC
 builder.Services.AddControllersWithViews();
 
-// Nastavení pøipojení k databázi MySQL (v pøípadì, že používáte MySQL)
+// Configure MySQL database connection
 string connectionString = builder.Configuration.GetConnectionString("MySQL");
 ServerVersion serverVersion = new MySqlServerVersion("8.0.38");
-builder.Services.AddDbContext<SocialNetworkDbContext>(optionsBuilder => optionsBuilder.UseMySql(connectionString, serverVersion));
+builder.Services.AddDbContext<SocialNetworkDbContext>(options =>
+    options.UseMySql(connectionString, serverVersion));
 
-// Konfigurace Identity
-builder.Services.AddIdentity<User, Role>()
-     .AddEntityFrameworkStores<SocialNetworkDbContext>()
-     .AddDefaultTokenProviders();
-
-// Konfigurace možností Identity
-builder.Services.Configure<IdentityOptions>(options =>
+// Configure Identity
+builder.Services.AddIdentity<User, IdentityRole<int>>(options =>
 {
+    // Password options
     options.Password.RequireDigit = false;
     options.Password.RequiredLength = 1;
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = false;
     options.Password.RequireLowercase = false;
     options.Password.RequiredUniqueChars = 1;
+
+    // Lockout options
     options.Lockout.AllowedForNewUsers = true;
     options.Lockout.MaxFailedAccessAttempts = 10;
     options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
-    options.User.RequireUniqueEmail = true;
-});
 
-// Konfigurace pro cookie ovìøování
+    // User options
+    options.User.RequireUniqueEmail = true;
+})
+.AddEntityFrameworkStores<SocialNetworkDbContext>()
+.AddDefaultTokenProviders();
+
+// Configure cookie authentication
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.HttpOnly = true;
@@ -45,19 +46,13 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.SlidingExpiration = true;
 });
 
-// Registrace služeb aplikace (pokud máte nìjaké služby ve své aplikaci)
-//builder.Services.AddScoped<IFileUploadService, FileUploadService>(); // Replace or add other services as needed
+// Register RoleManager service explicitly (to resolve dependency)
+builder.Services.AddScoped<RoleManager<IdentityRole<int>>>();
 
-builder.Services.AddDbContext<SocialNetworkDbContext>(options =>
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-        sqlOptions => sqlOptions.MigrationsAssembly("Utb_sc_Infrastructure") // Specifies where migrations are stored
-    ));
-
-
+// Build the app
 var app = builder.Build();
-//test 2
-// Konfigurace HTTP request pipeline
+
+// Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -72,15 +67,15 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Definice oblastí (areas)
+// Configure areas routing
 app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
-
-// Výchozí route
+// Configure default routing
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+// Run the application
 app.Run();

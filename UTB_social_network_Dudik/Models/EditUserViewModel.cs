@@ -4,7 +4,7 @@ namespace UTB_social_network_Dudik.Models
 {
     public class EditUserViewModel
     {
-        public int Id { get; set; } // Change from string to int
+        public int Id { get; set; } // User ID
 
         [Required]
         [Display(Name = "Username")]
@@ -24,5 +24,8 @@ namespace UTB_social_network_Dudik.Models
         [Phone]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
+
+        [Display(Name = "Roles (IDs)")]
+        public string RoleIds { get; set; } // A comma-separated string of role IDs
     }
 }

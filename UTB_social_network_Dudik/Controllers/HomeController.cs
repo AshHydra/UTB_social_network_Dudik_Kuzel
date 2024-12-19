@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Linq;
+using System.Threading.Tasks;
 using UTB_social_network_Dudik.Models;
 using Utb_sc_Infrastructure.Identity;
 using System.Diagnostics;
@@ -14,18 +15,48 @@ namespace UTB_social_network_Dudik.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly UserManager<User> _userManager;
+        private readonly RoleManager<IdentityRole<int>> _roleManager;
 
-        public HomeController(ILogger<HomeController> logger, UserManager<User> userManager)
+        public HomeController(
+            ILogger<HomeController> logger,
+            UserManager<User> userManager,
+            RoleManager<IdentityRole<int>> roleManager)
         {
             _logger = logger;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         // Admin page with list of all users
-        public IActionResult Admin()
+        public async Task<IActionResult> Admin()
         {
-            var users = _userManager.Users.ToList(); // Fetch all users
-            return View("~/Views/Admin/Adminpage.cshtml", users); // Pass users to view
+            // Fetch all users
+            var users = _userManager.Users.ToList();
+
+            // Map users to EditUserViewModel
+            var model = new List<EditUserViewModel>();
+            foreach (var user in users)
+            {
+                var userRoles = await _userManager.GetRolesAsync(user);
+                var roles = userRoles.Select(roleName =>
+                {
+                    var role = _roleManager.Roles.FirstOrDefault(r => r.Name == roleName);
+                    return role != null ? role.Id.ToString() : null;
+                }).Where(r => r != null);
+
+                model.Add(new EditUserViewModel
+                {
+                    Id = user.Id,
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    PhoneNumber = user.PhoneNumber,
+                    RoleIds = string.Join(",", roles)
+                });
+            }
+
+            return View("~/Views/Admin/Adminpage.cshtml", model); // Pass mapped users to view
         }
 
         public IActionResult Contacts()
