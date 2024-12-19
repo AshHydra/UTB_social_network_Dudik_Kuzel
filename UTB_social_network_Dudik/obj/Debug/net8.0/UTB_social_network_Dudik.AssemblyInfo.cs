@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UTB_social_network_Dudik")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b557df5544ebeef557f439091f8a10669c7605cb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8240c18c5fb06dfbff99be4d5a34f634b3015689")]
 [assembly: System.Reflection.AssemblyProductAttribute("UTB_social_network_Dudik")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UTB_social_network_Dudik")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

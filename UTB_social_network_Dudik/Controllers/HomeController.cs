@@ -1,15 +1,32 @@
-using Microsoft.AspNetCore.Authorization; // Pro atribut Authorize
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Diagnostics;
+using System.Linq;
 using UTB_social_network_Dudik.Models;
+using Utb_sc_Infrastructure.Identity;
+using System.Diagnostics;
 
 namespace UTB_social_network_Dudik.Controllers
 {
-    [Authorize] // Zajiöùuje, ûe vöechny akce v tomto controlleru jsou p¯ÌstupnÈ pouze p¯ihl·öen˝m uûivatel˘m
+    [Authorize] // All actions in this controller require authentication
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly UserManager<User> _userManager;
+
+        public HomeController(ILogger<HomeController> logger, UserManager<User> userManager)
+        {
+            _logger = logger;
+            _userManager = userManager;
+        }
+
+        // Admin page with list of all users
+        public IActionResult Admin()
+        {
+            var users = _userManager.Users.ToList(); // Fetch all users
+            return View("~/Views/Admin/Adminpage.cshtml", users); // Pass users to view
+        }
 
         public IActionResult Contacts()
         {
@@ -21,39 +38,29 @@ namespace UTB_social_network_Dudik.Controllers
             return View("~/Views/Profile/Profile.cshtml");
         }
 
-        public IActionResult Admin()
-        {
-            return View("~/Views/Admin/Adminpage.cshtml");
-        }
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
-        // ⁄vodnÌ str·nka po p¯ihl·öenÌ
+        // Main page after login
         public IActionResult MainPage()
         {
             return View("~/Views/Mainpage/Mainpage.cshtml");
         }
 
-        // V˝chozÌ index str·nka
-        [AllowAnonymous] // Tuto akci m˘ûe zobrazit kdokoliv
+        // Default index page
+        [AllowAnonymous] // Anyone can access this action
         public IActionResult Index()
         {
             return View();
         }
 
-        // Str·nka s informacemi o ochranÏ osobnÌch ˙daj˘
-        [AllowAnonymous] // Tuto akci m˘ûe zobrazit kdokoliv
+        // Privacy policy page
+        [AllowAnonymous] // Anyone can access this action
         public IActionResult Privacy()
         {
             return View();
         }
 
-        // ZobrazÌ chybu
+        // Display error page
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        [AllowAnonymous] // Tuto akci m˘ûe zobrazit kdokoliv
+        [AllowAnonymous] // Anyone can access this action
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

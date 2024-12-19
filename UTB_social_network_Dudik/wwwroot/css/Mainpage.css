@@ -75,3 +75,36 @@ html, body {
     .nav-link:hover {
         color: #FFFFFF !important;
     }
+
+/* Admin Page User List Styles */
+.user-list {
+    margin-top: 20px;
+}
+
+.user-bar {
+    background-color: #1B263B; /* Darker background for blending */
+    border: 1px solid #415A77; /* Subtle border for contrast */
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+    .user-bar:hover {
+        background-color: #2E3C50; /* Slightly lighter on hover */
+        transform: translateY(-2px); /* Hover effect for engagement */
+    }
+
+.user-info {
+    flex-grow: 1;
+}
+
+    .user-info p {
+        margin: 0;
+        padding: 5px 0;
+        color: #C1E6FF; /* Light text for readability */
+    }

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<Utb_sc_Infrastructure.Identity.User>
+
+@{
     ViewData["Title"] = "Admin Page";
 }
 
@@ -9,6 +11,28 @@
 <div class="container mt-4">
     <h1>Admin Page</h1>
     <p>Welcome to the admin panel!</p>
+
+    <!-- User Information Bars -->
+    @if (Model != null && Model.Any())
+    {
+        <div class="user-list mt-4">
+            @foreach (var user in Model)
+            {
+                <div class="user-bar">
+                    <div class="user-info">
+                        <p><strong>Username:</strong> @user.UserName</p>
+                        <p><strong>Email:</strong> @user.Email</p>
+                        <p><strong>First Name:</strong> @user.FirstName</p>
+                        <p><strong>Last Name:</strong> @user.LastName</p>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>No users found.</p>
+    }
 </div>
 
 @section Styles
