@@ -24,6 +24,10 @@
                         <p><strong>Email:</strong> @user.Email</p>
                         <p><strong>First Name:</strong> @user.FirstName</p>
                         <p><strong>Last Name:</strong> @user.LastName</p>
+                        <p><strong>Phone Number:</strong> @user.PhoneNumber</p>
+                    </div>
+                    <div class="user-actions">
+                        <a asp-action="Edit" asp-controller="User" asp-route-id="@user.Id" class="btn btn-primary">Edit</a>
                     </div>
                 </div>
             }

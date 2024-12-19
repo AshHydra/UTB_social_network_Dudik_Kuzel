@@ -103,5 +103,7 @@ namespace UTB_social_network_Dudik.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }
+
+       
     }
 }
