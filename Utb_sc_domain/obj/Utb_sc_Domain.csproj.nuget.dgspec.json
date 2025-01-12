@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj": {}
+    "C:\\Users\\pepin\\Desktop\\chatter\\Utb_sc_domain\\Utb_sc_Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj": {
+    "C:\\Users\\pepin\\Desktop\\chatter\\Utb_sc_domain\\Utb_sc_Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj",
+        "projectUniqueName": "C:\\Users\\pepin\\Desktop\\chatter\\Utb_sc_domain\\Utb_sc_Domain.csproj",
         "projectName": "Utb_sc_Domain",
-        "projectPath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj",
-        "packagesPath": "C:\\Users\\ash31\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\obj\\",
+        "projectPath": "C:\\Users\\pepin\\Desktop\\chatter\\Utb_sc_domain\\Utb_sc_Domain.csproj",
+        "packagesPath": "C:\\Users\\pepin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pepin\\Desktop\\chatter\\Utb_sc_domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\ash31\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pepin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,8 +42,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -66,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

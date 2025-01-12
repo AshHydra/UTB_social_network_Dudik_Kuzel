@@ -38,14 +38,30 @@
     <div class="row">
         <div class="col-2">
             <!-- Levý panel: Seznam chatů -->
-            <div class="chat-sidebar rounded">
+            <div class="chat-sidebar">
                 <div class="chats-title">Chats</div>
-                <input type="text" id="searchInput" placeholder="Search a conversation..." class="form-control mb-3 search-input" onkeyup="filterChats()" />
+                <input type="text" id="searchInput" placeholder="Search an conversation..." class="form-control mb-3 search-input" onkeyup="filterChats()" />
                 <div id="chatTabs">
-                    <div class="chat-tab" onclick="activateTab(this)">Chat 1</div>
-                    <div class="chat-tab" onclick="activateTab(this)">Chat 2</div>
-                    <div class="chat-tab" onclick="activateTab(this)">Chat 3</div>
+                    <div class="chat-tab" onclick="activateTab(this)">
+                        <span class="chat-name">Chat 1</span>
+                        <span class="message-icon-list">
+                            <img src="https://i.imgur.com/F8pNkMa.png" alt="message-icon" class="chat-icon">
+                        </span>
+                    </div>
+                    <div class="chat-tab" onclick="activateTab(this)">
+                        <span class="chat-name">Chat 2</span>
+                        <span class="message-icon-list">
+                            <img src="https://i.imgur.com/F8pNkMa.png" alt="message-icon" class="chat-icon">
+                        </span>
+                    </div>
+                    <div class="chat-tab" onclick="activateTab(this)">
+                        <span class="chat-name">Chat 3</span>
+                        <span class="message-icon-list">
+                            <img src="https://i.imgur.com/F8pNkMa.png" alt="message-icon" class="chat-icon">
+                        </span>
+                    </div>
                 </div>
+
             </div>
         </div>
         <div class="col-10">
@@ -58,7 +74,10 @@
                 <div class="chat-details">
                     <div class="chat-header">
                         <span class="chat-name">Chat 1</span>
-                        <span class="message-icon">💬</span>
+                        <span class="message-icon">
+                            <img src="https://i.imgur.com/fSuzzAU.png" alt="message-icon">
+                        </span>
+
                     </div>
                     <div class="chat-status">Status: <span class="status connected">Connected</span></div>
                     <div class="chat-window">

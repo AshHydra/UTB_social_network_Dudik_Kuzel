@@ -10,7 +10,7 @@ html, body {
     flex-direction: column;
 }
 
-/* Styl pro celou stránku */
+
 .chat-container {
     background-color: #E8DEF8;
     width: 100%;
@@ -30,7 +30,7 @@ html, body {
     height: 80%;
     position: fixed;
     left: 0;
-    top: 10%;
+    top: 12%;
 }
 
 .chats-title {
@@ -63,31 +63,60 @@ html, body {
     padding: 10px;
     margin-bottom: 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    text-align: left;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    transition: border 0.01s ease, font-weight 0.01s ease; /* Přidáme font-weight k přechodu */
 }
 
-    .chat-tab:hover {
-        background-color: #497FA5;
-        color: #FFFFFF;
-    }
+#chatTabs {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-tab:hover {
+    font-weight: bold;
+    border: 2px solid #497FA5;
+}
 
     .chat-tab.active {
         font-weight: bold;
-        border: 1.5px solid #497FA5;
+        border: 3.5px solid #497FA5;
     }
 
 .chat-content {
-    margin-left: auto; /* Posunutí na střed */
-    margin-right: auto; /* Posunutí na střed */
+    position: relative; /* Nastaví rodiče jako referenční bod */
+    margin: 0 auto; /* Vycentrování vodorovně */
     padding: 20px;
-    height: 100%;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column; /* Vertikální zarovnání obsahu */
-    align-items: center; /* Zarovnání na střed */
-    max-width: 800px; /* Maximální šířka chatové sekce */
-    width: 100%; /* Přizpůsobení šířky oknu */
+    height: max; /* Nastavená pevná výška */
+    max-width: 800px; /* Maximální šířka */
+    width: 100%; /* Šířka odpovídá rodiči, ale ne větší než max-width */
+    overflow-y: auto; /* Zachová svislý posuvník pouze pro obsah */
+    background-color: #E8DEF8;
+    border: 1px solid #ccc; /* Volitelný rámeček */
+    border-radius: 8px; /* Zaoblené rohy */
 }
+
+.row {
+    width: 1000px;
+    text-align: center;
+    background-color: #E8DEF8;
+    border-radius: 10px;
+ 
+}
+.chat-default-message {
+    font-size: 30px;
+    color: #497FA5;
+    font-style: italic;
+    letter-spacing: 3px;
+    display: inline-block;
+    text-align:center;
+    background-color: #E8DEF8;
+}
+
+
+
 
 .chat-message {
     display: inline-block; /* Dynamická šířka */
@@ -107,6 +136,7 @@ html, body {
     display: none;
 }
 
+
 .chat-header {
     font-size: 28px;
     letter-spacing: 2px;
@@ -115,11 +145,22 @@ html, body {
     justify-content: space-between;
     align-items: center;
 }
+.message-icon {
+    width:  50px;
+    height: 50px;
+}
+
+.message-icon-list {
+    width: 30px;
+    height: 30px;
+}
 
 .chat-status {
     font-size: 16px;
     color: #497FA5;
     margin-top: 10px;
+    text-align: center;
+    display: flex;
 }
 
 .status {
@@ -150,6 +191,7 @@ html, body {
     display: flex;
     margin-top: 20px;
     width: 100%;
+    background-color: #E8DEF8;
 }
 
 .message-input {
@@ -165,16 +207,17 @@ html, body {
 
 .send-message-btn {
     width: 60px;
-    background-color: #497FA5;
-    color: #FFFFFF;
+    background-color: #E8DEF8;
+    color: #497FA5;
     border: none;
     font-size: 20px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
     .send-message-btn:hover {
-        background-color: #5C8BB0;
+        color: #FFFFFF;
+        font-size: 26px;
     }
 
 .chat-message {
