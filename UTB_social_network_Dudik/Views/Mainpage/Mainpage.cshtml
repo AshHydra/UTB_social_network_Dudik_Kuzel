@@ -36,7 +36,7 @@
 
 <div class="container-fluid chat-container mt-4">
     <div class="row">
-        <div class="col-3">
+        <div class="col-2">
             <!-- Levý panel: Seznam chatů -->
             <div class="chat-sidebar rounded">
                 <div class="chats-title">Chats</div>
@@ -48,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-9">
+        <div class="col-10">
             <!-- Pravý panel pro zobrazení konverzace -->
             <div class="chat-content">
                 <div class="chat-default-message">
@@ -62,7 +62,10 @@
                     </div>
                     <div class="chat-status">Status: <span class="status connected">Connected</span></div>
                     <div class="chat-window">
-                        <!-- Zde se budou zobrazovat zprávy -->
+                        <!-- Wrapper pro zprávy -->
+                        <div class="messages-wrapper">
+                            <!-- Zde se budou dynamicky přidávat zprávy -->
+                        </div>
                     </div>
                     <div class="chat-input">
                         <input type="text" placeholder="Enter a message..." class="form-control message-input" />
@@ -106,21 +109,22 @@
             chatContent.querySelector('.chat-status').textContent = 'Status: offline'; // Změňte na "connected", pokud je to potřeba
         }
 
-        document.querySelector('.send-message-btn').addEventListener('click', function() {
+        document.querySelector('.send-message-btn').addEventListener('click', function () {
             const messageInput = document.querySelector('.message-input');
             const message = messageInput.value.trim();
             if (message) {
-                const chatWindow = document.querySelector('.chat-window');
+                const messagesWrapper = document.querySelector('.messages-wrapper');
                 const messageElem = document.createElement('div');
                 messageElem.classList.add('chat-message');
                 messageElem.innerHTML = `<div class="message-sender">User1</div><div class="message-text">${message}</div>`;
-                chatWindow.appendChild(messageElem);
+                messagesWrapper.appendChild(messageElem);
                 messageInput.value = '';
+                messagesWrapper.scrollTop = messagesWrapper.scrollHeight; // Automatické scrollování na konec
             }
         });
 
         // Odesílání zprávy stisknutím Enteru
-        document.querySelector('.message-input').addEventListener('keydown', function(e) {
+        document.querySelector('.message-input').addEventListener('keydown', function (e) {
             if (e.key === 'Enter') {
                 document.querySelector('.send-message-btn').click();
             }

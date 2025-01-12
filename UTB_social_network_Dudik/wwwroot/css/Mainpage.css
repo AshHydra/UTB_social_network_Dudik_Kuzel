@@ -16,7 +16,7 @@ html, body {
     width: 100%;
     border-radius: 10px;
     display: flex;
-    height: 100%;
+    height: 100%; /* Změněno na 100% */
 }
 
 /* Levý panel */
@@ -77,20 +77,30 @@ html, body {
     }
 
 .chat-content {
-    margin-left: 320px;
+    margin-left: auto; /* Posunutí na střed */
+    margin-right: auto; /* Posunutí na střed */
     padding: 20px;
     height: 100%;
     overflow-y: auto;
     display: flex;
-    justify-content: center; /* Přidáno pro zarovnání do středu */
+    flex-direction: column; /* Vertikální zarovnání obsahu */
+    align-items: center; /* Zarovnání na střed */
+    max-width: 800px; /* Maximální šířka chatové sekce */
+    width: 100%; /* Přizpůsobení šířky oknu */
 }
 
-.chat-default-message {
-    font-size: 30px;
-    color: #497FA5;
-    font-style: italic;
-    letter-spacing: 3px;
-    text-align: center;
+.chat-message {
+    display: inline-block; /* Dynamická šířka */
+    min-width: 10%; /* Minimální šířka */
+    max-width: 45%; /* Maximální šířka */
+    padding: 10px; /* Vnitřní okraje */
+    background-color: #081823; /* Pozadí zprávy */
+    color: #FFFFFF; /* Barva textu */
+    border-radius: 10px; /* Zaoblení rohů */
+    word-wrap: break-word; /* Zalamování slov */
+    word-break: break-word; /* Přerušení dlouhých slov */
+    margin: 5px 0; /* Mezery mezi zprávami */
+    text-align: left; /* Zarovnání textu na levou stranu */
 }
 
 .chat-details {
@@ -122,21 +132,28 @@ html, body {
     background-color: #081823;
     border: 1px solid #497FA5;
     border-radius: 10px;
-    height: 400px;
-    width: 80% !important; /* Přidáno pro vyšší prioritu */
-    max-width: 1000px !important; /* Maximální šířka */
-    overflow-y: scroll;
+    height: 500px; /* Pevná výška */
+    width: 100%; /* Použije celou dostupnou šířku rodičovského elementu */
+    max-width: 800px; /* Maximální šířka */
+    overflow-y: scroll; /* Posuvník pro případ přetečení obsahu */
 }
 
+.messages-wrapper {
+    display: flex;
+    flex-direction: column; /* Zarovnání zpráv pod sebe */
+    align-items: flex-start; /* Zarovnání doleva */
+    gap: 10px; /* Mezera mezi zprávami */
+}
 
 
 .chat-input {
     display: flex;
     margin-top: 20px;
+    width: 100%;
 }
 
 .message-input {
-    width: 85%;
+    flex-grow: 1; /* Zajistí, že se textové pole roztáhne na dostupný prostor */
     background-color: #081823;
     color: #497FA5;
     border-radius: 5px;
@@ -147,7 +164,7 @@ html, body {
 }
 
 .send-message-btn {
-    width: 15%;
+    width: 60px;
     background-color: #497FA5;
     color: #FFFFFF;
     border: none;
@@ -161,16 +178,24 @@ html, body {
     }
 
 .chat-message {
-    margin-top: 10px;
-    background-color: #081823;
-    color: white;
+    max-width: 90%; /* Omezení šířky zpráv */
+    word-wrap: break-word; /* Přerušení dlouhých slov */
     padding: 10px;
-
-    border-radius: 5px;
+    background-color: #497FA5;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 10px; /* Mezera mezi zprávami */
 }
 
 .message-sender {
-    font-size: 12px;
+    align-self: flex-end; /* Zarovnání na pravou stranu */
+    background-color: #497FA5;
+    color: #FFFFFF;
+}
+
+.chat-message.receiver {
+    align-self: flex-start; /* Zarovnání na levou stranu */
+    background-color: #E8DEF8;
     color: #081823;
 }
 
