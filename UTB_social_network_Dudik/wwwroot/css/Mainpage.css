@@ -10,101 +10,218 @@ html, body {
     flex-direction: column;
 }
 
+/* Styl pro celou stránku */
 .chat-container {
+    background-color: #E8DEF8;
+    width: 100%;
+    border-radius: 10px;
     display: flex;
     height: 100%;
 }
 
 /* Levý panel */
 .chat-sidebar {
-    width: 300px; /* Pevná šířka sidebaru */
-    background-color: #0D1B2A;
-    margin: 0; /* Žádný margin */
-    padding: 0; /* Žádný padding */
-    border-right: 1px solid #1B263B;
-    box-sizing: border-box; /* Zahrnutí paddingu a borderu do šířky */
-    overflow-y: auto; /* Scroll při přeplnění */
-    position: absolute; /* Absolutní pozice pro fixaci na levý okraj */
-    left: 0; /* Posunutí úplně doleva */
-    top: 0; /* Zarovnání nahoru */
-    bottom: 0; /* Roztažení na výšku */
+    width: 300px;
+    background-color: #E8DEF8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    height: 80%;
+    position: fixed;
+    left: 0;
+    top: 10%;
+}
+
+.chats-title {
+    font-size: 24px;
+    color: #497FA5;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-align: left;
+    margin-bottom: 20px;
 }
 
 .search-input {
-    background-color: #1B263B;
-    color: #FFFFFF;
-    border: none;
+    background-color: #E8F0FE;
+    font-weight: bold;
+    color: #19425e;
+    border: 1px solid #497FA5;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
 }
 
-.list-group-item {
-    background-color: #1B263B;
-    color: #FFFFFF;
-    border: none;
-    transition: background 0.3s ease;
+.chat-tab {
+    background-color: #E8DEF8;
+    color: #497FA5;
+    border: 1px solid #497FA5;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-    .list-group-item:hover, .list-group-item.active {
-        background-color: #415A77;
-        color: #C1E6FF;
+    .chat-tab:hover {
+        background-color: #497FA5;
+        color: #FFFFFF;
     }
 
-/* Pravý panel */
+    .chat-tab.active {
+        font-weight: bold;
+        border: 1.5px solid #497FA5;
+    }
+
 .chat-content {
-    margin-left: 300px; /* Posun pravého panelu o šířku sidebaru */
-    flex: 1; /* Zabírá zbytek prostoru */
-    background-color: #081823;
+    margin-left: 320px;
+    padding: 20px;
+    height: 100%;
+    overflow-y: auto;
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Přidáno pro zarovnání do středu */
+}
+
+.chat-default-message {
+    font-size: 30px;
+    color: #497FA5;
+    font-style: italic;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.chat-details {
+    display: none;
+}
+
+.chat-header {
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: #497FA5;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    color: #A9A9A9;
-    font-size: 18px;
-    margin: 0;
 }
 
-/* Navigační lišta */
-.navbar {
-    background-color: #081823 !important;
-    border-bottom: 2px solid #C1E6FF;
+.chat-status {
+    font-size: 16px;
+    color: #497FA5;
+    margin-top: 10px;
 }
 
-.nav-link {
-    color: #C1E6FF !important;
-    transition: color 0.3s ease;
+.status {
+    font-weight: bold;
 }
 
-    .nav-link:hover {
-        color: #FFFFFF !important;
-    }
+.chat-window {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #081823;
+    border: 1px solid #497FA5;
+    border-radius: 10px;
+    height: 400px;
+    width: 80% !important; /* Přidáno pro vyšší prioritu */
+    max-width: 1000px !important; /* Maximální šířka */
+    overflow-y: scroll;
+}
 
-/* Admin Page User List Styles */
-.user-list {
+
+
+.chat-input {
+    display: flex;
     margin-top: 20px;
 }
 
-.user-bar {
-    background-color: #1B263B; /* Darker background for blending */
-    border: 1px solid #415A77; /* Subtle border for contrast */
+.message-input {
+    width: 85%;
+    background-color: #081823;
+    color: #497FA5;
     border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    transition: background 0.3s ease, transform 0.2s ease;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
 }
 
-    .user-bar:hover {
-        background-color: #2E3C50; /* Slightly lighter on hover */
-        transform: translateY(-2px); /* Hover effect for engagement */
+.send-message-btn {
+    width: 15%;
+    background-color: #497FA5;
+    color: #FFFFFF;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .send-message-btn:hover {
+        background-color: #5C8BB0;
     }
 
-.user-info {
-    flex-grow: 1;
+.chat-message {
+    margin-top: 10px;
+    background-color: #081823;
+    color: white;
+    padding: 10px;
+
+    border-radius: 5px;
 }
 
-    .user-info p {
-        margin: 0;
-        padding: 5px 0;
-        color: #C1E6FF; /* Light text for readability */
+.message-sender {
+    font-size: 12px;
+    color: #081823;
+}
+
+.message-text {
+    font-size: 16px;
+}
+
+/* Styly pro Navbar */
+.navbar {
+    background-color: #E8DEF8 !important;
+    padding: 15px 0;
+    border-radius: 10px;
+}
+
+.navbar-brand {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    color: #081823;
+}
+
+.navbar-nav .nav-link {
+    font-weight: bold;
+    color: #FFFFFF; /* Výchozí barva textu pro všechna tlačítka */
+    padding: 12px 20px;
+    margin-right: 15px;
+    text-transform: uppercase;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+    /* Plynulé zvětšení textu a změna barvy pro Home */
+    .navbar-nav .nav-link:hover {
+        transform: scale(1.1); /* Zvětšení textu */
+    }
+
+    /* Barva pro tlačítka Home a ADMIN */
+    .navbar-nav .nav-link.home:hover {
+        color: #E8F0FE; /* Barva pro Home tlačítka */
+    }
+
+    .navbar-nav .nav-link.admin:hover {
+        color: #E8F0FE; /* Barva pro ADMIN tlačítka */
+    }
+
+/* Logout tlačítko */
+.navbar-nav .nav-item:last-child .nav-link {
+    color: #F8F9FA; /* Bílý text pro Logout */
+}
+
+    /* Plynulé zvětšení textu a změna barvy pro Logout */
+    .navbar-nav .nav-item:last-child .nav-link:hover {
+        transform: scale(1.1); /* Zvětšení textu */
+        color: #081823; /* Opravená barva pro Logout tlačítko */
     }

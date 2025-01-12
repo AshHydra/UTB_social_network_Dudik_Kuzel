@@ -2,7 +2,6 @@
     ViewData["Title"] = "Main Page";
 }
 
-<!-- Navigační lišta pouze pro MainPage -->
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -35,34 +34,96 @@
     </nav>
 </header>
 
-<!-- Hlavní obsah stránky -->
 <div class="container-fluid chat-container mt-4">
     <div class="row">
         <div class="col-3">
             <!-- Levý panel: Seznam chatů -->
-            <div class="chat-sidebar">
-                <input type="text" placeholder="Search" class="form-control mb-3 search-input" />
-                <ul class="list-group chat-list">
-                    <li class="list-group-item active">Chat 1</li>
-                    <li class="list-group-item">Chat 2</li>
-                    <li class="list-group-item">Chat 3</li>
-                </ul>
+            <div class="chat-sidebar rounded">
+                <div class="chats-title">Chats</div>
+                <input type="text" id="searchInput" placeholder="Search a conversation..." class="form-control mb-3 search-input" onkeyup="filterChats()" />
+                <div id="chatTabs">
+                    <div class="chat-tab" onclick="activateTab(this)">Chat 1</div>
+                    <div class="chat-tab" onclick="activateTab(this)">Chat 2</div>
+                    <div class="chat-tab" onclick="activateTab(this)">Chat 3</div>
+                </div>
             </div>
         </div>
         <div class="col-9">
-            <!-- Pravý panel: Obsah chatu -->
-            <div class="chat-content rounded">
-                <h3>Select a chat to start messaging</h3>
+            <!-- Pravý panel pro zobrazení konverzace -->
+            <div class="chat-content">
+                <div class="chat-default-message">
+                    No chat selected
+                </div>
+                <!-- Detail konverzace -->
+                <div class="chat-details">
+                    <div class="chat-header">
+                        <span class="chat-name">Chat 1</span>
+                        <span class="message-icon">💬</span>
+                    </div>
+                    <div class="chat-status">Status: <span class="status connected">Connected</span></div>
+                    <div class="chat-window">
+                        <!-- Zde se budou zobrazovat zprávy -->
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" placeholder="Enter a message..." class="form-control message-input" />
+                        <button class="send-message-btn">➤</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-@section Styles
-{
+@section Styles {
     <link rel="stylesheet" href="~/css/Mainpage.css" asp-append-version="true" />
 }
 
 @section Scripts {
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function filterChats() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const chatItems = document.querySelectorAll('.chat-tab');
+
+            chatItems.forEach(chat => {
+                const chatText = chat.textContent.toLowerCase();
+                chat.style.display = chatText.includes(searchInput) ? '' : 'none';
+            });
+        }
+
+        function activateTab(tab) {
+            // Nastavení aktivního tabulátoru
+            const tabs = document.querySelectorAll('.chat-tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            // Změna obsahu chatovacího okna
+            const chatContent = document.querySelector('.chat-content');
+            const chatName = tab.textContent;
+            chatContent.querySelector('.chat-default-message').style.display = 'none'; // Skrýt výchozí zprávu
+            chatContent.querySelector('.chat-details').style.display = 'block'; // Zobrazit detaily konverzace
+            chatContent.querySelector('.chat-name').textContent = chatName;
+            chatContent.querySelector('.chat-status').textContent = 'Status: offline'; // Změňte na "connected", pokud je to potřeba
+        }
+
+        document.querySelector('.send-message-btn').addEventListener('click', function() {
+            const messageInput = document.querySelector('.message-input');
+            const message = messageInput.value.trim();
+            if (message) {
+                const chatWindow = document.querySelector('.chat-window');
+                const messageElem = document.createElement('div');
+                messageElem.classList.add('chat-message');
+                messageElem.innerHTML = `<div class="message-sender">User1</div><div class="message-text">${message}</div>`;
+                chatWindow.appendChild(messageElem);
+                messageInput.value = '';
+            }
+        });
+
+        // Odesílání zprávy stisknutím Enteru
+        document.querySelector('.message-input').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                document.querySelector('.send-message-btn').click();
+            }
+        });
+    </script>
 }
