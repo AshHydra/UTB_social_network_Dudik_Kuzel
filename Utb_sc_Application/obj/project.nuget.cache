@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TO2PvasO0X4=",
+  "dgSpecHash": "9VEb5XLbIFE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\pepin\\Desktop\\chatter\\Utb_sc_Application\\Utb_sc_Application.csproj",
+  "projectFilePath": "C:\\Users\\pepin\\Desktop\\Chatt\\Utb_sc_Application\\Utb_sc_Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pepin\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\pepin\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

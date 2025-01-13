@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pepin\\Desktop\\chatter\\Utb_sc_domain\\Utb_sc_Domain.csproj": {}
+    "C:\\Users\\pepin\\Desktop\\Chatt\\Utb_sc_domain\\Utb_sc_Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pepin\\Desktop\\chatter\\Utb_sc_domain\\Utb_sc_Domain.csproj": {
+    "C:\\Users\\pepin\\Desktop\\Chatt\\Utb_sc_domain\\Utb_sc_Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pepin\\Desktop\\chatter\\Utb_sc_domain\\Utb_sc_Domain.csproj",
+        "projectUniqueName": "C:\\Users\\pepin\\Desktop\\Chatt\\Utb_sc_domain\\Utb_sc_Domain.csproj",
         "projectName": "Utb_sc_Domain",
-        "projectPath": "C:\\Users\\pepin\\Desktop\\chatter\\Utb_sc_domain\\Utb_sc_Domain.csproj",
+        "projectPath": "C:\\Users\\pepin\\Desktop\\Chatt\\Utb_sc_domain\\Utb_sc_Domain.csproj",
         "packagesPath": "C:\\Users\\pepin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pepin\\Desktop\\chatter\\Utb_sc_domain\\obj\\",
+        "outputPath": "C:\\Users\\pepin\\Desktop\\Chatt\\Utb_sc_domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

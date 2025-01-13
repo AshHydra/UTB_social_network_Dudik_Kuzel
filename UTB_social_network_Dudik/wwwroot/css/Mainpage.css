@@ -194,6 +194,8 @@ html, body {
     background-color: #E8DEF8;
 }
 
+
+
 .message-input {
     flex-grow: 1; /* Zajistí, že se textové pole roztáhne na dostupný prostor */
     background-color: #081823;
@@ -244,6 +246,23 @@ html, body {
 
 .message-text {
     font-size: 16px;
+}
+
+/* Vzhled scrollbaru */
+.chat-window::-webkit-scrollbar {
+    width: 12px; /* Šířka scrollbaru */
+    height: 12px; /* Výška scrollbaru */
+}
+
+.chat-window::-webkit-scrollbar-thumb {
+    background-color: #E8DEF8; /* Barva scrollbarového "thumbu" */
+    border-radius: 10px; /* Zaoblení scrollbarového "thumbu" */
+    border: 2px solid #497FA5; /* Okraj kolem scrollbarového "thumbu" */
+}
+
+.chat-window::-webkit-scrollbar-track {
+    background-color: #497FA5; /* Barva pozadí scrollbarového tracku */
+    border-radius: 10px; /* Zaoblení pozadí tracku */
 }
 
 /* Styly pro Navbar */
