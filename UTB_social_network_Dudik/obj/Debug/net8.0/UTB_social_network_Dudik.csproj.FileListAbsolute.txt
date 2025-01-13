@@ -1772,3 +1772,4 @@ C:\Users\pepin\Desktop\Chatt\UTB_social_network_Dudik\obj\Debug\net8.0\refint\UT
 C:\Users\pepin\Desktop\Chatt\UTB_social_network_Dudik\obj\Debug\net8.0\UTB_social_network_Dudik.pdb
 C:\Users\pepin\Desktop\Chatt\UTB_social_network_Dudik\obj\Debug\net8.0\UTB_social_network_Dudik.genruntimeconfig.cache
 C:\Users\pepin\Desktop\Chatt\UTB_social_network_Dudik\obj\Debug\net8.0\ref\UTB_social_network_Dudik.dll
+C:\Users\ash31\OneDrive\Dokumenty\GitHub\UTB_social_network_Dudik_Kuzel\UTB_social_network_Dudik\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll

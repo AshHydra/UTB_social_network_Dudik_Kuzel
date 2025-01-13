@@ -37,10 +37,10 @@
 <div class="container-fluid chat-container mt-4">
     <div class="row">
         <div class="col-2">
-            <!-- Levý panel: Seznam chatů -->
+            <!-- Chat List -->
             <div class="chat-sidebar">
                 <div class="chats-title">Chats</div>
-                <input type="text" id="searchInput" placeholder="Search an conversation..." class="form-control mb-3 search-input" onkeyup="filterChats()" />
+                <input type="text" id="searchInput" placeholder="Search a conversation..." class="form-control mb-3 search-input" onkeyup="filterChats()" />
                 <div id="chatTabs">
                     <div class="chat-tab" onclick="activateTab(this)">
                         <span class="chat-name">Chat 1</span>
@@ -61,30 +61,24 @@
                         </span>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="col-10">
-            <!-- Pravý panel pro zobrazení konverzace -->
+            <!-- Chat Window -->
             <div class="chat-content">
                 <div class="chat-default-message">
                     No chat selected
                 </div>
-                <!-- Detail konverzace -->
                 <div class="chat-details">
                     <div class="chat-header">
                         <span class="chat-name">Chat 1</span>
                         <span class="message-icon">
                             <img src="https://i.imgur.com/fSuzzAU.png" alt="message-icon">
                         </span>
-
                     </div>
                     <div class="chat-status">Status: <span class="status connected">Connected</span></div>
                     <div class="chat-window">
-                        <!-- Wrapper pro zprávy -->
-                        <div class="messages-wrapper">
-                            <!-- Zde se budou dynamicky přidávat zprávy -->
-                        </div>
+                        <div class="messages-wrapper"></div>
                     </div>
                     <div class="chat-input">
                         <input type="text" placeholder="Enter a message..." class="form-control message-input" />
@@ -102,7 +96,17 @@
 
 @section Scripts {
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.0/signalr.min.js"></script>
     <script>
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/chathub")
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+
+        connection.start()
+            .then(() => console.log("Connected to SignalR Hub"))
+            .catch(err => console.error("SignalR connection error:", err));
+
         function filterChats() {
             const searchInput = document.getElementById('searchInput').value.toLowerCase();
             const chatItems = document.querySelectorAll('.chat-tab');
@@ -114,38 +118,50 @@
         }
 
         function activateTab(tab) {
-            // Nastavení aktivního tabulátoru
-            const tabs = document.querySelectorAll('.chat-tab');
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-
-            // Změna obsahu chatovacího okna
+            const chatName = tab.querySelector('.chat-name').textContent.trim();
             const chatContent = document.querySelector('.chat-content');
-            const chatName = tab.textContent;
-            chatContent.querySelector('.chat-default-message').style.display = 'none'; // Skrýt výchozí zprávu
-            chatContent.querySelector('.chat-details').style.display = 'block'; // Zobrazit detaily konverzace
+
             chatContent.querySelector('.chat-name').textContent = chatName;
-            chatContent.querySelector('.chat-status').textContent = 'Status: offline'; // Změňte na "connected", pokud je to potřeba
+            chatContent.querySelector('.chat-default-message').style.display = 'none';
+            chatContent.querySelector('.chat-details').style.display = 'block';
+
+            connection.invoke("JoinChat", chatName)
+                .then(() => console.log(`Joined chat: ${chatName}`))
+                .catch(err => console.error("Error joining chat:", err));
         }
 
-        document.querySelector('.send-message-btn').addEventListener('click', function () {
+        document.querySelector('.send-message-btn').addEventListener('click', sendMessage);
+
+        document.querySelector('.message-input').addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        function sendMessage() {
             const messageInput = document.querySelector('.message-input');
             const message = messageInput.value.trim();
-            if (message) {
+            if (!message) return;
+
+            const chatName = document.querySelector('.chat-name').textContent;
+
+            connection.invoke("SendMessage", chatName, "User1", message)
+                .then(() => console.log(`Sent message to ${chatName}: ${message}`))
+                .catch(err => console.error("Error sending message:", err));
+
+            messageInput.value = '';
+        }
+
+        connection.on("ReceiveMessage", (chatName, sender, message) => {
+            const activeChat = document.querySelector('.chat-name').textContent.trim();
+            if (activeChat === chatName) {
                 const messagesWrapper = document.querySelector('.messages-wrapper');
                 const messageElem = document.createElement('div');
                 messageElem.classList.add('chat-message');
-                messageElem.innerHTML = `<div class="message-sender">User1</div><div class="message-text">${message}</div>`;
+                messageElem.innerHTML = `
+                            <div class="message-sender">${sender}</div>
+                            <div class="message-text">${message}</div>
+                        `;
                 messagesWrapper.appendChild(messageElem);
-                messageInput.value = '';
-                messagesWrapper.scrollTop = messagesWrapper.scrollHeight; // Automatické scrollování na konec
-            }
-        });
-
-        // Odesílání zprávy stisknutím Enteru
-        document.querySelector('.message-input').addEventListener('keydown', function (e) {
-            if (e.key === 'Enter') {
-                document.querySelector('.send-message-btn').click();
+                messagesWrapper.scrollTop = messagesWrapper.scrollHeight;
             }
         });
     </script>

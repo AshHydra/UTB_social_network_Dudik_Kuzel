@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Utb_sc_Infrastructure.Database;
 using Microsoft.AspNetCore.Identity;
 using Utb_sc_Infrastructure.Identity;
+using UTB_social_network_Dudik.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,6 +50,9 @@ builder.Services.ConfigureApplicationCookie(options =>
 // Register RoleManager service explicitly (to resolve dependency)
 builder.Services.AddScoped<RoleManager<IdentityRole<int>>>();
 
+// Register SignalR services
+builder.Services.AddSignalR();
+
 // Build the app
 var app = builder.Build();
 
@@ -76,6 +80,9 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// Map SignalR hub
+app.MapHub<ChatHub>("/chathub");
 
 // Run the application
 app.Run();
