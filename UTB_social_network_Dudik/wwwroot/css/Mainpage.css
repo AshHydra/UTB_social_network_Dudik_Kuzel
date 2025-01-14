@@ -80,10 +80,10 @@ html, body {
     border: 2px solid #497FA5;
 }
 
-    .chat-tab.active {
-        font-weight: bold;
-        border: 3.5px solid #497FA5;
-    }
+.chat-tab.active {
+    font-weight: bold;
+    border: 3.5px solid #497FA5;
+}
 
 .chat-content {
     position: relative; /* Nastaví rodiče jako referenční bod */
@@ -103,34 +103,19 @@ html, body {
     text-align: center;
     background-color: #E8DEF8;
     border-radius: 10px;
- 
 }
+
 .chat-default-message {
     font-size: 30px;
     color: #497FA5;
     font-style: italic;
     letter-spacing: 3px;
     display: inline-block;
-    text-align:center;
+    text-align: center;
     background-color: #E8DEF8;
 }
 
 
-
-
-.chat-message {
-    display: inline-block; /* Dynamická šířka */
-    min-width: 10%; /* Minimální šířka */
-    max-width: 45%; /* Maximální šířka */
-    padding: 10px; /* Vnitřní okraje */
-    background-color: #081823; /* Pozadí zprávy */
-    color: #FFFFFF; /* Barva textu */
-    border-radius: 10px; /* Zaoblení rohů */
-    word-wrap: break-word; /* Zalamování slov */
-    word-break: break-word; /* Přerušení dlouhých slov */
-    margin: 5px 0; /* Mezery mezi zprávami */
-    text-align: left; /* Zarovnání textu na levou stranu */
-}
 
 .chat-details {
     display: none;
@@ -145,8 +130,9 @@ html, body {
     justify-content: space-between;
     align-items: center;
 }
+
 .message-icon {
-    width:  50px;
+    width: 50px;
     height: 50px;
 }
 
@@ -181,11 +167,9 @@ html, body {
 
 .messages-wrapper {
     display: flex;
-    flex-direction: column; /* Zarovnání zpráv pod sebe */
-    align-items: flex-start; /* Zarovnání doleva */
+    flex-direction: column;
     gap: 10px; /* Mezera mezi zprávami */
 }
-
 
 .chat-input {
     display: flex;
@@ -223,26 +207,29 @@ html, body {
     }
 
 .chat-message {
-    max-width: 90%; /* Omezení šířky zpráv */
+    display: inline-block;
+    max-width: 80%; /* Omezení šířky zpráv */
     word-wrap: break-word; /* Přerušení dlouhých slov */
     padding: 10px;
-    background-color: #497FA5;
-    color: white;
     border-radius: 10px;
     margin-bottom: 10px; /* Mezera mezi zprávami */
+    font-style: italic;
+    font-weight: bold;
 }
 
-.message-sender {
+.chat-message.sender {
     align-self: flex-end; /* Zarovnání na pravou stranu */
-    background-color: #497FA5;
-    color: #FFFFFF;
+    background-color: #497FA5; /* Barva pozadí */
+    color: #FFFFFF; /* Barva textu */
+
 }
 
-.chat-message.receiver {
-    align-self: flex-start; /* Zarovnání na levou stranu */
-    background-color: #E8DEF8;
-    color: #081823;
-}
+    .chat-message.receiver {
+        align-self: flex-start; /* Zarovnání na levou stranu */
+        background-color: #E8F0FE; /* Barva pozadí */
+        color: #081823; /* Barva textu */
+    }
+
 
 .message-text {
     font-size: 16px;
@@ -265,50 +252,31 @@ html, body {
     border-radius: 10px; /* Zaoblení pozadí tracku */
 }
 
-/* Styly pro Navbar */
-.navbar {
-    background-color: #E8DEF8 !important;
-    padding: 15px 0;
-    border-radius: 10px;
-}
 
-.navbar-brand {
-    font-size: 30px;
-    font-weight: bold;
-    letter-spacing: 5px;
+
+
+.my-message {
+    background-color: #497FA5;
     color: #081823;
-}
-
-.navbar-nav .nav-link {
+    letter-spacing: 2px;
+    font-style: italic;
     font-weight: bold;
-    color: #FFFFFF; /* Výchozí barva textu pro všechna tlačítka */
-    padding: 12px 20px;
-    margin-right: 15px;
-    text-transform: uppercase;
-    transition: transform 0.3s ease, color 0.3s ease;
+    align-self: flex-end; /* Zprávy na levé straně */
+    margin-left: auto; /* Posun zpráv doleva */
 }
 
-    /* Plynulé zvětšení textu a změna barvy pro Home */
-    .navbar-nav .nav-link:hover {
-        transform: scale(1.1); /* Zvětšení textu */
-    }
-
-    /* Barva pro tlačítka Home a ADMIN */
-    .navbar-nav .nav-link.home:hover {
-        color: #E8F0FE; /* Barva pro Home tlačítka */
-    }
-
-    .navbar-nav .nav-link.admin:hover {
-        color: #E8F0FE; /* Barva pro ADMIN tlačítka */
-    }
-
-/* Logout tlačítko */
-.navbar-nav .nav-item:last-child .nav-link {
-    color: #F8F9FA; /* Bílý text pro Logout */
+.other-message {
+    background-color: #E8DEF8;
+    color: #081823;
+    letter-spacing: 2px;
+    font-style: italic;
+    font-weight: bold;
+    align-self: flex-start; /* Zprávy na levé straně */
+    margin-right: auto; /* Posun zpráv doleva */
 }
 
-    /* Plynulé zvětšení textu a změna barvy pro Logout */
-    .navbar-nav .nav-item:last-child .nav-link:hover {
-        transform: scale(1.1); /* Zvětšení textu */
-        color: #081823; /* Opravená barva pro Logout tlačítko */
-    }
+.messages-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Mezera mezi zprávami */
+}

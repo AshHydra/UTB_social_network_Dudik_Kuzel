@@ -142,27 +142,35 @@
             if (!message) return;
 
             const chatName = document.querySelector('.chat-name').textContent;
+            const sender = "@User.Identity.Name"; // Získání aktuálního uživatele ze serveru
 
-            connection.invoke("SendMessage", chatName, "User1", message)
+            connection.invoke("SendMessage", chatName, sender, message)
                 .then(() => console.log(`Sent message to ${chatName}: ${message}`))
                 .catch(err => console.error("Error sending message:", err));
 
             messageInput.value = '';
         }
 
+
         connection.on("ReceiveMessage", (chatName, sender, message) => {
             const activeChat = document.querySelector('.chat-name').textContent.trim();
             if (activeChat === chatName) {
                 const messagesWrapper = document.querySelector('.messages-wrapper');
                 const messageElem = document.createElement('div');
+
+                const isCurrentUser = sender === "@User.Identity.Name"; // Porovná aktuální uživatelské jméno
                 messageElem.classList.add('chat-message');
+                messageElem.classList.add(isCurrentUser ? 'my-message' : 'other-message');
+
                 messageElem.innerHTML = `
-                            <div class="message-sender">${sender}</div>
-                            <div class="message-text">${message}</div>
-                        `;
+                    <div class="message-sender">${sender}</div>
+                    <div class="message-text">${message}</div>
+                `;
+
                 messagesWrapper.appendChild(messageElem);
                 messagesWrapper.scrollTop = messagesWrapper.scrollHeight;
             }
         });
+
     </script>
 }

@@ -7,9 +7,9 @@ namespace UTB_social_network_Dudik.Hubs
     {
         public async Task SendMessage(string chatName, string sender, string message)
         {
-            Console.WriteLine($"Sending message to chat {chatName}: {message} from {sender}");
             await Clients.Group(chatName).SendAsync("ReceiveMessage", chatName, sender, message);
         }
+
 
         public async Task JoinChat(string chatName)
         {
@@ -24,4 +24,3 @@ namespace UTB_social_network_Dudik.Hubs
         }
     }
 }
-
