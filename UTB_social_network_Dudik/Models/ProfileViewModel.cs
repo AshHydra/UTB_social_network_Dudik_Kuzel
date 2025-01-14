@@ -17,13 +17,14 @@ namespace UTB_social_network_Dudik.Models
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
-        public string FirstName { get; set; }
+        public string Email { get; set; }
 
         [Display(Name = "First Name")]
-        public string LastName { get; set; }
+        public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
-        public string Email { get; set; }
+        public string LastName { get; set; }
 
     }
 }
+
