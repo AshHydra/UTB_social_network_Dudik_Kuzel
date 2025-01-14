@@ -10,6 +10,7 @@ namespace UTB_social_network_Dudik.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
 
+
         public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;
@@ -104,6 +105,5 @@ namespace UTB_social_network_Dudik.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-       
     }
 }

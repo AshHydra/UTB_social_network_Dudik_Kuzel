@@ -108,5 +108,65 @@ namespace UTB_social_network_Dudik.Controllers
 
             return View("~/Views/Admin/EditUser.cshtml", model);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Profile()
+        {
+            // Získání aktuálního přihlášeného uživatele
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return NotFound(); // Pokud uživatel neexistuje, vrať 404
+            }
+
+            // Naplnění modelu pro zobrazení
+            var model = new ProfileViewModel
+            {
+
+                UserName = user.UserName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email
+
+            };
+
+            return View("~/Views/Profile/Profile.cshtml", model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Profile(ProfileViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+
+
+                var result = await _userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    TempData["SuccessMessage"] = "Profile updated successfully!";
+                    return RedirectToAction(nameof(Profile));
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
+
+            return View("~/Views/Profile/Profile.cshtml", model);
+        }
+
+
     }
 }

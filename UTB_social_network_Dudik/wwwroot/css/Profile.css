@@ -1,0 +1,21 @@
+﻿.profile-info {
+    margin-top: 20px;
+}
+
+.profile-item {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+    .profile-item strong {
+        color: #333;
+    }
+
+.form-group {
+    margin-top: 20px;
+}
+
+.form-control {
+    width: 50%;
+    margin-top: 5px;
+}

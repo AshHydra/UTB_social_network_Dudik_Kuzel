@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
+
 
 namespace Utb_sc_Domain.Entities
 {
-    public class User : Entity<int>
+    public class User : IdentityUser<int>
     {
         public string UserName { get; set; }
         public string Email { get; set; }

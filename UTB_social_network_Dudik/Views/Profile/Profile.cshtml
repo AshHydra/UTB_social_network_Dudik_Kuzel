@@ -1,17 +1,37 @@
-﻿@{
-    ViewData["Title"] = "Profile";
+﻿@model UTB_social_network_Dudik.Models.ProfileViewModel
+
+@{
+    ViewData["Title"] = "User Profile";
 }
 
-<!-- Navigační lišta -->
+<!-- Navigation Bar -->
 <partial name="_NavBar" />
 
-<!-- Obsah stránky User -->
 <div class="container mt-4">
-    <h1>User profile</h1>
-    <p>Welcome to your user profile!</p>
+    <h1>User Profile</h1>
+    <form asp-action="Profile" method="post" class="mt-4">
+        <div class="form-group">
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" class="form-control" readonly />
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" readonly />
+        </div>
+        <div class="form-group">
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+    </form>
 </div>
+
 
 @section Styles
 {
-    <link rel="stylesheet" href="~/css/Mainpage.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Profile.css" asp-append-version="true" />
 }

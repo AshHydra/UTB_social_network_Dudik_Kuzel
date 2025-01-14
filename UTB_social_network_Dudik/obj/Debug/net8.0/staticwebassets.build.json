@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7E2nGdK+gSRaoaS3v3T2d2Y0TTjxsiqk4d+bLUyICxA=",
+  "Hash": "uTWAPRK91eNYr5U9MoUn26mn5v2AysIGS38GeHNC74Q=",
   "Source": "UTB_social_network_Dudik",
   "BasePath": "_content/UTB_social_network_Dudik",
   "Mode": "Default",
@@ -94,11 +94,32 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "xej3y1pzdn",
-      "Integrity": "9ySHrY2+J5igNCVI+LQvV1AmrwkjD0+Y5d80sxKzTrA=",
+      "Fingerprint": "in7mdfycq1",
+      "Integrity": "PrmFRYStD+YzTc9FEr33yCzqFfqAeZit96SJK2D/tFI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\Mainpage.css"
+    },
+    {
+      "Identity": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\wwwroot\\css\\Profile.css",
+      "SourceId": "UTB_social_network_Dudik",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\wwwroot\\",
+      "BasePath": "_content/UTB_social_network_Dudik",
+      "RelativePath": "css/Profile#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "a4uovvuv24",
+      "Integrity": "hlZa9h0a/OfZ+kkz6P4JzVdIfDtp1kriI0ucCl6XW+Y=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Profile.css"
     },
     {
       "Identity": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\wwwroot\\css\\register.css",
@@ -1455,7 +1476,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "7716"
+          "Value": "6312"
         },
         {
           "Name": "Content-Type",
@@ -1463,11 +1484,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"9ySHrY2+J5igNCVI+LQvV1AmrwkjD0+Y5d80sxKzTrA=\""
+          "Value": "\"PrmFRYStD+YzTc9FEr33yCzqFfqAeZit96SJK2D/tFI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 14 Jan 2025 14:30:23 GMT"
+          "Value": "Tue, 14 Jan 2025 14:37:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1477,12 +1498,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-9ySHrY2+J5igNCVI+LQvV1AmrwkjD0+Y5d80sxKzTrA="
+          "Value": "sha256-PrmFRYStD+YzTc9FEr33yCzqFfqAeZit96SJK2D/tFI="
         }
       ]
     },
     {
-      "Route": "css/Mainpage.xej3y1pzdn.css",
+      "Route": "css/Mainpage.in7mdfycq1.css",
       "AssetFile": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\wwwroot\\css\\Mainpage.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -1492,7 +1513,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "7716"
+          "Value": "6312"
         },
         {
           "Name": "Content-Type",
@@ -1500,11 +1521,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"9ySHrY2+J5igNCVI+LQvV1AmrwkjD0+Y5d80sxKzTrA=\""
+          "Value": "\"PrmFRYStD+YzTc9FEr33yCzqFfqAeZit96SJK2D/tFI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 14 Jan 2025 14:30:23 GMT"
+          "Value": "Tue, 14 Jan 2025 14:37:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1514,7 +1535,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "xej3y1pzdn"
+          "Value": "in7mdfycq1"
         },
         {
           "Name": "label",
@@ -1522,7 +1543,89 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-9ySHrY2+J5igNCVI+LQvV1AmrwkjD0+Y5d80sxKzTrA="
+          "Value": "sha256-PrmFRYStD+YzTc9FEr33yCzqFfqAeZit96SJK2D/tFI="
+        }
+      ]
+    },
+    {
+      "Route": "css/Profile.a4uovvuv24.css",
+      "AssetFile": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\wwwroot\\css\\Profile.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "280"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hlZa9h0a/OfZ+kkz6P4JzVdIfDtp1kriI0ucCl6XW+Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 14 Jan 2025 16:25:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "a4uovvuv24"
+        },
+        {
+          "Name": "label",
+          "Value": "css/Profile.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hlZa9h0a/OfZ+kkz6P4JzVdIfDtp1kriI0ucCl6XW+Y="
+        }
+      ]
+    },
+    {
+      "Route": "css/Profile.css",
+      "AssetFile": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\wwwroot\\css\\Profile.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "280"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hlZa9h0a/OfZ+kkz6P4JzVdIfDtp1kriI0ucCl6XW+Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 14 Jan 2025 16:25:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hlZa9h0a/OfZ+kkz6P4JzVdIfDtp1kriI0ucCl6XW+Y="
         }
       ]
     },
