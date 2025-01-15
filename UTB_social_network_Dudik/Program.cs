@@ -61,6 +61,7 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true; // Protect the session cookie
     options.Cookie.IsEssential = true; // Ensure it's not blocked by cookie policies
 });
+builder.Services.AddControllersWithViews();
 
 // Build the app
 var app = builder.Build();
@@ -74,6 +75,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+
 
 app.UseRouting();
 

@@ -11,7 +11,7 @@ namespace Utb_sc_Domain.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PasswordHash { get; set; }
-
+        public string ProfilePictureUrl { get; set; }
         //vztahy
         public ICollection<Message> MessagesSent { get; set; } = new List<Message>();
         public ICollection<Chat> Chats { get; set; } = new List<Chat>();

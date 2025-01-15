@@ -5,7 +5,15 @@
 <div class="container mt-4 chat-container">
     <div class="profile-header">
         <h1 class="chats-title">User Profile</h1>
-        <img src="https://i.imgur.com/37ShKOl.png" alt="Contact Icon" class="profile-icon" />
+        <!-- Zobrazení profilového obrázku nebo textu "Set Profile Pic" pokud není nastavený -->
+        @if (string.IsNullOrEmpty(Context.Session.GetString("ProfilePicture")))
+        {
+            <div class="default-profile-text">Set Profile Pic</div>
+        }
+        else
+        {
+            <img src="@Context.Session.GetString("ProfilePicture")" alt="Profile Picture" class="profile-pic">
+        }
     </div>
 
     @if (TempData["SuccessMessage"] != null)
@@ -17,9 +25,19 @@
         <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
     }
 
+    <!-- Formulář pro nahrání profilové fotky -->
+    <form action="/User/UploadProfilePicture" method="post" enctype="multipart/form-data" class="mb-4">
+        <div class="form-group upload-container">
+            <input type="file" name="ProfilePictureFile" class="form-control-file visually-hidden" id="profilePhoto" accept="image/*" />
+            <button type="button" class="upload-btn" onclick="document.getElementById('profilePhoto').click()">Upload</button>
+        </div>
+        <button type="submit" class="btn confirm-btn">Confirm</button>
+    </form>
+
+
+    <!-- Formulář pro změnu údajů uživatele -->
     <form asp-action="Profile" method="post" class="mt-4">
         <input asp-for="Id" type="hidden" />
-
         <div class="form-group">
             <label asp-for="UserName"></label>
             <input asp-for="UserName" class="form-control" readonly />

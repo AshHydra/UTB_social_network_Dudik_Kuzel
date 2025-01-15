@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using UTB_social_network_Dudik.Models;
 using Utb_sc_Infrastructure.Identity;
 using Utb_sc_Infrastructure.Database;
+using System.IO;
+using System;
 
 namespace UTB_social_network_Dudik.Controllers
 {
@@ -112,27 +114,35 @@ namespace UTB_social_network_Dudik.Controllers
         [HttpGet]
         public async Task<IActionResult> Profile()
         {
-            // Získání aktuálního přihlášeného uživatele
             var user = await _userManager.GetUserAsync(User);
 
             if (user == null)
             {
-                return NotFound(); // Pokud uživatel neexistuje, vrať 404
+                Console.WriteLine("User not found");
+                return NotFound();
             }
 
-            // Naplnění modelu pro zobrazení
+            // Fetch profile picture from session
+            var profilePicturePath = HttpContext.Session.GetString("ProfilePicture") ?? "/images/default.png";
+
             var model = new ProfileViewModel
             {
-
                 UserName = user.UserName,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Email = user.Email
-
+                Email = user.Email,
+                ProfilePicturePath = profilePicturePath
             };
+
+            Console.WriteLine($"User profile loaded: {user.UserName}, Profile Picture Path: {profilePicturePath}");
 
             return View("~/Views/Profile/Profile.cshtml", model);
         }
+
+
+
+
+
 
         [HttpPost]
         public async Task<IActionResult> Profile(ProfileViewModel model)
@@ -143,29 +153,92 @@ namespace UTB_social_network_Dudik.Controllers
 
                 if (user == null)
                 {
+                    Console.WriteLine("User not found during profile update");
                     return NotFound();
                 }
 
                 user.FirstName = model.FirstName;
                 user.LastName = model.LastName;
 
+                Console.WriteLine($"Updating profile for user: {user.UserName}. First Name: {model.FirstName}, Last Name: {model.LastName}");
 
                 var result = await _userManager.UpdateAsync(user);
 
                 if (result.Succeeded)
                 {
                     TempData["SuccessMessage"] = "Profile updated successfully!";
+                    Console.WriteLine($"Profile for {user.UserName} updated successfully.");
                     return RedirectToAction(nameof(Profile));
                 }
 
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
+                    Console.WriteLine($"Error updating profile: {error.Description}");
                 }
             }
 
             return View("~/Views/Profile/Profile.cshtml", model);
         }
+
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> UploadProfilePicture(IFormFile ProfilePictureFile)
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            if (ProfilePictureFile != null && ProfilePictureFile.Length > 0)
+            {
+                var fileName = Path.GetFileName(ProfilePictureFile.FileName);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", fileName);
+
+                // Zkontroluj, jestli soubor už existuje, a pokud ano, přejmenuj ho
+                if (System.IO.File.Exists(filePath))
+                {
+                    var fileExtension = Path.GetExtension(fileName);
+                    var fileWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
+                    var counter = 1;
+                    while (System.IO.File.Exists(filePath))
+                    {
+                        fileName = $"{fileWithoutExtension}_{counter++}{fileExtension}";
+                        filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", fileName);
+                    }
+                }
+
+                // Uložení souboru na server
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await ProfilePictureFile.CopyToAsync(stream);
+                }
+
+                // Uložení cesty k souboru do uživatelského profilu
+                user.ProfilePicturePath = $"/uploads/{fileName}";
+                await _userManager.UpdateAsync(user);
+
+                // Uložení cesty k obrázku do session pro okamžitou změnu zobrazení
+                HttpContext.Session.SetString("ProfilePicture", user.ProfilePicturePath);
+
+                TempData["SuccessMessage"] = "Profile picture updated successfully!";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "No file selected.";
+            }
+
+            return RedirectToAction("Profile");
+        }
+
+
+
+
+
 
         // DELETE: User
         [HttpPost]

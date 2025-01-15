@@ -82,20 +82,19 @@ namespace UTB_social_network_Dudik.Controllers
             {
                 Console.WriteLine("Login attempt with email: " + model.Email);
 
-                // Find user by email
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user != null)
                 {
                     Console.WriteLine($"User found: {user.UserName} with ID {user.Id}");
 
-                    // Attempt to sign in
                     var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, isPersistent: false, lockoutOnFailure: false);
                     if (result.Succeeded)
                     {
-                        Console.WriteLine($"Login successful for user: {user.Email}");
-                        HttpContext.Session.SetString("UserEmail", user.Email); // Store email in session
-                        Console.WriteLine($"Session email set: {user.Email}");
-                        return RedirectToAction("MainPage", "Home"); // Redirect to main page
+                        // Uložení emailu a cesty k profilovému obrázku do session
+                        HttpContext.Session.SetString("UserEmail", user.Email);
+                        HttpContext.Session.SetString("ProfilePicture", user.ProfilePicturePath ?? "/images/default.png");
+
+                        return RedirectToAction("MainPage", "Home");
                     }
                     else
                     {
@@ -116,6 +115,8 @@ namespace UTB_social_network_Dudik.Controllers
 
             return View("~/Views/Home/Index.cshtml", model);
         }
+
+
 
         // GET: Logout
         public async Task<IActionResult> Logout()

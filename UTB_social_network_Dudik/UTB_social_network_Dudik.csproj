@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Utb_sc_Infrasctucture\Utb_sc_Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
+
 </Project>

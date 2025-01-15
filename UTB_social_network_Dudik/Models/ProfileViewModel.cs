@@ -6,6 +6,8 @@ namespace UTB_social_network_Dudik.Models
     {
         public int Id { get; set; } // User ID
 
+
+
         [Required]
         [Display(Name = "Username")]
         public string UserName { get; set; }
@@ -38,5 +40,11 @@ namespace UTB_social_network_Dudik.Models
         [Display(Name = "Confirm New Password")]
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmNewPassword { get; set; }
+
+        [Display(Name = "Profile Picture")]
+        public string ProfilePicturePath { get; set; } = "/images/default.png";  // Výchozí hodnota
+
+        [DataType(DataType.Upload)]
+        public IFormFile ProfilePictureFile { get; set; }
     }
 }

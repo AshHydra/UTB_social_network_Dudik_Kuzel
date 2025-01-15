@@ -10,5 +10,6 @@ namespace Utb_sc_Infrastructure.Identity
     {
         public virtual string? FirstName { get; set; }
         public virtual string? LastName { get; set; }
+        public string ProfilePicturePath { get; set; } = "/images/default.png";
     }
 }

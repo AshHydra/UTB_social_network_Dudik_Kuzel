@@ -25,10 +25,15 @@ namespace Utb_sc_Infrastructure.Database
         {
             base.OnModelCreating(modelBuilder);
 
-            // Explicitly map IdentityRole<int> to AspNetRoles table
+            // Pokud používáte ApplicationUser nebo jinou třídu dědící z IdentityUser
+            modelBuilder.Entity<IdentityUser>()
+                .Property(u => u.ProfilePicturePath)
+                .HasDefaultValue("/images/default.png");
+
+            // Explicitně mapujeme IdentityRole<int> na tabulku AspNetRoles
             modelBuilder.Entity<IdentityRole<int>>().ToTable("AspNetRoles");
 
-            // Seeding roles using IdentityRole<int>
+            // Seedování rolí
             modelBuilder.Entity<IdentityRole<int>>().HasData(new List<IdentityRole<int>>
             {
                 new IdentityRole<int> { Id = 1, Name = "Admin", NormalizedName = "ADMIN" },
@@ -36,7 +41,7 @@ namespace Utb_sc_Infrastructure.Database
                 new IdentityRole<int> { Id = 3, Name = "Moderator", NormalizedName = "MODERATOR" }
             });
 
-            // Seeding users using IdentityUser alias
+            // Seedování uživatelů
             modelBuilder.Entity<IdentityUser>().HasData(new List<IdentityUser>
             {
                 new IdentityUser
@@ -52,13 +57,13 @@ namespace Utb_sc_Infrastructure.Database
                 }
             });
 
-            // Seeding user-role relationships using IdentityUserRole<int>
+            // Seedování vztahů mezi uživateli a rolemi
             modelBuilder.Entity<IdentityUserRole<int>>().HasData(new List<IdentityUserRole<int>>
             {
-                new IdentityUserRole<int> { UserId = 1, RoleId = 1 } // Admin user assigned to Admin role
+                new IdentityUserRole<int> { UserId = 1, RoleId = 1 } // Admin uživatel přiřazen k roli Admin
             });
 
-            // Entity relationship configurations for FriendList
+            // Konfigurace vztahů mezi entitami pro FriendList
             modelBuilder.Entity<FriendList>()
                 .HasOne(fl => fl.User)
                 .WithMany(u => u.Friends)

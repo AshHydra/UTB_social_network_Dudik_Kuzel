@@ -1,7 +1,11 @@
-﻿* {
-    box-sizing: border-box;
+﻿/* Skrýt výchozí vstup souboru */
+input[type="file"] {
+    display: none; /* Skryje vstupní pole souboru */
 }
 
+* {
+    box-sizing: border-box;
+}
 
 body {
     background-color: #081823;
@@ -10,43 +14,25 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Zajišťuje vertikální zarovnání */
-    padding: 20px 0; /* Místo nahoře a dole */
+    min-height: 100vh; /* Vertikální zarovnání */
+    padding: 20px 0;
 }
 
 .navbar {
     width: 1200px; /* Fixní šířka navbaru */
-    margin: 0 auto; /* Centeruje navbar na střed */
-    padding: 10px 20px; /* Padding pro zajištění mezery kolem obsahu */
-    box-sizing: border-box; /* Zajistí, že padding není přičítán k šířce */
+    margin: 0 auto; /* Centeruje navbar */
+    padding: 10px 20px;
 }
 
-
-.profile-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px; /* Mezera pod nadpisem */
-}
-
-.profile-icon {
-    width: 40px; /* Šířka ikony */
-    height: 40px; /* Výška ikony */
-    border-radius: 50%; /* Kulatý tvar */
-    object-fit: cover; /* Přizpůsobení obsahu */
-
-    cursor: pointer;
-}
-
-
+/* Hlavní kontejner */
 .chat-container {
-    background-color: #E8DEF8 !important;
+    background-color: #E8DEF8;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 600px; /* Maximální šířka okna detailu */
-    margin: auto; /* Zarovnání na střed s ohledem na padding */
+    max-width: 600px; /* Maximální šířka */
+    margin: auto; /* Zarovnání na střed */
 }
 
 .chats-title {
@@ -58,6 +44,63 @@ body {
     margin-bottom: 20px;
 }
 
+/* Styl pro výchozí text "Set Profile Pic" */
+.profile-placeholder {
+    color: #497FA5;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+/* Styl tlačítka a jeho kontejneru */
+.upload-container {
+    display: flex;
+    align-items: center;
+    background-color: #E8DEF8;
+    padding: 10px;
+    border-radius: 8px;
+    gap: 10px; /* Mezera mezi tlačítkem a textem */
+}
+
+button.upload-btn {
+    cursor: pointer; /* Zajištění ukazovacího kurzoru */
+    background-color: #497FA5;
+    color: #E8DEF8;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    align-self: flex-start; /* Zarovná tlačítko doleva */
+}
+
+    button.upload-btn:hover {
+        background-color: rgba(73, 127, 165, 1); /* Zvýraznění při hoveru */
+        transform: scale(1.05);
+    }
+
+    button.upload-btn:focus {
+        outline: none; /* Odstranění modrého rámečku při focusu */
+    }
+
+input[type="file"].visually-hidden {
+    display: none; /* Skrytí nativního vstupu */
+}
+
+/* Styl obrázku profilu */
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #497FA5;
+    margin-top: 10px;
+}
+
+/* Styl pro sekci změny údajů */
 form {
     display: flex;
     flex-direction: column;
@@ -75,7 +118,6 @@ form {
             font-weight: bold;
             font-style: italic;
             margin-bottom: 5px;
-            display: block;
         }
 
         form .form-group input {
@@ -86,12 +128,7 @@ form {
             font-size: 14px;
             font-weight: bold;
             color: rgba(0, 0, 0, 0.9);
-            width: 100%;
-            max-width: 400px; /* Maximální šířka políčka */
-            min-width: 200px; /* Minimální šířka políčka */
-            margin-bottom: 10px;
             transition: border-color 0.3s ease;
-            flex: 1; /* Automatické přizpůsobení obsahu */
         }
 
             form .form-group input:focus {
@@ -99,34 +136,43 @@ form {
                 border: 2px solid #497FA5;
             }
 
-
-
 h2 {
     color: #497FA5;
     font-size: 18px;
     font-weight: bold;
-    letter-spacing: 1px;
     margin-top: 30px;
-    margin-bottom: 20px;
 }
 
-button {
-    background-color: transparent;
+/* Styl tlačítka Confirm */
+button.confirm-btn {
+    cursor: pointer; /* Zajištění ukazovacího kurzoru */
+    font-style: italic;
+    color: #497FA5;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 16px;
     border: none;
-    color: #497FA5 !important; /* Použití !important */
-    font-size: 16px;
-    font-weight: bold !important;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: transform 0.3s ease, color 0.3s ease;
-    align-self: flex-start;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    align-self: flex-start; /* Zarovná tlačítko doleva */
+}
 }
 
+    button.confirm-btn::after {
+        content: '\2713'; /* Unicode pro fajfku */
+        color: #497FA5;
+        font-size: 14px;
+    }
 
-    button:hover {
-        transform: scale(1.1);
-        transition: transform 0.3s ease;
-        color: #497FA5; /* Barva textu při hoveru */
-        font-weight: bold;
+button.confirm-btn:hover {
+    transform: scale(1.05);
+}
+
+button.confirm-btn:focus {
+    outline: none; /* Odstranění modrého rámečku při focusu */
+}
+
+    button.confirm-btn:active {
+        outline: none; /* Odstranění rámečku při kliknutí */
+        transform: scale(1); /* Zabránění pohybu směrem doleva */
     }
