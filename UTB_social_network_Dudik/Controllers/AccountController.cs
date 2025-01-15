@@ -10,7 +10,6 @@ namespace UTB_social_network_Dudik.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
 
-
         public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _userManager = userManager;
@@ -56,7 +55,7 @@ namespace UTB_social_network_Dudik.Controllers
                 {
                     await _userManager.AddToRoleAsync(user, "User");
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return View("~/Views/Home/Index.cshtml");
+                    return RedirectToAction("MainPage", "Home"); // Redirect to MainPage
                 }
 
                 foreach (var error in result.Errors)
@@ -81,18 +80,38 @@ namespace UTB_social_network_Dudik.Controllers
         {
             if (ModelState.IsValid)
             {
+                Console.WriteLine("Login attempt with email: " + model.Email);
+
+                // Find user by email
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user != null)
                 {
-                    var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, false, false);
+                    Console.WriteLine($"User found: {user.UserName} with ID {user.Id}");
+
+                    // Attempt to sign in
+                    var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, isPersistent: false, lockoutOnFailure: false);
                     if (result.Succeeded)
                     {
-                        // Správně přesměruj na view MainPage
-                        return View("~/Views/Mainpage/Mainpage.cshtml");
+                        Console.WriteLine($"Login successful for user: {user.Email}");
+                        HttpContext.Session.SetString("UserEmail", user.Email); // Store email in session
+                        Console.WriteLine($"Session email set: {user.Email}");
+                        return RedirectToAction("MainPage", "Home"); // Redirect to main page
                     }
+                    else
+                    {
+                        Console.WriteLine("Login failed: Invalid password");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Login failed: User not found");
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+            }
+            else
+            {
+                Console.WriteLine("Login failed: Model state invalid");
             }
 
             return View("~/Views/Home/Index.cshtml", model);
@@ -104,6 +123,5 @@ namespace UTB_social_network_Dudik.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }
-
     }
 }

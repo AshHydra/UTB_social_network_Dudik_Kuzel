@@ -1,37 +1,31 @@
 ﻿@model UTB_social_network_Dudik.Models.ProfileViewModel
 
-@{
-    ViewData["Title"] = "User Profile";
-}
-
-<!-- Navigation Bar -->
 <partial name="_NavBar" />
 
 <div class="container mt-4">
-    <h1>User Profile</h1>
-    <form asp-action="Profile" method="post" class="mt-4">
+    <h1 class="text-white">User Profile</h1>
+    <form asp-action="Index" method="post" class="mt-4">
         <div class="form-group">
-            <label asp-for="UserName"></label>
-            <input asp-for="UserName" class="form-control" readonly />
+            <label asp-for="UserName" class="text-white"></label>
+            <input asp-for="UserName" class="form-control bg-dark text-white border-secondary" readonly />
         </div>
         <div class="form-group">
-            <label asp-for="Email"></label>
-            <input asp-for="Email" class="form-control" readonly />
+            <label asp-for="Email" class="text-white"></label>
+            <input asp-for="Email" class="form-control bg-dark text-white border-secondary" readonly />
         </div>
         <div class="form-group">
-            <label asp-for="FirstName"></label>
-            <input asp-for="FirstName" class="form-control" />
+            <label asp-for="FirstName" class="text-white"></label>
+            <input asp-for="FirstName" class="form-control bg-dark text-white border-secondary" />
         </div>
         <div class="form-group">
-            <label asp-for="LastName"></label>
-            <input asp-for="LastName" class="form-control" />
+            <label asp-for="LastName" class="text-white"></label>
+            <input asp-for="LastName" class="form-control bg-dark text-white border-secondary" />
         </div>
         <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
     </form>
 </div>
 
-
 @section Styles
 {
-    <link rel="stylesheet" href="~/css/Profile.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Mainpage.css" asp-append-version="true" />
 }

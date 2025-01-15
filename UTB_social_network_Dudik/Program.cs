@@ -42,8 +42,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.HttpOnly = true;
     options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-    options.LoginPath = "/Security/Account/Login";
-    options.LogoutPath = "/Security/Account/Logout";
+    options.LoginPath = "/Account/Login"; // Adjust the path to your Login action
+    options.LogoutPath = "/Account/Logout"; // Adjust the path to your Logout action
     options.SlidingExpiration = true;
 });
 
@@ -52,6 +52,15 @@ builder.Services.AddScoped<RoleManager<IdentityRole<int>>>();
 
 // Register SignalR services
 builder.Services.AddSignalR();
+
+// Add session services
+builder.Services.AddDistributedMemoryCache(); // Use in-memory cache for session storage
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Set session timeout
+    options.Cookie.HttpOnly = true; // Protect the session cookie
+    options.Cookie.IsEssential = true; // Ensure it's not blocked by cookie policies
+});
 
 // Build the app
 var app = builder.Build();
@@ -67,6 +76,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+// Use session middleware
+app.UseSession();
 
 app.UseAuthentication();
 app.UseAuthorization();

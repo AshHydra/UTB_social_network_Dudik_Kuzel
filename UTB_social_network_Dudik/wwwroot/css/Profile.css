@@ -1,21 +1,24 @@
-﻿.profile-info {
-    margin-top: 20px;
-}
+﻿@model UTB_social_network_Dudik.Models.ProfileViewModel
 
-.profile-item {
-    margin-bottom: 10px;
-    font-size: 1.1em;
-}
-
-    .profile-item strong {
-        color: #333;
-    }
-
-.form-group {
-    margin-top: 20px;
-}
-
-.form-control {
-    width: 50%;
-    margin-top: 5px;
-}
+<div class="container mt-4 chat-container">
+    <h1 class="chats-title">User Profile</h1>
+    <form asp-action="Index" method="post" class="mt-4">
+        <div class="form-group">
+            <label asp-for="UserName" class="text-white"></label>
+            <input asp-for="UserName" class="form-control bg-dark text-white border-secondary" readonly />
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="text-white"></label>
+            <input asp-for="Email" class="form-control bg-dark text-white border-secondary" readonly />
+        </div>
+        <div class="form-group">
+            <label asp-for="FirstName" class="text-white"></label>
+            <input asp-for="FirstName" class="form-control bg-dark text-white border-secondary" />
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName" class="text-white"></label>
+            <input asp-for="LastName" class="form-control bg-dark text-white border-secondary" />
+        </div>
+        <button type="submit" class="btn send-message-btn mt-3">Save Changes</button>
+    </form>
+</div>

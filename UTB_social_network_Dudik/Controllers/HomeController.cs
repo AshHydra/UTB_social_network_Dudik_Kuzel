@@ -27,7 +27,82 @@ namespace UTB_social_network_Dudik.Controllers
             _roleManager = roleManager;
         }
 
-        // Admin page with list of all users
+        // Profile actions
+
+        // GET: /Home/Profile
+        public async Task<IActionResult> Profile()
+        {
+            Console.WriteLine("HomeController: Profile GET action called");
+
+            // Fetch the logged-in user
+            var userEmail = HttpContext.Session.GetString("UserEmail");
+
+            if (string.IsNullOrEmpty(userEmail))
+            {
+                return RedirectToAction("Login", "Account"); // Redirect to login if no session
+            }
+
+            var user = await _userManager.FindByEmailAsync(userEmail);
+
+            if (user == null)
+            {
+                return NotFound(); // Return 404 if user is not found
+            }
+
+            var model = new ProfileViewModel
+            {
+                UserName = user.UserName,
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
+
+            return View("~/Views/Profile/Profile.cshtml", model);
+        }
+
+        // POST: /Home/Profile
+        [HttpPost]
+        public async Task<IActionResult> Profile(ProfileViewModel model)
+        {
+            Console.WriteLine("HomeController: Profile POST action called");
+
+            if (ModelState.IsValid)
+            {
+                var userEmail = HttpContext.Session.GetString("UserEmail");
+
+                if (string.IsNullOrEmpty(userEmail))
+                {
+                    return RedirectToAction("Login", "Account"); // Redirect to login if no session
+                }
+
+                var user = await _userManager.FindByEmailAsync(userEmail);
+
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+
+                var result = await _userManager.UpdateAsync(user);
+
+                if (result.Succeeded)
+                {
+                    TempData["SuccessMessage"] = "Profile updated successfully!";
+                    return RedirectToAction(nameof(Profile));
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
+
+            return View("~/Views/Profile/Profile.cshtml", model);
+        }
+
+        // Other actions
         public async Task<IActionResult> Admin()
         {
             // Fetch all users
@@ -62,11 +137,6 @@ namespace UTB_social_network_Dudik.Controllers
         public IActionResult Contacts()
         {
             return View("~/Views/Contacts/Contactspage.cshtml");
-        }
-
-        public IActionResult Profile()
-        {
-            return View("~/Views/Profile/Profile.cshtml");
         }
 
         // Main page after login
