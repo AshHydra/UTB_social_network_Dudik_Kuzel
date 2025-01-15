@@ -1,28 +1,35 @@
-﻿@{
-    ViewData["Title"] = "Contacts Page";
-}
+﻿@model UTB_social_network_Dudik.Models.ContactsViewModel
 
-<!-- Navigační lišta -->
 <partial name="_NavBar" />
 
-<!-- Obsah stránky Contacts -->
 <div class="container mt-4">
-    <h1>Contacts Page</h1>
-    <p>Manage your contacts here.</p>
+    <h1>Your Contacts</h1>
 
+    <!-- Display success or error messages -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
+
+    <!-- Form to add a new contact -->
     <form method="post" asp-action="AddContact">
         <div class="form-group">
-            <label for="email">Add a contact by email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required />
+            <label for="email">Add a contact by email:</label>
+            <input type="email" class="form-control" id="email" name="email" required />
         </div>
         <button type="submit" class="btn btn-primary">Add Contact</button>
     </form>
 
-    <h3>Your Contacts:</h3>
+    <!-- List of contacts -->
+    <h3>Contacts List:</h3>
     <ul>
         @foreach (var contact in Model.Contacts)
         {
-            <li>@contact.Email</li>
+            <li>@contact.Email (@contact.UserName)</li>
         }
     </ul>
 </div>

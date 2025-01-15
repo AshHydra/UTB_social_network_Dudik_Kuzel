@@ -142,7 +142,9 @@ namespace UTB_social_network_Dudik.Controllers
         }
 
 
-        // Other actions
+        // Admin actions
+
+        // GET: /Home/Admin
         public async Task<IActionResult> Admin()
         {
             // Fetch all users
@@ -174,32 +176,60 @@ namespace UTB_social_network_Dudik.Controllers
             return View("~/Views/Admin/Adminpage.cshtml", model); // Pass mapped users to view
         }
 
-        public IActionResult Contacts()
+        // Contacts actions
+
+        // GET: /Home/Contacts
+        [HttpGet]
+        public async Task<IActionResult> Contacts()
         {
-            return View("~/Views/Contacts/Contactspage.cshtml");
+            // Get the current logged-in user
+            var currentUser = await _userManager.GetUserAsync(User);
+
+            if (currentUser == null)
+            {
+                TempData["ErrorMessage"] = "User not found.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Fetch all other users (excluding the current user)
+            var identityUsers = _userManager.Users
+                .Where(u => u.Id != currentUser.Id)
+                .ToList();
+
+            // Populate the ContactsViewModel
+            var model = new ContactsViewModel
+            {
+                Contacts = identityUsers // Ensure this list is not null
+            };
+
+            // Pass the model to the view
+            return View("~/Views/Contacts/Contactspage.cshtml", model);
         }
 
-        // Main page after login
+
+        // Other actions
+
+        // GET: /Home/MainPage
         public IActionResult MainPage()
         {
             return View("~/Views/Mainpage/Mainpage.cshtml");
         }
 
-        // Default index page
+        // GET: /Home/Index
         [AllowAnonymous] // Anyone can access this action
         public IActionResult Index()
         {
             return View();
         }
 
-        // Privacy policy page
+        // GET: /Home/Privacy
         [AllowAnonymous] // Anyone can access this action
         public IActionResult Privacy()
         {
             return View();
         }
 
-        // Display error page
+        // GET: /Home/Error
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         [AllowAnonymous] // Anyone can access this action
         public IActionResult Error()

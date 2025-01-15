@@ -5,8 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using UTB_social_network_Dudik.Models;
-using Utb_sc_Infrastructure.Identity;
 using Utb_sc_Infrastructure.Database;
+using DomainUser = Utb_sc_Domain.Entities.User;
+using IdentityUser = Utb_sc_Infrastructure.Identity.User;
 using Utb_sc_Domain.Entities;
 
 namespace UTB_social_network_Dudik.Controllers
@@ -180,15 +181,24 @@ namespace UTB_social_network_Dudik.Controllers
                 return NotFound();
             }
 
-            var contacts = await _dbContext.FriendLists
+            // Fetch contacts as `Utb_sc_Domain.Entities.User` and map them to `Utb_sc_Infrastructure.Identity.User`
+            var domainContacts = await _dbContext.FriendLists
                 .Where(fl => fl.UserId == user.Id)
                 .Include(fl => fl.Friend)
-                .Select(fl => fl.Friend)
+                .Select(fl => fl.Friend) // Assuming `Friend` is of type `Utb_sc_Domain.Entities.User`
                 .ToListAsync();
+
+            var mappedContacts = domainContacts.Select(dc => new IdentityUser
+            {
+                Id = dc.Id,
+                UserName = dc.UserName,
+                Email = dc.Email,
+                // Add other properties if necessary
+            }).ToList();
 
             var model = new ContactsViewModel
             {
-                Contacts = contacts
+                Contacts = mappedContacts
             };
 
             return View("~/Views/Contacts/Contactspage.cshtml", model);
@@ -198,18 +208,21 @@ namespace UTB_social_network_Dudik.Controllers
         [HttpPost]
         public async Task<IActionResult> AddContact(string email)
         {
+            // Get the current user
             var user = await _userManager.GetUserAsync(User);
 
             if (user == null)
             {
-                return NotFound();
+                TempData["ErrorMessage"] = "Current user not found.";
+                return RedirectToAction(nameof(Contacts));
             }
 
+            // Find the friend by email
             var friend = await _userManager.FindByEmailAsync(email);
 
             if (friend == null)
             {
-                TempData["ErrorMessage"] = "User not found.";
+                TempData["ErrorMessage"] = "User with the specified email does not exist.";
                 return RedirectToAction(nameof(Contacts));
             }
 
@@ -219,24 +232,30 @@ namespace UTB_social_network_Dudik.Controllers
                 return RedirectToAction(nameof(Contacts));
             }
 
+            // Check if the friendship already exists
             var existingContact = await _dbContext.FriendLists
                 .FirstOrDefaultAsync(fl => fl.UserId == user.Id && fl.FriendId == friend.Id);
 
             if (existingContact != null)
             {
-                TempData["ErrorMessage"] = "You are already friends with this user.";
+                TempData["ErrorMessage"] = "This user is already in your contacts.";
                 return RedirectToAction(nameof(Contacts));
             }
 
+            // Add the new contact
             _dbContext.FriendLists.Add(new FriendList
             {
                 UserId = user.Id,
-                FriendId = friend.Id
+                User = user,
+                FriendId = friend.Id,
+                Friend = friend,
+                FriendsSince = DateTime.UtcNow,
+                Status = "Active"
             });
 
             await _dbContext.SaveChangesAsync();
 
-            TempData["SuccessMessage"] = "Contact added successfully.";
+            TempData["SuccessMessage"] = $"Contact {friend.Email} added successfully.";
             return RedirectToAction(nameof(Contacts));
         }
     }
