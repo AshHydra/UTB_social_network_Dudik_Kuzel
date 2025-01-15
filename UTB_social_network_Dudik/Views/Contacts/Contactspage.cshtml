@@ -9,6 +9,22 @@
 <div class="container mt-4">
     <h1>Contacts Page</h1>
     <p>Manage your contacts here.</p>
+
+    <form method="post" asp-action="AddContact">
+        <div class="form-group">
+            <label for="email">Add a contact by email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Add Contact</button>
+    </form>
+
+    <h3>Your Contacts:</h3>
+    <ul>
+        @foreach (var contact in Model.Contacts)
+        {
+            <li>@contact.Email</li>
+        }
+    </ul>
 </div>
 
 @section Styles

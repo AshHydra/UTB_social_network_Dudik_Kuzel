@@ -61,6 +61,7 @@
                         </span>
                     </div>
                 </div>
+                <button id="newConversationBtn" class="btn btn-primary mt-4" onclick="createNewConversation()">New Conversation</button>
             </div>
         </div>
         <div class="col-10">
@@ -151,6 +152,45 @@
             messageInput.value = '';
         }
 
+        function createNewConversation() {
+            const username = prompt("Enter the username to start a conversation with:");
+
+            if (username) {
+                const currentUser = "@User.Identity.Name"; // Získání aktuálního uživatele ze serveru
+                const chatName = currentUser + "_" + username;
+
+                // Odeslání požadavku na server pro vytvoření nového chatu
+                connection.invoke("CreateNewChat", chatName, currentUser, username)
+                    .then(() => {
+                        console.log(`New conversation created with ${username}`);
+
+                        // Dynamicky přidat nový chat do seznamu na obou stranách
+                        const newChatTab = document.createElement('div');
+                        newChatTab.classList.add('chat-tab');
+                        newChatTab.onclick = () => activateTab(newChatTab);
+                        newChatTab.innerHTML = `
+                            <span class="chat-name">${chatName}</span>
+                            <span class="message-icon-list">
+                                <img src="https://i.imgur.com/F8pNkMa.png" alt="message-icon" class="chat-icon">
+                            </span>
+                        `;
+
+                        // Přidání nového chatu do seznamu
+                        document.getElementById('chatTabs').appendChild(newChatTab);
+
+                        // Posílání informací druhé straně pro aktualizaci jejich seznamu
+                        connection.invoke("NotifyOtherUser", chatName, username)
+                            .then(() => {
+                                console.log("Notified other user about new chat.");
+                            })
+                            .catch(err => console.error("Error notifying other user:", err));
+
+                        // Automaticky otevřít nový chat
+                        activateTab(newChatTab);
+                    })
+                    .catch(err => console.error("Error creating new chat:", err));
+            }
+        }
 
         connection.on("ReceiveMessage", (chatName, sender, message) => {
             const activeChat = document.querySelector('.chat-name').textContent.trim();
@@ -172,5 +212,22 @@
             }
         });
 
+        connection.on("ReceiveNewChat", (chatName) => {
+            // Dynamicky přidat nový chat do seznamu na straně druhého uživatele
+            const newChatTab = document.createElement('div');
+            newChatTab.classList.add('chat-tab');
+            newChatTab.onclick = () => activateTab(newChatTab);
+            newChatTab.innerHTML = `
+                <span class="chat-name">${chatName}</span>
+                <span class="message-icon-list">
+                    <img src="https://i.imgur.com/F8pNkMa.png" alt="message-icon" class="chat-icon">
+                </span>
+            `;
+
+            // Přidání nového chatu do seznamu
+            document.getElementById('chatTabs').appendChild(newChatTab);
+        });
     </script>
+
+
 }
