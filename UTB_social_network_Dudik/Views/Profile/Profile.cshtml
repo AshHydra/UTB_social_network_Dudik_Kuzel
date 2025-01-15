@@ -3,7 +3,10 @@
 <partial name="_NavBar" />
 
 <div class="container mt-4 chat-container">
-    <h1 class="chats-title">User Profile</h1>
+    <div class="profile-header">
+        <h1 class="chats-title">User Profile</h1>
+        <img src="https://i.imgur.com/37ShKOl.png" alt="Contact Icon" class="profile-icon" />
+    </div>
 
     @if (TempData["SuccessMessage"] != null)
     {
