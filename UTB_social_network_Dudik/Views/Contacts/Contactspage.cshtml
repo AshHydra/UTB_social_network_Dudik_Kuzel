@@ -2,39 +2,40 @@
 
 <partial name="_NavBar" />
 
-<div class="container mt-4">
-    <h1>Your Contacts</h1>
+<div class="page-container">
+    <div class="contacts-window">
+        <h1 class="contacts-title">Contacts</h1>
 
-    <!-- Display success or error messages -->
-    @if (TempData["SuccessMessage"] != null)
-    {
-        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
-    }
-    @if (TempData["ErrorMessage"] != null)
-    {
-        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
-    }
-
-    <!-- Form to add a new contact -->
-    <form method="post" asp-action="AddContact">
-        <div class="form-group">
-            <label for="email">Add a contact by email:</label>
-            <input type="email" class="form-control" id="email" name="email" required />
-        </div>
-        <button type="submit" class="btn btn-primary">Add Contact</button>
-    </form>
-
-    <!-- List of contacts -->
-    <h3>Contacts List:</h3>
-    <ul>
-        @foreach (var contact in Model.Contacts)
+        <!-- Display success or error messages -->
+        @if (TempData["SuccessMessage"] != null)
         {
-            <li>@contact.Email (@contact.UserName)</li>
+            <div class="alert alert-success">@TempData["SuccessMessage"]</div>
         }
-    </ul>
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+        }
+
+        <!-- Form to add a new contact -->
+        <form method="post" asp-action="AddContact">
+            <label for="email" class="form-label">Add contact by email:</label>
+            <input type="email" class="form-input" id="email" name="email" required />
+            <button type="submit" class="form-button">Add</button>
+        </form>
+
+        <!-- List of contacts -->
+        <h3 class="contacts-list-title">Contacts List:</h3>
+        <ul class="contacts-list">
+            @foreach (var contact in Model.Contacts)
+            {
+                <li class="contact-item">
+                    <img src="https://i.imgur.com/37ShKOl.png" alt="icon" class="contact-icon" />
+                    <span class="contact-email">@contact.Email</span>
+                    <span class="contact-username">(@contact.UserName)</span>
+                </li>
+            }
+        </ul>
+    </div>
 </div>
 
-@section Styles
-{
-    <link rel="stylesheet" href="~/css/Mainpage.css" asp-append-version="true" />
-}
+<link rel="stylesheet" href="~/css/Contactspage.css" asp-append-version="true" />

@@ -5648,19 +5648,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ash31\\.nuget\\packages\\": {}
+    "C:\\Users\\pepin\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Application\\Utb_sc_Application.csproj",
+      "projectUniqueName": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Application\\Utb_sc_Application.csproj",
       "projectName": "Utb_sc_Application",
-      "projectPath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Application\\Utb_sc_Application.csproj",
-      "packagesPath": "C:\\Users\\ash31\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Application\\obj\\",
+      "projectPath": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Application\\Utb_sc_Application.csproj",
+      "packagesPath": "C:\\Users\\pepin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Application\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\ash31\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pepin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5674,11 +5679,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj": {
-              "projectPath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj"
+            "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj": {
+              "projectPath": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj"
             },
-            "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj"
+            "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj"
             }
           }
         }
@@ -5691,8 +5696,9 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
-      }
+        "auditMode": "all"
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -5723,8 +5729,90 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Balíček „Azure.Identity“ 1.10.3 má známé střední ohrožení zabezpečení závažnosti, https://github.com/advisories/GHSA-m5vv-6r4h-3vj9",
+      "libraryId": "Azure.Identity",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Balíček „Azure.Identity“ 1.10.3 má známé střední ohrožení zabezpečení závažnosti, https://github.com/advisories/GHSA-wvxc-855f-jvrv",
+      "libraryId": "Azure.Identity",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Balíček „Microsoft.AspNetCore.WebSockets“ 2.2.0 má známé vysoké ohrožení zabezpečení závažnosti, https://github.com/advisories/GHSA-6px8-22w5-w334",
+      "libraryId": "Microsoft.AspNetCore.WebSockets",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Balíček „Microsoft.Identity.Client“ 4.56.0 má známé střední ohrožení zabezpečení závažnosti, https://github.com/advisories/GHSA-m5vv-6r4h-3vj9",
+      "libraryId": "Microsoft.Identity.Client",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1901",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Balíček „Microsoft.Identity.Client“ 4.56.0 má známé nízké ohrožení zabezpečení závažnosti, https://github.com/advisories/GHSA-x674-v45j-fwxw",
+      "libraryId": "Microsoft.Identity.Client",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Balíček „Newtonsoft.Json“ 11.0.2 má známé vysoké ohrožení zabezpečení závažnosti, https://github.com/advisories/GHSA-5crp-9r3c-p9vr",
+      "libraryId": "Newtonsoft.Json",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Balíček „System.Formats.Asn1“ 5.0.0 má známé vysoké ohrožení zabezpečení závažnosti, https://github.com/advisories/GHSA-447r-wph3-92pm",
+      "libraryId": "System.Formats.Asn1",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Balíček „System.Net.WebSockets.WebSocketProtocol“ 4.5.1 má známé vysoké ohrožení zabezpečení závažnosti, https://github.com/advisories/GHSA-6px8-22w5-w334",
+      "libraryId": "System.Net.WebSockets.WebSocketProtocol",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }
