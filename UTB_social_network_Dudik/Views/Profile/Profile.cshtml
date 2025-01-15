@@ -16,46 +16,54 @@
 
     <form asp-action="Profile" method="post" class="mt-4">
         <input asp-for="Id" type="hidden" />
+
         <div class="form-group">
-            <label asp-for="UserName" class="text-white"></label>
-            <input asp-for="UserName" class="form-control bg-dark text-white border-secondary" readonly />
+            <label asp-for="UserName"></label>
+            <input asp-for="UserName" class="form-control" readonly />
         </div>
+
         <div class="form-group">
-            <label asp-for="Email" class="text-white"></label>
-            <input asp-for="Email" class="form-control bg-dark text-white border-secondary" readonly />
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" readonly />
         </div>
+
         <div class="form-group">
-            <label asp-for="FirstName" class="text-white"></label>
-            <input asp-for="FirstName" class="form-control bg-dark text-white border-secondary" />
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName" class="form-control" />
         </div>
+
         <div class="form-group">
-            <label asp-for="LastName" class="text-white"></label>
-            <input asp-for="LastName" class="form-control bg-dark text-white border-secondary" />
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName" class="form-control" />
         </div>
+
         <div class="form-group">
-            <label asp-for="PhoneNumber" class="text-white"></label>
-            <input asp-for="PhoneNumber" class="form-control bg-dark text-white border-secondary" />
+            <label asp-for="PhoneNumber"></label>
+            <input asp-for="PhoneNumber" class="form-control" />
         </div>
 
         <h2 class="chats-title mt-5">Change Password</h2>
+
         <div class="form-group">
-            <label asp-for="CurrentPassword" class="text-white"></label>
-            <input asp-for="CurrentPassword" class="form-control bg-dark text-white border-secondary" />
-        </div>
-        <div class="form-group">
-            <label asp-for="NewPassword" class="text-white"></label>
-            <input asp-for="NewPassword" class="form-control bg-dark text-white border-secondary" />
-        </div>
-        <div class="form-group">
-            <label asp-for="ConfirmNewPassword" class="text-white"></label>
-            <input asp-for="ConfirmNewPassword" class="form-control bg-dark text-white border-secondary" />
+            <label asp-for="CurrentPassword"></label>
+            <input asp-for="CurrentPassword" class="form-control" type="password" />
         </div>
 
-        <button type="submit" class="btn send-message-btn mt-3">Save Changes</button>
+        <div class="form-group">
+            <label asp-for="NewPassword"></label>
+            <input asp-for="NewPassword" class="form-control" type="password" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ConfirmNewPassword"></label>
+            <input asp-for="ConfirmNewPassword" class="form-control" type="password" />
+        </div>
+
+        <button type="submit" class="btn mt-3">Save Changes</button>
     </form>
 </div>
 
 @section Styles
 {
-    <link rel="stylesheet" href="~/css/Mainpage.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Profile.css" asp-append-version="true" />
 }

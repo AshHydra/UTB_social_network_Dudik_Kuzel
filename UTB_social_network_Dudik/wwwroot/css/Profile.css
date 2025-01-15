@@ -1,24 +1,115 @@
-﻿@model UTB_social_network_Dudik.Models.ProfileViewModel
+﻿* {
+    box-sizing: border-box;
+}
 
-<div class="container mt-4 chat-container">
-    <h1 class="chats-title">User Profile</h1>
-    <form asp-action="Index" method="post" class="mt-4">
-        <div class="form-group">
-            <label asp-for="UserName" class="text-white"></label>
-            <input asp-for="UserName" class="form-control bg-dark text-white border-secondary" readonly />
-        </div>
-        <div class="form-group">
-            <label asp-for="Email" class="text-white"></label>
-            <input asp-for="Email" class="form-control bg-dark text-white border-secondary" readonly />
-        </div>
-        <div class="form-group">
-            <label asp-for="FirstName" class="text-white"></label>
-            <input asp-for="FirstName" class="form-control bg-dark text-white border-secondary" />
-        </div>
-        <div class="form-group">
-            <label asp-for="LastName" class="text-white"></label>
-            <input asp-for="LastName" class="form-control bg-dark text-white border-secondary" />
-        </div>
-        <button type="submit" class="btn send-message-btn mt-3">Save Changes</button>
-    </form>
-</div>
+
+body {
+    background-color: #081823;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Zajišťuje vertikální zarovnání */
+    padding: 20px 0; /* Místo nahoře a dole */
+}
+
+.navbar {
+    width: 1200px; /* Fixní šířka navbaru */
+    margin: 0 auto; /* Centeruje navbar na střed */
+    padding: 10px 20px; /* Padding pro zajištění mezery kolem obsahu */
+    box-sizing: border-box; /* Zajistí, že padding není přičítán k šířce */
+}
+
+
+.chat-container {
+    background-color: #E8DEF8 !important;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px; /* Maximální šířka okna detailu */
+    margin: auto; /* Zarovnání na střed s ohledem na padding */
+}
+
+.chats-title {
+    color: #497FA5;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+    form .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+        form .form-group label {
+            color: #497FA5;
+            font-size: 16px;
+            font-weight: bold;
+            font-style: italic;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        form .form-group input {
+            background-color: #E8F0FE;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.9);
+            width: 100%;
+            max-width: 400px; /* Maximální šířka políčka */
+            min-width: 200px; /* Minimální šířka políčka */
+            margin-bottom: 10px;
+            transition: border-color 0.3s ease;
+            flex: 1; /* Automatické přizpůsobení obsahu */
+        }
+
+            form .form-group input:focus {
+                outline: none;
+                border: 2px solid #497FA5;
+            }
+
+
+
+h2 {
+    color: #497FA5;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    color: #497FA5 !important; /* Použití !important */
+    font-size: 16px;
+    font-weight: bold !important;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+    align-self: flex-start;
+}
+
+
+    button:hover {
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+        color: #497FA5; /* Barva textu při hoveru */
+        font-weight: bold;
+    }
