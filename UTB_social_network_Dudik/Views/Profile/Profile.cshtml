@@ -2,9 +2,20 @@
 
 <partial name="_NavBar" />
 
-<div class="container mt-4">
-    <h1 class="text-white">User Profile</h1>
-    <form asp-action="Index" method="post" class="mt-4">
+<div class="container mt-4 chat-container">
+    <h1 class="chats-title">User Profile</h1>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
+
+    <form asp-action="Profile" method="post" class="mt-4">
+        <input asp-for="Id" type="hidden" />
         <div class="form-group">
             <label asp-for="UserName" class="text-white"></label>
             <input asp-for="UserName" class="form-control bg-dark text-white border-secondary" readonly />
@@ -21,7 +32,26 @@
             <label asp-for="LastName" class="text-white"></label>
             <input asp-for="LastName" class="form-control bg-dark text-white border-secondary" />
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+        <div class="form-group">
+            <label asp-for="PhoneNumber" class="text-white"></label>
+            <input asp-for="PhoneNumber" class="form-control bg-dark text-white border-secondary" />
+        </div>
+
+        <h2 class="chats-title mt-5">Change Password</h2>
+        <div class="form-group">
+            <label asp-for="CurrentPassword" class="text-white"></label>
+            <input asp-for="CurrentPassword" class="form-control bg-dark text-white border-secondary" />
+        </div>
+        <div class="form-group">
+            <label asp-for="NewPassword" class="text-white"></label>
+            <input asp-for="NewPassword" class="form-control bg-dark text-white border-secondary" />
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmNewPassword" class="text-white"></label>
+            <input asp-for="ConfirmNewPassword" class="form-control bg-dark text-white border-secondary" />
+        </div>
+
+        <button type="submit" class="btn send-message-btn mt-3">Save Changes</button>
     </form>
 </div>
 

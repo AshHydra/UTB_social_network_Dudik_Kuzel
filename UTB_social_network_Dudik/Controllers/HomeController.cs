@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using UTB_social_network_Dudik.Models;
 using Utb_sc_Infrastructure.Identity;
 using System.Diagnostics;
+using Utb_sc_Infrastructure.Database;
 
 namespace UTB_social_network_Dudik.Controllers
 {
@@ -30,31 +31,26 @@ namespace UTB_social_network_Dudik.Controllers
         // Profile actions
 
         // GET: /Home/Profile
+        [HttpGet]
         public async Task<IActionResult> Profile()
         {
-            Console.WriteLine("HomeController: Profile GET action called");
-
-            // Fetch the logged-in user
-            var userEmail = HttpContext.Session.GetString("UserEmail");
-
-            if (string.IsNullOrEmpty(userEmail))
-            {
-                return RedirectToAction("Login", "Account"); // Redirect to login if no session
-            }
-
-            var user = await _userManager.FindByEmailAsync(userEmail);
+            // Fetch the currently logged-in user
+            var user = await _userManager.GetUserAsync(User);
 
             if (user == null)
             {
-                return NotFound(); // Return 404 if user is not found
+                return NotFound("User not found."); // Return 404 if the user is not found
             }
 
+            // Populate the ProfileViewModel
             var model = new ProfileViewModel
             {
+                Id = user.Id,
                 UserName = user.UserName,
                 Email = user.Email,
                 FirstName = user.FirstName,
-                LastName = user.LastName
+                LastName = user.LastName,
+                PhoneNumber = user.PhoneNumber
             };
 
             return View("~/Views/Profile/Profile.cshtml", model);
@@ -64,43 +60,87 @@ namespace UTB_social_network_Dudik.Controllers
         [HttpPost]
         public async Task<IActionResult> Profile(ProfileViewModel model)
         {
-            Console.WriteLine("HomeController: Profile POST action called");
+            Console.WriteLine("Profile update POST method called.");
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var userEmail = HttpContext.Session.GetString("UserEmail");
-
-                if (string.IsNullOrEmpty(userEmail))
+                Console.WriteLine("ModelState is invalid.");
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
                 {
-                    return RedirectToAction("Login", "Account"); // Redirect to login if no session
+                    Console.WriteLine($"- {error.ErrorMessage}");
                 }
 
-                var user = await _userManager.FindByEmailAsync(userEmail);
-
-                if (user == null)
-                {
-                    return NotFound();
-                }
-
-                user.FirstName = model.FirstName;
-                user.LastName = model.LastName;
-
-                var result = await _userManager.UpdateAsync(user);
-
-                if (result.Succeeded)
-                {
-                    TempData["SuccessMessage"] = "Profile updated successfully!";
-                    return RedirectToAction(nameof(Profile));
-                }
-
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
+                TempData["ErrorMessage"] = "Failed to update profile. Please check the input.";
+                return View("~/Views/Profile/Profile.cshtml", model);
             }
 
-            return View("~/Views/Profile/Profile.cshtml", model);
+            // Fetch the user based on their ID
+            var user = await _userManager.FindByIdAsync(model.Id.ToString());
+            if (user == null)
+            {
+                Console.WriteLine("User not found in the database.");
+                TempData["ErrorMessage"] = "User not found.";
+                return View("~/Views/Profile/Profile.cshtml", model);
+            }
+
+            Console.WriteLine($"User found: {user.UserName}");
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.PhoneNumber = model.PhoneNumber;
+
+            // Handle password change if provided
+            if (!string.IsNullOrEmpty(model.CurrentPassword) &&
+                !string.IsNullOrEmpty(model.NewPassword) &&
+                !string.IsNullOrEmpty(model.ConfirmNewPassword))
+            {
+                Console.WriteLine("Attempting password change.");
+
+                // Verify the current password
+                var isPasswordValid = await _userManager.CheckPasswordAsync(user, model.CurrentPassword);
+                if (!isPasswordValid)
+                {
+                    Console.WriteLine("Current password is invalid.");
+                    ModelState.AddModelError("CurrentPassword", "The current password is incorrect.");
+                    TempData["ErrorMessage"] = "Failed to update profile. The current password is incorrect.";
+                    return View("~/Views/Profile/Profile.cshtml", model);
+                }
+
+                // Change the password
+                var passwordResult = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+                if (!passwordResult.Succeeded)
+                {
+                    foreach (var error in passwordResult.Errors)
+                    {
+                        Console.WriteLine($"- {error.Description}");
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+
+                    TempData["ErrorMessage"] = "Failed to change password.";
+                    return View("~/Views/Profile/Profile.cshtml", model);
+                }
+
+                Console.WriteLine("Password updated successfully.");
+                TempData["SuccessMessage"] = "Profile updated successfully, including password!";
+            }
+
+            // Update other user details
+            var updateResult = await _userManager.UpdateAsync(user);
+            if (!updateResult.Succeeded)
+            {
+                foreach (var error in updateResult.Errors)
+                {
+                    Console.WriteLine($"- {error.Description}");
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+
+                TempData["ErrorMessage"] = "Failed to update profile.";
+                return View("~/Views/Profile/Profile.cshtml", model);
+            }
+
+            TempData["SuccessMessage"] = "Profile updated successfully!";
+            return RedirectToAction(nameof(Profile));
         }
+
 
         // Other actions
         public async Task<IActionResult> Admin()

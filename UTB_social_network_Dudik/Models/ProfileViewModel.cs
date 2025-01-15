@@ -1,14 +1,10 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using static System.Collections.Specialized.BitVector32;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Threading.Channels;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace UTB_social_network_Dudik.Models
 {
     public class ProfileViewModel
     {
+        public int Id { get; set; } // User ID
 
         [Required]
         [Display(Name = "Username")]
@@ -25,6 +21,22 @@ namespace UTB_social_network_Dudik.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [Phone]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+        // Password fields for password change
+        [DataType(DataType.Password)]
+        [Display(Name = "Current Password")]
+        public string CurrentPassword { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "New Password")]
+        public string NewPassword { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm New Password")]
+        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        public string ConfirmNewPassword { get; set; }
     }
 }
-
