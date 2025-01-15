@@ -5,25 +5,21 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using UTB_social_network_Dudik.Models;
+using Utb_sc_Infrastructure.Identity;
 using Utb_sc_Infrastructure.Database;
-using DomainUser = Utb_sc_Domain.Entities.User;
-using IdentityUser = Utb_sc_Infrastructure.Identity.User;
-using Utb_sc_Domain.Entities;
 
 namespace UTB_social_network_Dudik.Controllers
 {
     [Authorize]
     public class UserController : Controller
     {
-        private readonly UserManager<Utb_sc_Domain.Entities.User> _userManager;
+        private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole<int>> _roleManager;
-        private readonly SocialNetworkDbContext _dbContext;
 
-        public UserController(UserManager<Utb_sc_Domain.Entities.User> userManager, RoleManager<IdentityRole<int>> roleManager, SocialNetworkDbContext dbContext)
+        public UserController(UserManager<User> userManager, RoleManager<IdentityRole<int>> roleManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
-            _dbContext = dbContext;
         }
 
         // GET: Edit User
@@ -55,7 +51,7 @@ namespace UTB_social_network_Dudik.Controllers
 
         // POST: Edit User
         [HttpPost]
-        public async Task<IActionResult> Edit(EditUserViewModel model)
+        public async Task<IActionResult> Edit(EditUserViewModel model, [FromServices] SocialNetworkDbContext dbContext)
         {
             if (ModelState.IsValid)
             {
@@ -92,19 +88,19 @@ namespace UTB_social_network_Dudik.Controllers
                                                .Select(id => id.Value)
                                                .ToList();
 
-                    var currentRoles = _dbContext.UserRoles.Where(ur => ur.UserId == model.Id).ToList();
-                    _dbContext.UserRoles.RemoveRange(currentRoles);
+                    var currentRoles = dbContext.UserRoles.Where(ur => ur.UserId == model.Id).ToList();
+                    dbContext.UserRoles.RemoveRange(currentRoles);
 
                     foreach (var roleId in roleIds)
                     {
-                        _dbContext.UserRoles.Add(new IdentityUserRole<int>
+                        dbContext.UserRoles.Add(new IdentityUserRole<int>
                         {
                             UserId = model.Id,
                             RoleId = roleId
                         });
                     }
 
-                    await _dbContext.SaveChangesAsync();
+                    await dbContext.SaveChangesAsync();
                 }
 
                 return RedirectToAction("Admin", "Home");
@@ -113,7 +109,6 @@ namespace UTB_social_network_Dudik.Controllers
             return View("~/Views/Admin/EditUser.cshtml", model);
         }
 
-        // GET: User Profile
         [HttpGet]
         public async Task<IActionResult> Profile()
         {
@@ -128,16 +123,17 @@ namespace UTB_social_network_Dudik.Controllers
             // Naplnění modelu pro zobrazení
             var model = new ProfileViewModel
             {
+
                 UserName = user.UserName,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email
+
             };
 
             return View("~/Views/Profile/Profile.cshtml", model);
         }
 
-        // POST: User Profile
         [HttpPost]
         public async Task<IActionResult> Profile(ProfileViewModel model)
         {
@@ -152,6 +148,7 @@ namespace UTB_social_network_Dudik.Controllers
 
                 user.FirstName = model.FirstName;
                 user.LastName = model.LastName;
+
 
                 var result = await _userManager.UpdateAsync(user);
 
@@ -170,93 +167,32 @@ namespace UTB_social_network_Dudik.Controllers
             return View("~/Views/Profile/Profile.cshtml", model);
         }
 
-        // GET: User Contacts Page
-        [HttpGet]
-        public async Task<IActionResult> Contacts()
+        // DELETE: User
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id, [FromServices] SocialNetworkDbContext dbContext)
         {
-            var user = await _userManager.GetUserAsync(User);
-
+            var user = await _userManager.FindByIdAsync(id.ToString());
             if (user == null)
             {
                 return NotFound();
             }
 
-            // Fetch contacts as `Utb_sc_Domain.Entities.User` and map them to `Utb_sc_Infrastructure.Identity.User`
-            var domainContacts = await _dbContext.FriendLists
-                .Where(fl => fl.UserId == user.Id)
-                .Include(fl => fl.Friend)
-                .Select(fl => fl.Friend) // Assuming `Friend` is of type `Utb_sc_Domain.Entities.User`
-                .ToListAsync();
+            // Remove user roles
+            var userRoles = dbContext.UserRoles.Where(ur => ur.UserId == id).ToList();
+            dbContext.UserRoles.RemoveRange(userRoles);
 
-            var mappedContacts = domainContacts.Select(dc => new IdentityUser
+            // Remove user
+            var result = await _userManager.DeleteAsync(user);
+            if (!result.Succeeded)
             {
-                Id = dc.Id,
-                UserName = dc.UserName,
-                Email = dc.Email,
-                // Add other properties if necessary
-            }).ToList();
-
-            var model = new ContactsViewModel
-            {
-                Contacts = mappedContacts
-            };
-
-            return View("~/Views/Contacts/Contactspage.cshtml", model);
-        }
-
-        // POST: Add a contact
-        [HttpPost]
-        public async Task<IActionResult> AddContact(string email)
-        {
-            // Get the current user
-            var user = await _userManager.GetUserAsync(User);
-
-            if (user == null)
-            {
-                TempData["ErrorMessage"] = "Current user not found.";
-                return RedirectToAction(nameof(Contacts));
+                TempData["ErrorMessage"] = "Failed to delete user.";
+                return RedirectToAction("Admin", "Home");
             }
 
-            // Find the friend by email
-            var friend = await _userManager.FindByEmailAsync(email);
+            await dbContext.SaveChangesAsync();
 
-            if (friend == null)
-            {
-                TempData["ErrorMessage"] = "User with the specified email does not exist.";
-                return RedirectToAction(nameof(Contacts));
-            }
-
-            if (friend.Id == user.Id)
-            {
-                TempData["ErrorMessage"] = "You cannot add yourself as a contact.";
-                return RedirectToAction(nameof(Contacts));
-            }
-
-            // Check if the friendship already exists
-            var existingContact = await _dbContext.FriendLists
-                .FirstOrDefaultAsync(fl => fl.UserId == user.Id && fl.FriendId == friend.Id);
-
-            if (existingContact != null)
-            {
-                TempData["ErrorMessage"] = "This user is already in your contacts.";
-                return RedirectToAction(nameof(Contacts));
-            }
-
-            // Add the new contact
-            _dbContext.FriendLists.Add(new FriendList
-            {
-                UserId = user.Id,
-                User = user,
-                FriendId = friend.Id,
-                Friend = friend,
-                FriendsSince = DateTime.UtcNow,
-                Status = "Active"
-            });
-
-            await _dbContext.SaveChangesAsync();
-
-            TempData["SuccessMessage"] = $"Contact {friend.Email} added successfully.";
-            return RedirectToAction(nameof(Contacts));
+            TempData["SuccessMessage"] = "User deleted successfully.";
+            return RedirectToAction("Admin", "Home");
         }
     }
 }
