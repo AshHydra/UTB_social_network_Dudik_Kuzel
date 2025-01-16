@@ -224,13 +224,11 @@ namespace Utb_sc_Infrasctructure.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("FriendId")
+                    b.Property<int>("FriendId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("FriendsSince")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime(6)")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -239,21 +237,11 @@ namespace Utb_sc_Infrasctructure.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId1")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId2")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("FriendId");
 
                     b.HasIndex("UserId");
-
-                    b.HasIndex("UserId1");
-
-                    b.HasIndex("UserId2");
 
                     b.ToTable("FriendLists");
                 });
@@ -469,16 +457,16 @@ namespace Utb_sc_Infrasctructure.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "69c41b77-b651-4985-bb56-3b783d81727c",
+                            ConcurrencyStamp = "65322f78-552b-4487-b4de-9e49edde1400",
                             Email = "admin@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGE5D5KczAbSuyOr7AI7iX4lwEDQeEQ631K6R6CZ0Kg+gr8nxTvc6JC4JZCa+3I9xA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGDeoYM2eDNNnCYbl7/QSYDp+njYmDCmwzV0722so/T9Yss2U+xQAeL5okveWHcdTQ==",
                             PhoneNumberConfirmed = false,
                             ProfilePicturePath = "/images/default.png",
-                            SecurityStamp = "485151f4-12c5-4d47-9023-1407bf9c8950",
+                            SecurityStamp = "efa11bbb-211a-4a08-abf3-f08f87dad71c",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -552,26 +540,21 @@ namespace Utb_sc_Infrasctructure.Migrations
 
             modelBuilder.Entity("Utb_sc_Domain.Entities.FriendList", b =>
                 {
-                    b.HasOne("Utb_sc_Infrastructure.Identity.User", null)
-                        .WithMany()
+                    b.HasOne("Utb_sc_Domain.Entities.User", "Friend")
+                        .WithMany("FriendOf")
                         .HasForeignKey("FriendId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
-                    b.HasOne("Utb_sc_Infrastructure.Identity.User", null)
-                        .WithMany()
+                    b.HasOne("Utb_sc_Domain.Entities.User", "User")
+                        .WithMany("Friends")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Utb_sc_Domain.Entities.User", null)
-                        .WithMany("Friends")
-                        .HasForeignKey("UserId1");
+                    b.Navigation("Friend");
 
-                    b.HasOne("Utb_sc_Domain.Entities.User", null)
-                        .WithMany("FriendOf")
-                        .HasForeignKey("UserId2")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Utb_sc_Domain.Entities.Message", b =>

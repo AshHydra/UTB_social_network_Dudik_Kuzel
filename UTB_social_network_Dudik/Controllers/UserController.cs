@@ -9,19 +9,22 @@ using Utb_sc_Infrastructure.Identity;
 using Utb_sc_Infrastructure.Database;
 using System.IO;
 using System;
+using Utb_sc_Domain.Entities;
 
 namespace UTB_social_network_Dudik.Controllers
 {
     [Authorize]
     public class UserController : Controller
     {
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<Utb_sc_Infrastructure.Identity.User> _userManager; // Opravený UserManager
         private readonly RoleManager<IdentityRole<int>> _roleManager;
+        private readonly SocialNetworkDbContext _dbContext;
 
-        public UserController(UserManager<User> userManager, RoleManager<IdentityRole<int>> roleManager)
+        public UserController(UserManager<Utb_sc_Infrastructure.Identity.User> userManager, RoleManager<IdentityRole<int>> roleManager, SocialNetworkDbContext dbContext)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _dbContext = dbContext;
         }
 
         // GET: Edit User
@@ -53,18 +56,16 @@ namespace UTB_social_network_Dudik.Controllers
 
         // POST: Edit User
         [HttpPost]
-        public async Task<IActionResult> Edit(EditUserViewModel model, [FromServices] SocialNetworkDbContext dbContext)
+        public async Task<IActionResult> Edit(EditUserViewModel model)
         {
             if (ModelState.IsValid)
             {
-                // Fetch the user
                 var user = await _userManager.FindByIdAsync(model.Id.ToString());
                 if (user == null)
                 {
                     return NotFound();
                 }
 
-                // Update user details
                 user.UserName = model.UserName;
                 user.Email = model.Email;
                 user.FirstName = model.FirstName;
@@ -81,7 +82,6 @@ namespace UTB_social_network_Dudik.Controllers
                     return View("~/Views/Admin/EditUser.cshtml", model);
                 }
 
-                // Update roles
                 if (!string.IsNullOrEmpty(model.RoleIds))
                 {
                     var roleIds = model.RoleIds.Split(',')
@@ -90,19 +90,19 @@ namespace UTB_social_network_Dudik.Controllers
                                                .Select(id => id.Value)
                                                .ToList();
 
-                    var currentRoles = dbContext.UserRoles.Where(ur => ur.UserId == model.Id).ToList();
-                    dbContext.UserRoles.RemoveRange(currentRoles);
+                    var currentRoles = _dbContext.UserRoles.Where(ur => ur.UserId == model.Id).ToList();
+                    _dbContext.UserRoles.RemoveRange(currentRoles);
 
                     foreach (var roleId in roleIds)
                     {
-                        dbContext.UserRoles.Add(new IdentityUserRole<int>
+                        _dbContext.UserRoles.Add(new IdentityUserRole<int>
                         {
                             UserId = model.Id,
                             RoleId = roleId
                         });
                     }
 
-                    await dbContext.SaveChangesAsync();
+                    await _dbContext.SaveChangesAsync();
                 }
 
                 return RedirectToAction("Admin", "Home");
@@ -111,6 +111,87 @@ namespace UTB_social_network_Dudik.Controllers
             return View("~/Views/Admin/EditUser.cshtml", model);
         }
 
+        // Method to load user's contacts
+        [HttpGet]
+        public async Task<IActionResult> LoadContacts([FromServices] SocialNetworkDbContext dbContext)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            // Načtení všech přátel aktuálního uživatele
+            var friends = await dbContext.FriendLists
+                .Where(fl => fl.UserId == user.Id && fl.Status == "Active")
+                .Select(fl => fl.Friend)
+                .ToListAsync();
+
+            // Zobrazení kontaktů ve ViewModelu
+            var model = new ContactsViewModel
+            {
+                Contacts = friends.Select(f => new Utb_sc_Infrastructure.Identity.User
+                {
+                    UserName = f.UserName,
+                    Email = f.Email
+                 
+                }).ToList()
+            };
+
+
+            return View("~/Views/Contacts/Contactspage.cshtml", model);
+        }
+
+
+        // Method to add a contact for the user
+        [HttpPost]
+        public async Task<IActionResult> AddContacts(string email, [FromServices] SocialNetworkDbContext dbContext)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            // Vyhledání přítele podle emailu
+            var friend = await _userManager.Users
+                .FirstOrDefaultAsync(u => u.Email == email); // Hledáme uživatele podle emailu
+
+            if (friend == null)
+            {
+                TempData["ErrorMessage"] = "Friend not found.";
+                return RedirectToAction("LoadContacts");
+            }
+
+            var existingFriendship = await dbContext.FriendLists
+                .FirstOrDefaultAsync(fl => (fl.UserId == user.Id && fl.FriendId == friend.Id) ||
+                                           (fl.UserId == friend.Id && fl.FriendId == user.Id));
+
+            if (existingFriendship != null)
+            {
+                TempData["ErrorMessage"] = "This user is already your friend.";
+                return RedirectToAction("LoadContacts");
+            }
+
+            var friendList = new FriendList
+            {
+                UserId = user.Id,
+                FriendId = friend.Id,
+                FriendsSince = DateTime.Now,
+                Status = "Active"
+            };
+
+            dbContext.FriendLists.Add(friendList);
+            await dbContext.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Friend added successfully!";
+            return RedirectToAction("LoadContacts");
+        }
+
+
+
+
+        // GET: Profile
         [HttpGet]
         public async Task<IActionResult> Profile()
         {
@@ -122,7 +203,6 @@ namespace UTB_social_network_Dudik.Controllers
                 return NotFound();
             }
 
-            // Fetch profile picture from session
             var profilePicturePath = HttpContext.Session.GetString("ProfilePicture") ?? "/images/default.png";
 
             var model = new ProfileViewModel
@@ -138,11 +218,6 @@ namespace UTB_social_network_Dudik.Controllers
 
             return View("~/Views/Profile/Profile.cshtml", model);
         }
-
-
-
-
-
 
         [HttpPost]
         public async Task<IActionResult> Profile(ProfileViewModel model)
@@ -181,9 +256,6 @@ namespace UTB_social_network_Dudik.Controllers
             return View("~/Views/Profile/Profile.cshtml", model);
         }
 
-
-
-
         [HttpPost]
         public async Task<IActionResult> UploadProfilePicture(IFormFile ProfilePictureFile)
         {
@@ -199,7 +271,6 @@ namespace UTB_social_network_Dudik.Controllers
                 var fileName = Path.GetFileName(ProfilePictureFile.FileName);
                 var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", fileName);
 
-                // Zkontroluj, jestli soubor už existuje, a pokud ano, přejmenuj ho
                 if (System.IO.File.Exists(filePath))
                 {
                     var fileExtension = Path.GetExtension(fileName);
@@ -212,17 +283,13 @@ namespace UTB_social_network_Dudik.Controllers
                     }
                 }
 
-                // Uložení souboru na server
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
                     await ProfilePictureFile.CopyToAsync(stream);
                 }
 
-                // Uložení cesty k souboru do uživatelského profilu
                 user.ProfilePicturePath = $"/uploads/{fileName}";
                 await _userManager.UpdateAsync(user);
-
-                // Uložení cesty k obrázku do session pro okamžitou změnu zobrazení
                 HttpContext.Session.SetString("ProfilePicture", user.ProfilePicturePath);
 
                 TempData["SuccessMessage"] = "Profile picture updated successfully!";
@@ -235,14 +302,9 @@ namespace UTB_social_network_Dudik.Controllers
             return RedirectToAction("Profile");
         }
 
-
-
-
-
-
         // DELETE: User
         [HttpPost]
-        public async Task<IActionResult> Delete(int id, [FromServices] SocialNetworkDbContext dbContext)
+        public async Task<IActionResult> Delete(int id)
         {
             var user = await _userManager.FindByIdAsync(id.ToString());
             if (user == null)
@@ -250,11 +312,9 @@ namespace UTB_social_network_Dudik.Controllers
                 return NotFound();
             }
 
-            // Remove user roles
-            var userRoles = dbContext.UserRoles.Where(ur => ur.UserId == id).ToList();
-            dbContext.UserRoles.RemoveRange(userRoles);
+            var userRoles = _dbContext.UserRoles.Where(ur => ur.UserId == id).ToList();
+            _dbContext.UserRoles.RemoveRange(userRoles);
 
-            // Remove user
             var result = await _userManager.DeleteAsync(user);
             if (!result.Succeeded)
             {
@@ -262,7 +322,7 @@ namespace UTB_social_network_Dudik.Controllers
                 return RedirectToAction("Admin", "Home");
             }
 
-            await dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "User deleted successfully.";
             return RedirectToAction("Admin", "Home");

@@ -9,15 +9,20 @@
         <!-- Display success or error messages -->
         @if (TempData["SuccessMessage"] != null)
         {
-            <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
         }
+
         @if (TempData["ErrorMessage"] != null)
         {
-            <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
         }
 
         <!-- Form to add a new contact -->
-        <form method="post" asp-action="AddContact">
+        <form method="post" asp-controller="User" asp-action="AddContacts">
             <label for="email" class="form-label">Add contact by email:</label>
             <input type="email" class="form-input" id="email" name="email" required />
             <button type="submit" class="form-button">Add</button>
@@ -29,7 +34,9 @@
             @foreach (var contact in Model.Contacts)
             {
                 <li class="contact-item">
-                    <img src="https://i.imgur.com/37ShKOl.png" alt="icon" class="contact-icon" />
+                    <!-- Check if the contact has a profile picture; if not, display a default image -->
+                    <img src="@(!string.IsNullOrEmpty(contact.ProfilePicturePath) ? contact.ProfilePicturePath : "https://i.imgur.com/37ShKOl.png")"
+                         alt="icon" class="contact-icon" />
                     <span class="contact-email">@contact.Email</span>
                     <span class="contact-username">(@contact.UserName)</span>
                 </li>

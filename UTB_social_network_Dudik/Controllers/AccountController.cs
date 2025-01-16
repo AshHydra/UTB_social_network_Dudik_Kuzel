@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using UTB_social_network_Dudik.Models;
 using Utb_sc_Infrastructure.Identity;
+using Microsoft.EntityFrameworkCore;
+using Utb_sc_Infrastructure.Database;
 
 namespace UTB_social_network_Dudik.Controllers
 {
@@ -9,11 +11,13 @@ namespace UTB_social_network_Dudik.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly SocialNetworkDbContext _context;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, SocialNetworkDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context;
         }
 
         // GET: Register
@@ -80,13 +84,9 @@ namespace UTB_social_network_Dudik.Controllers
         {
             if (ModelState.IsValid)
             {
-                Console.WriteLine("Login attempt with email: " + model.Email);
-
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user != null)
                 {
-                    Console.WriteLine($"User found: {user.UserName} with ID {user.Id}");
-
                     var result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, isPersistent: false, lockoutOnFailure: false);
                     if (result.Succeeded)
                     {
@@ -94,31 +94,19 @@ namespace UTB_social_network_Dudik.Controllers
                         HttpContext.Session.SetString("UserEmail", user.Email);
                         HttpContext.Session.SetString("ProfilePicture", user.ProfilePicturePath ?? "/images/default.png");
 
+                        // Po přihlášení přesměrujeme na stránku s kontakty
                         return RedirectToAction("MainPage", "Home");
                     }
-                    else
-                    {
-                        Console.WriteLine("Login failed: Invalid password");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Login failed: User not found");
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-            }
-            else
-            {
-                Console.WriteLine("Login failed: Model state invalid");
             }
 
             return View("~/Views/Home/Index.cshtml", model);
         }
 
 
-
-        // GET: Logout
+        // Log out
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
