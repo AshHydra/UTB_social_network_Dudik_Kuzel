@@ -30,13 +30,17 @@ namespace Utb_sc_Infrastructure.Database
             {
                 entity.HasKey(fl => fl.Id);
 
+                // Ensure 'Id' is auto-increment
+                entity.Property(fl => fl.Id)
+                    .ValueGeneratedOnAdd();
+
                 // Define relationships for UserId and FriendId
-                entity.HasOne<IdentityUser>()
+                entity.HasOne(fl => fl.User)
                     .WithMany()
                     .HasForeignKey(fl => fl.UserId)
                     .OnDelete(DeleteBehavior.Restrict);
 
-                entity.HasOne<IdentityUser>()
+                entity.HasOne(fl => fl.Friend)
                     .WithMany()
                     .HasForeignKey(fl => fl.FriendId)
                     .OnDelete(DeleteBehavior.Restrict);

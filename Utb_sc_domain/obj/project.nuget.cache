@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "awoacKrHOIqbIamutOiFwacXUxs2cXJcXn/GgfR6G/UHVXtXf/PNaVGM/9DEVtRA8U7YQtWphMj+U7Jgl28Pnw==",
+  "dgSpecHash": "UhxsLpACVvRx2nVhAr+0F4HTl1sGb9F4oL1pDtSKIz4hMpij5rpVIWAerqj+WF2blgwB6fj7NvrIBoUBwyzoKg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj",
+  "projectFilePath": "C:\\Users\\ash31\\OneDrive\\Dokumenty\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Domain\\Utb_sc_Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ash31\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\ash31\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.2.0\\microsoft.aspnetcore.authorization.2.2.0.nupkg.sha512",

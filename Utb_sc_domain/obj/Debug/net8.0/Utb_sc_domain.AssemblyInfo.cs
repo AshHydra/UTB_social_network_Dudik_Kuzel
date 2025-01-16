@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Utb_sc_Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b240b3dabb67282ad38266909dc5a605d4aa1829")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2219140fbe91da8b480dda82a02c7e4f4bf45c99")]
 [assembly: System.Reflection.AssemblyProductAttribute("Utb_sc_Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Utb_sc_Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
