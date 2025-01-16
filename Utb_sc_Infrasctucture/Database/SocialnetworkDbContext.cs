@@ -25,27 +25,48 @@ namespace Utb_sc_Infrastructure.Database
         {
             base.OnModelCreating(modelBuilder);
 
-            // Pokud používáte ApplicationUser nebo jinou třídu dědící z IdentityUser
-            modelBuilder.Entity<IdentityUser>()
-                .Property(u => u.ProfilePicturePath)
-                .HasDefaultValue("/images/default.png");
-
-            // Explicitně mapujeme IdentityRole<int> na tabulku AspNetRoles
-            modelBuilder.Entity<IdentityRole<int>>().ToTable("AspNetRoles");
-
-            // Seedování rolí
-            modelBuilder.Entity<IdentityRole<int>>().HasData(new List<IdentityRole<int>>
+            // Configure the FriendList entity
+            modelBuilder.Entity<FriendList>(entity =>
             {
-                new IdentityRole<int> { Id = 1, Name = "Admin", NormalizedName = "ADMIN" },
-                new IdentityRole<int> { Id = 2, Name = "User", NormalizedName = "USER" },
-                new IdentityRole<int> { Id = 3, Name = "Moderator", NormalizedName = "MODERATOR" }
+                entity.HasKey(fl => fl.Id);
+
+                // Define relationships for UserId and FriendId
+                entity.HasOne<IdentityUser>()
+                    .WithMany()
+                    .HasForeignKey(fl => fl.UserId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne<IdentityUser>()
+                    .WithMany()
+                    .HasForeignKey(fl => fl.FriendId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                // Default value for FriendsSince
+                entity.Property(fl => fl.FriendsSince)
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
             });
 
-            // Seedování uživatelů
-            modelBuilder.Entity<IdentityUser>().HasData(new List<IdentityUser>
-            {
-                new IdentityUser
-                {
+            // Default profile picture for IdentityUser
+            modelBuilder.Entity<IdentityUser>()
+                        .Property(u => u.ProfilePicturePath)
+                        .HasDefaultValue("/images/default.png");
+
+                    // Map IdentityRole<int> to AspNetRoles
+                    modelBuilder.Entity<IdentityRole<int>>().ToTable("AspNetRoles");
+
+                    // Seed roles
+                    modelBuilder.Entity<IdentityRole<int>>().HasData(new List<IdentityRole<int>>
+                    {
+                    new IdentityRole<int> { Id = 1, Name = "Admin", NormalizedName = "ADMIN" },
+                    new IdentityRole<int> { Id = 2, Name = "User", NormalizedName = "USER" },
+                    new IdentityRole<int> { Id = 3, Name = "Moderator", NormalizedName = "MODERATOR" }
+                    });
+
+                    // Seed users
+                    modelBuilder.Entity<IdentityUser>().HasData(new List<IdentityUser>
+                    {
+                    new IdentityUser
+                    {
                     Id = 1,
                     UserName = "admin",
                     NormalizedUserName = "ADMIN",
@@ -54,27 +75,15 @@ namespace Utb_sc_Infrastructure.Database
                     EmailConfirmed = true,
                     PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "Admin@123"),
                     SecurityStamp = Guid.NewGuid().ToString("D")
-                }
-            });
+                    }
+                    });
 
-            // Seedování vztahů mezi uživateli a rolemi
-            modelBuilder.Entity<IdentityUserRole<int>>().HasData(new List<IdentityUserRole<int>>
-            {
-                new IdentityUserRole<int> { UserId = 1, RoleId = 1 } // Admin uživatel přiřazen k roli Admin
-            });
-
-            // Konfigurace vztahů mezi entitami pro FriendList
-            modelBuilder.Entity<FriendList>()
-                .HasOne(fl => fl.User)
-                .WithMany(u => u.Friends)
-                .HasForeignKey(fl => fl.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<FriendList>()
-                .HasOne(fl => fl.Friend)
-                .WithMany(u => u.FriendOf)
-                .HasForeignKey(fl => fl.FriendId)
-                .OnDelete(DeleteBehavior.Restrict);
+                    // Seed user-role relationships
+                    modelBuilder.Entity<IdentityUserRole<int>>().HasData(new List<IdentityUserRole<int>>
+                    {
+                    new IdentityUserRole<int> { UserId = 1, RoleId = 1 }
+                    });
         }
+
     }
 }

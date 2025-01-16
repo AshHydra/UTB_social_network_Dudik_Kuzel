@@ -4,10 +4,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using UTB_social_network_Dudik.Models;
 using Utb_sc_Infrastructure.Identity;
 using System.Diagnostics;
 using Utb_sc_Infrastructure.Database;
+using Utb_sc_Domain.Entities;
+using IdentityUser = Utb_sc_Infrastructure.Identity.User; // Alias for Identity.User
+using DomainUser = Utb_sc_Domain.Entities.User; // Alias for Domain.User
 
 namespace UTB_social_network_Dudik.Controllers
 {
@@ -15,12 +19,12 @@ namespace UTB_social_network_Dudik.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole<int>> _roleManager;
 
         public HomeController(
             ILogger<HomeController> logger,
-            UserManager<User> userManager,
+            UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole<int>> roleManager)
         {
             _logger = logger;
@@ -180,7 +184,7 @@ namespace UTB_social_network_Dudik.Controllers
 
         // GET: /Home/Contacts
         [HttpGet]
-        public async Task<IActionResult> Contacts()
+        public async Task<IActionResult> Contacts([FromServices] SocialNetworkDbContext dbContext)
         {
             // Get the current logged-in user
             var currentUser = await _userManager.GetUserAsync(User);
@@ -191,19 +195,73 @@ namespace UTB_social_network_Dudik.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            // Fetch all other users (excluding the current user)
-            var identityUsers = _userManager.Users
-                .Where(u => u.Id != currentUser.Id)
+            // Fetch the list of friends for the current user
+            var friendIds = dbContext.FriendLists
+                .Where(fl => fl.UserId == currentUser.Id)
+                .Select(fl => fl.FriendId)
+                .ToList();
+
+            // Fetch user details of those friends
+            var friends = _userManager.Users
+                .Where(u => friendIds.Contains(u.Id))
                 .ToList();
 
             // Populate the ContactsViewModel
             var model = new ContactsViewModel
             {
-                Contacts = identityUsers // Ensure this list is not null
+                Contacts = friends // Only friends of the current user
             };
 
             // Pass the model to the view
             return View("~/Views/Contacts/Contactspage.cshtml", model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddContact(string email, [FromServices] SocialNetworkDbContext dbContext)
+        {
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null)
+            {
+                TempData["ErrorMessage"] = "User not found.";
+                return RedirectToAction(nameof(Contacts));
+            }
+
+            var friendToAdd = await _userManager.FindByEmailAsync(email);
+            if (friendToAdd == null)
+            {
+                TempData["ErrorMessage"] = "User with the provided email does not exist.";
+                return RedirectToAction(nameof(Contacts));
+            }
+
+            if (friendToAdd.Id == currentUser.Id)
+            {
+                TempData["ErrorMessage"] = "You cannot add yourself as a friend.";
+                return RedirectToAction(nameof(Contacts));
+            }
+
+            var alreadyFriends = dbContext.FriendLists.Any(fl =>
+                (fl.UserId == currentUser.Id && fl.FriendId == friendToAdd.Id) ||
+                (fl.UserId == friendToAdd.Id && fl.FriendId == currentUser.Id));
+
+            if (alreadyFriends)
+            {
+                TempData["ErrorMessage"] = "This user is already in your contacts.";
+                return RedirectToAction(nameof(Contacts));
+            }
+
+            var friendship = new FriendList
+            {
+                UserId = currentUser.Id,
+                FriendId = friendToAdd.Id,
+                FriendsSince = DateTime.Now,
+                Status = "Active"
+            };
+
+            dbContext.FriendLists.Add(friendship);
+            await dbContext.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = $"{friendToAdd.Email} has been added to your contacts.";
+            return RedirectToAction(nameof(Contacts));
         }
 
 
