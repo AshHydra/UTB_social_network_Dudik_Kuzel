@@ -6,7 +6,7 @@
     <div class="contacts-window">
         <h1 class="contacts-title">Contacts</h1>
 
-        <!-- Display success or error messages -->
+        <!-- Zobrazení úspěšných nebo chybových zpráv -->
         @if (TempData["SuccessMessage"] != null)
         {
             <div class="alert alert-success">
@@ -21,27 +21,32 @@
             </div>
         }
 
-        <!-- Form to add a new contact -->
-        <form method="post" asp-controller="User" asp-action="AddContacts">
+        <!-- Formulář pro přidání nového kontaktu -->
+        <form method="post" asp-controller="User" asp-action="AddContacts" class="add-contact-form">
             <label for="email" class="form-label">Add contact by email:</label>
-            <input type="email" class="form-input" id="email" name="email" required />
+            <input type="email" class="form-input" id="email" name="email" required placeholder="Enter email..." />
             <button type="submit" class="form-button">Add</button>
         </form>
 
-        <!-- List of contacts -->
+        <!-- Seznam kontaktů -->
         <h3 class="contacts-list-title">Contacts List:</h3>
         <ul class="contacts-list">
-            @foreach (var contact in Model.Contacts)
+            @if (Model.Contacts != null && Model.Contacts.Any())
             {
-                <li class="contact-item">
-                    <!-- Check if the contact has a profile picture; if not, display a default image -->
-                    <img src="@(!string.IsNullOrEmpty(contact.ProfilePicturePath) ? contact.ProfilePicturePath : "https://i.imgur.com/37ShKOl.png")"
-                         alt="icon" class="contact-icon" />
-                    <span class="contact-email">@contact.Email</span>
-                    <span class="contact-username">(@contact.UserName)</span>
-                </li>
+                @foreach (var contact in Model.Contacts)
+                {
+                    <li>
+                        <img src="@contact.ProfilePicturePath" alt="Profile Picture" />
+                        <span>@contact.UserName</span> - <span>@contact.Email</span>
+                    </li>
+                }
+            }
+            else
+            {
+                <li class="no-contacts">No contacts found. Add a contact to get started.</li>
             }
         </ul>
+
     </div>
 </div>
 

@@ -12,8 +12,8 @@ using Utb_sc_Infrastructure.Database;
 namespace Utb_sc_Infrasctructure.Migrations
 {
     [DbContext(typeof(SocialNetworkDbContext))]
-    [Migration("20250116012247_FreshMigration")]
-    partial class FreshMigration
+    [Migration("20250125185515_RemoveProfilePictureColumn")]
+    partial class RemoveProfilePictureColumn
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -227,13 +227,11 @@ namespace Utb_sc_Infrasctructure.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("FriendId")
+                    b.Property<int>("FriendId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("FriendsSince")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime(6)")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -242,21 +240,11 @@ namespace Utb_sc_Infrasctructure.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId1")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId2")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("FriendId");
 
                     b.HasIndex("UserId");
-
-                    b.HasIndex("UserId1");
-
-                    b.HasIndex("UserId2");
 
                     b.ToTable("FriendLists");
                 });
@@ -370,7 +358,7 @@ namespace Utb_sc_Infrasctructure.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<string>("ProfilePictureUrl")
+                    b.Property<string>("ProfilePicturePath")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -472,16 +460,16 @@ namespace Utb_sc_Infrasctructure.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "69c41b77-b651-4985-bb56-3b783d81727c",
+                            ConcurrencyStamp = "efdb372e-a2aa-46c6-9e9e-e8adbe282598",
                             Email = "admin@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGE5D5KczAbSuyOr7AI7iX4lwEDQeEQ631K6R6CZ0Kg+gr8nxTvc6JC4JZCa+3I9xA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEB6J7edzYGyP5Hx+cs2MI8vsSusp0QIpETEAQ2vxTZDQwTqYd2HGCS9m7XF6U3dlkw==",
                             PhoneNumberConfirmed = false,
                             ProfilePicturePath = "/images/default.png",
-                            SecurityStamp = "485151f4-12c5-4d47-9023-1407bf9c8950",
+                            SecurityStamp = "5706730c-8161-4e76-b3a4-a521a9361dd6",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -555,26 +543,21 @@ namespace Utb_sc_Infrasctructure.Migrations
 
             modelBuilder.Entity("Utb_sc_Domain.Entities.FriendList", b =>
                 {
-                    b.HasOne("Utb_sc_Infrastructure.Identity.User", null)
-                        .WithMany()
+                    b.HasOne("Utb_sc_Domain.Entities.User", "Friend")
+                        .WithMany("FriendOf")
                         .HasForeignKey("FriendId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
-                    b.HasOne("Utb_sc_Infrastructure.Identity.User", null)
-                        .WithMany()
+                    b.HasOne("Utb_sc_Domain.Entities.User", "User")
+                        .WithMany("Friends")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Utb_sc_Domain.Entities.User", null)
-                        .WithMany("Friends")
-                        .HasForeignKey("UserId1");
+                    b.Navigation("Friend");
 
-                    b.HasOne("Utb_sc_Domain.Entities.User", null)
-                        .WithMany("FriendOf")
-                        .HasForeignKey("UserId2")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Utb_sc_Domain.Entities.Message", b =>

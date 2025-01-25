@@ -8,6 +8,12 @@ using UTB_social_network_Dudik.Models;
 using Utb_sc_Infrastructure.Identity;
 using System.Diagnostics;
 using Utb_sc_Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
+
+// Alias pro jmenné prostory
+using IdentityUser = Utb_sc_Infrastructure.Identity.User;
+using DomainUser = Utb_sc_Domain.Entities.User;
+using Utb_sc_Domain.Entities;
 
 namespace UTB_social_network_Dudik.Controllers
 {
@@ -15,17 +21,20 @@ namespace UTB_social_network_Dudik.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole<int>> _roleManager;
+        private readonly SocialNetworkDbContext _dbContext;
 
         public HomeController(
             ILogger<HomeController> logger,
-            UserManager<User> userManager,
-            RoleManager<IdentityRole<int>> roleManager)
+            UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole<int>> roleManager,
+            SocialNetworkDbContext dbContext)
         {
             _logger = logger;
             _userManager = userManager;
             _roleManager = roleManager;
+            _dbContext = dbContext;
         }
 
         // Profile actions
@@ -141,7 +150,6 @@ namespace UTB_social_network_Dudik.Controllers
             return RedirectToAction(nameof(Profile));
         }
 
-
         // Admin actions
 
         // GET: /Home/Admin
@@ -176,38 +184,56 @@ namespace UTB_social_network_Dudik.Controllers
             return View("~/Views/Admin/Adminpage.cshtml", model); // Pass mapped users to view
         }
 
-        // Contacts actions
+
 
         // GET: /Home/Contacts
         [HttpGet]
         public async Task<IActionResult> Contacts()
         {
-            // Get the current logged-in user
             var currentUser = await _userManager.GetUserAsync(User);
 
             if (currentUser == null)
             {
-                TempData["ErrorMessage"] = "User not found.";
-                return RedirectToAction(nameof(Index));
+                TempData["ErrorMessage"] = "Pøihlášený uživatel nebyl nalezen.";
+                return RedirectToAction("Index");
             }
 
-            // Fetch all other users (excluding the current user)
-            var identityUsers = _userManager.Users
-                .Where(u => u.Id != currentUser.Id)
-                .ToList();
-
-            // Populate the ContactsViewModel
-            var model = new ContactsViewModel
+            try
             {
-                Contacts = identityUsers // Ensure this list is not null
-            };
+                var friends = await _dbContext.FriendLists
+                    .Where(f => f.UserId == currentUser.Id || f.FriendId == currentUser.Id) // Filtrace pro obì strany vztahu
+                    .Include(f => f.Friend)
+                    .ToListAsync();
 
-            // Pass the model to the view
-            return View("~/Views/Contacts/Contactspage.cshtml", model);
+                Debug.WriteLine("Poèet pøátel: " + friends.Count); // Debugging: poèet pøátel
+
+                var model = new ContactsViewModel
+                {
+                    Contacts = friends.Select(f => new UserViewModel
+                    {
+                        Email = f.Friend.Email,
+                        UserName = f.Friend.UserName,
+                        ProfilePicturePath = f.Friend.ProfilePicturePath ?? "/images/default.png"
+                    }).ToList()
+                };
+
+                foreach (var friend in friends)
+                {
+                    Debug.WriteLine($"Friend: {friend.Friend.UserName}, Email: {friend.Friend.Email}"); // Debugging: zobrazit všechny pøátele
+                }
+
+                return View("~/Views/Contacts/Contactspage.cshtml", model);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Chyba pøi naèítání kontaktù.");
+                TempData["ErrorMessage"] = "Nastala chyba pøi naèítání kontaktù.";
+                return RedirectToAction("Index");
+            }
         }
 
 
-        // Other actions
+
 
         // GET: /Home/MainPage
         public IActionResult MainPage()

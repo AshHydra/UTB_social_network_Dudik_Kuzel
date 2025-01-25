@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "b1xVH0m34FGQ7dXIsNZwbhSuRUs0RcMhfb+iDgZJ7ow=",
+  "Hash": "5kcLrYOEuPEVDURlQFIAWxNsI2Erq/N5GiEXRLG1H+0=",
   "Source": "UTB_social_network_Dudik",
   "BasePath": "_content/UTB_social_network_Dudik",
   "Mode": "Default",
@@ -1422,6 +1422,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\wwwroot\\uploads\\2763-cat-face-meme.png",
+      "SourceId": "UTB_social_network_Dudik",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\wwwroot\\",
+      "BasePath": "_content/UTB_social_network_Dudik",
+      "RelativePath": "uploads/2763-cat-face-meme#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "rzmiedbw9v",
+      "Integrity": "GenuqNrB06mXRqRVqppkJ+fvY2OPtFkAkGP8x94d3yc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\2763-cat-face-meme.png"
     },
     {
       "Identity": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\wwwroot\\uploads\\edsel dope.jpeg",
@@ -6878,6 +6899,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-16aFlqtpsG9RyieKZUUUjkJpqTgcJtWXwT312I4Iz1s="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/2763-cat-face-meme.png",
+      "AssetFile": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\wwwroot\\uploads\\2763-cat-face-meme.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "81452"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GenuqNrB06mXRqRVqppkJ+fvY2OPtFkAkGP8x94d3yc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 16 Jan 2025 20:49:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-GenuqNrB06mXRqRVqppkJ+fvY2OPtFkAkGP8x94d3yc="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/2763-cat-face-meme.rzmiedbw9v.png",
+      "AssetFile": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\wwwroot\\uploads\\2763-cat-face-meme.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "81452"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GenuqNrB06mXRqRVqppkJ+fvY2OPtFkAkGP8x94d3yc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 16 Jan 2025 20:49:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rzmiedbw9v"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/2763-cat-face-meme.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GenuqNrB06mXRqRVqppkJ+fvY2OPtFkAkGP8x94d3yc="
         }
       ]
     },

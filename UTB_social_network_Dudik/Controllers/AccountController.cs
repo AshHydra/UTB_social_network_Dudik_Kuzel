@@ -96,6 +96,7 @@ namespace UTB_social_network_Dudik.Controllers
 
                         // Po přihlášení přesměrujeme na stránku s kontakty
                         return RedirectToAction("MainPage", "Home");
+                        Console.WriteLine("ID aktuálního uživatele: " + user.Id); // Použij 'user' místo 'currentUser'
                     }
                 }
 
@@ -104,6 +105,7 @@ namespace UTB_social_network_Dudik.Controllers
 
             return View("~/Views/Home/Index.cshtml", model);
         }
+
 
 
         // Log out

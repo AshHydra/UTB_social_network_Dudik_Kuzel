@@ -11,6 +11,6 @@ namespace Utb_sc_Domain.Entities
         public User Friend { get; set; }
 
         public DateTime FriendsSince { get; set; }
-        public string Status { get; set; } = "Active"; // Např. "Active", "Blocked", atd.
     }
+
 }

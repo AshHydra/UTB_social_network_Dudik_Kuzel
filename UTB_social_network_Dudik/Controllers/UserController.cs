@@ -111,85 +111,6 @@ namespace UTB_social_network_Dudik.Controllers
             return View("~/Views/Admin/EditUser.cshtml", model);
         }
 
-        // Method to load user's contacts
-        [HttpGet]
-        public async Task<IActionResult> LoadContacts([FromServices] SocialNetworkDbContext dbContext)
-        {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            // Načtení všech přátel aktuálního uživatele
-            var friends = await dbContext.FriendLists
-                .Where(fl => fl.UserId == user.Id && fl.Status == "Active")
-                .Select(fl => fl.Friend)
-                .ToListAsync();
-
-            // Zobrazení kontaktů ve ViewModelu
-            var model = new ContactsViewModel
-            {
-                Contacts = friends.Select(f => new Utb_sc_Infrastructure.Identity.User
-                {
-                    UserName = f.UserName,
-                    Email = f.Email
-                 
-                }).ToList()
-            };
-
-
-            return View("~/Views/Contacts/Contactspage.cshtml", model);
-        }
-
-
-        // Method to add a contact for the user
-        [HttpPost]
-        public async Task<IActionResult> AddContacts(string email, [FromServices] SocialNetworkDbContext dbContext)
-        {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            // Vyhledání přítele podle emailu
-            var friend = await _userManager.Users
-                .FirstOrDefaultAsync(u => u.Email == email); // Hledáme uživatele podle emailu
-
-            if (friend == null)
-            {
-                TempData["ErrorMessage"] = "Friend not found.";
-                return RedirectToAction("LoadContacts");
-            }
-
-            var existingFriendship = await dbContext.FriendLists
-                .FirstOrDefaultAsync(fl => (fl.UserId == user.Id && fl.FriendId == friend.Id) ||
-                                           (fl.UserId == friend.Id && fl.FriendId == user.Id));
-
-            if (existingFriendship != null)
-            {
-                TempData["ErrorMessage"] = "This user is already your friend.";
-                return RedirectToAction("LoadContacts");
-            }
-
-            var friendList = new FriendList
-            {
-                UserId = user.Id,
-                FriendId = friend.Id,
-                FriendsSince = DateTime.Now,
-                Status = "Active"
-            };
-
-            dbContext.FriendLists.Add(friendList);
-            await dbContext.SaveChangesAsync();
-
-            TempData["SuccessMessage"] = "Friend added successfully!";
-            return RedirectToAction("LoadContacts");
-        }
-
-
-
 
         // GET: Profile
         [HttpGet]
@@ -301,6 +222,56 @@ namespace UTB_social_network_Dudik.Controllers
 
             return RedirectToAction("Profile");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> AddContacts(string email)
+        {
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null)
+            {
+                TempData["ErrorMessage"] = "Přihlášený uživatel nebyl nalezen.";
+                return RedirectToAction("Index");
+            }
+
+            var friend = await _userManager.FindByEmailAsync(email);
+            if (friend == null)
+            {
+                TempData["ErrorMessage"] = "Uživatel s tímto emailem nebyl nalezen.";
+                return RedirectToAction("Contacts", "Home"); // Přesměrování na HomeController
+            }
+
+            // Check if the friendship exists in either direction
+            var existingFriendship = await _dbContext.FriendLists
+                .FirstOrDefaultAsync(f => (f.UserId == currentUser.Id && f.FriendId == friend.Id) ||
+                                          (f.UserId == friend.Id && f.FriendId == currentUser.Id));
+
+            if (existingFriendship != null)
+            {
+                TempData["ErrorMessage"] = "Tento uživatel je již ve vašem seznamu přátel.";
+                return RedirectToAction("Contacts", "Home"); // Přesměrování na HomeController
+            }
+
+            // Add the new friendship in both directions
+            var newFriendship1 = new FriendList
+            {
+                UserId = currentUser.Id,
+                FriendId = friend.Id
+            };
+
+            var newFriendship2 = new FriendList
+            {
+                UserId = friend.Id,
+                FriendId = currentUser.Id
+            };
+
+            _dbContext.FriendLists.AddRange(newFriendship1, newFriendship2);
+            await _dbContext.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Kontakt byl úspěšně přidán.";
+            return RedirectToAction("Contacts", "Home"); // Přesměrování na HomeController
+        }
+
+
 
         // DELETE: User
         [HttpPost]

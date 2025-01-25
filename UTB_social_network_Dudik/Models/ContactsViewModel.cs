@@ -5,6 +5,6 @@ namespace UTB_social_network_Dudik.Models
 {
     public class ContactsViewModel
     {
-        public List<User> Contacts { get; set; } = new List<User>();  // Inicializovaný jako prázdný seznam
+        public List<UserViewModel> Contacts { get; set; }
     }
 }
