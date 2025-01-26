@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 // Alias pro jmenné prostory
 using IdentityUser = Utb_sc_Infrastructure.Identity.User;
 using DomainUser = Utb_sc_Domain.Entities.User;
-using Utb_sc_Domain.Entities;
+
 
 namespace UTB_social_network_Dudik.Controllers
 {
