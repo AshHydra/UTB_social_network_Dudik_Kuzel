@@ -33,13 +33,15 @@
         <ul class="contacts-list">
             @if (Model.Contacts != null && Model.Contacts.Any())
             {
-                @foreach (var contact in Model.Contacts)
-                {
-                    <li>
-                        <img src="@contact.ProfilePicturePath" alt="Profile Picture" />
-                        <span>@contact.UserName</span> - <span>@contact.Email</span>
-                    </li>
-                }
+                <ul>
+                    @foreach (var contact in Model.Contacts)
+                    {
+                        <li>
+                            <img src="@contact.ProfilePicturePath" alt="Profilová fotka" width="50" height="50" />
+                            <strong>@contact.UserName</strong> - @contact.Email
+                        </li>
+                    }
+                </ul>
             }
             else
             {

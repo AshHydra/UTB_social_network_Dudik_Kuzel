@@ -6,6 +6,9 @@ namespace Utb_sc_Domain.Entities
 {
     public class User : IdentityUser<int>
     {
+
+        public virtual ICollection<FriendList> Friends { get; set; } = new List<FriendList>();
+        public virtual ICollection<FriendList> FriendOf { get; set; } = new List<FriendList>();
         public string UserName { get; set; }
         public string Email { get; set; }
         public string FirstName { get; set; }
@@ -15,7 +18,5 @@ namespace Utb_sc_Domain.Entities
         //vztahy
         public ICollection<Message> MessagesSent { get; set; } = new List<Message>();
         public ICollection<Chat> Chats { get; set; } = new List<Chat>();
-        public ICollection<FriendList> Friends { get; set; } = new List<FriendList>();
-        public ICollection<FriendList> FriendOf { get; set; } = new List<FriendList>();
     }
 }

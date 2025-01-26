@@ -240,10 +240,11 @@ namespace UTB_social_network_Dudik.Controllers
                 return RedirectToAction("Contacts", "Home"); // Přesměrování na HomeController
             }
 
-            // Check if the friendship exists in either direction
+            // Kontrola, zda již přátelství existuje
             var existingFriendship = await _dbContext.FriendLists
-                .FirstOrDefaultAsync(f => (f.UserId == currentUser.Id && f.FriendId == friend.Id) ||
-                                          (f.UserId == friend.Id && f.FriendId == currentUser.Id));
+                .FirstOrDefaultAsync(f =>
+                    (f.UserId == currentUser.Id && f.FriendId == friend.Id) ||
+                    (f.UserId == friend.Id && f.FriendId == currentUser.Id));
 
             if (existingFriendship != null)
             {
@@ -251,25 +252,21 @@ namespace UTB_social_network_Dudik.Controllers
                 return RedirectToAction("Contacts", "Home"); // Přesměrování na HomeController
             }
 
-            // Add the new friendship in both directions
-            var newFriendship1 = new FriendList
+            // Přidání nového přátelství
+            var newFriendship = new FriendList
             {
                 UserId = currentUser.Id,
-                FriendId = friend.Id
+                FriendId = friend.Id,
+                FriendsSince = DateTime.UtcNow // Nastavení data přátelství
             };
 
-            var newFriendship2 = new FriendList
-            {
-                UserId = friend.Id,
-                FriendId = currentUser.Id
-            };
-
-            _dbContext.FriendLists.AddRange(newFriendship1, newFriendship2);
+            _dbContext.FriendLists.Add(newFriendship);
             await _dbContext.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "Kontakt byl úspěšně přidán.";
             return RedirectToAction("Contacts", "Home"); // Přesměrování na HomeController
         }
+
 
 
 

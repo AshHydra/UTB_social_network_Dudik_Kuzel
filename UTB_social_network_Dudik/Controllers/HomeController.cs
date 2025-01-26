@@ -198,28 +198,39 @@ namespace UTB_social_network_Dudik.Controllers
                 return RedirectToAction("Index");
             }
 
+            var currentUserId = currentUser.Id; // Získání ID aktuálního uživatele
+
             try
             {
                 var friends = await _dbContext.FriendLists
-                    .Where(f => f.UserId == currentUser.Id || f.FriendId == currentUser.Id) // Filtrace pro obì strany vztahu
-                    .Include(f => f.Friend)
+                    .Where(f => f.UserId == currentUserId || f.FriendId == currentUserId)
+                    .Select(f => new
+                    {
+                        FriendId = f.UserId == currentUserId ? f.FriendId : f.UserId,
+                        FriendsSince = f.FriendsSince
+                    })
                     .ToListAsync();
 
-                Debug.WriteLine("Poèet pøátel: " + friends.Count); // Debugging: poèet pøátel
+                // Naètení uživatelských dat pro pøátele
+                var friendDetails = await _dbContext.Users
+                    .Where(u => friends.Select(f => f.FriendId).Contains(u.Id))
+                    .Select(u => new UserViewModel
+                    {
+                        Email = u.Email,
+                        UserName = u.UserName,
+                        ProfilePicturePath = u.ProfilePicturePath ?? "/images/default.png"
+                    })
+                    .ToListAsync();
 
                 var model = new ContactsViewModel
                 {
-                    Contacts = friends.Select(f => new UserViewModel
-                    {
-                        Email = f.Friend.Email,
-                        UserName = f.Friend.UserName,
-                        ProfilePicturePath = f.Friend.ProfilePicturePath ?? "/images/default.png"
-                    }).ToList()
+                    Contacts = friendDetails
                 };
 
-                foreach (var friend in friends)
+                // Debugování: Výpis dat pøátel do konzole
+                foreach (var friend in friendDetails)
                 {
-                    Debug.WriteLine($"Friend: {friend.Friend.UserName}, Email: {friend.Friend.Email}"); // Debugging: zobrazit všechny pøátele
+                    Debug.WriteLine($"Friend: {friend.UserName}, Email: {friend.Email}");
                 }
 
                 return View("~/Views/Contacts/Contactspage.cshtml", model);
@@ -231,6 +242,7 @@ namespace UTB_social_network_Dudik.Controllers
                 return RedirectToAction("Index");
             }
         }
+
 
 
 

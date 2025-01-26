@@ -64,6 +64,26 @@ namespace Utb_sc_Infrastructure.Database
                 }
             });
 
+
+            // Seedování vztahů mezi uživateli
+            modelBuilder.Entity<FriendList>().HasData(
+                new FriendList
+                {
+                    Id = -11,
+                    UserId = 1,
+                    FriendId = 2,
+                    FriendsSince = DateTime.UtcNow
+                },
+                new FriendList
+                {
+                    Id = -12,
+                    UserId = 1,
+                    FriendId = 3,
+                    FriendsSince = DateTime.UtcNow
+                }
+            );
+
+
             // Seedování vztahů mezi uživateli a rolemi
             modelBuilder.Entity<IdentityUserRole<int>>().HasData(new List<IdentityUserRole<int>>
             {
