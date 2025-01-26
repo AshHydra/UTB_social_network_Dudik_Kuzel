@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 
 namespace Utb_sc_Domain.Entities
 {
@@ -11,10 +8,9 @@ namespace Utb_sc_Domain.Entities
         public string Content { get; set; }
         public DateTime SentAt { get; set; }
 
-        // Vztahy
+        // Relationships
         public int SenderId { get; set; }
-        public User Sender { get; set; }
-
+        public IdentityUser<int> Sender { get; set; } // Reference AspNetUsers
         public int ChatId { get; set; }
         public Chat Chat { get; set; }
     }

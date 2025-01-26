@@ -1,24 +1,17 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Utb_sc_Domain.Entities;
-using Utb_sc_Infrastructure.Identity;
-using Utb_sc_Infrastructure.Database.Seeding;
-using Microsoft.AspNetCore.Identity;
-
-// Aliases for IdentityUser and DomainUser
-using IdentityUser = Utb_sc_Infrastructure.Identity.User;
-using DomainUser = Utb_sc_Domain.Entities.User;
 
 namespace Utb_sc_Infrastructure.Database
 {
-    public class SocialNetworkDbContext : IdentityDbContext<IdentityUser, IdentityRole<int>, int>
+    public class SocialNetworkDbContext : IdentityDbContext<IdentityUser<int>, IdentityRole<int>, int>
     {
-        // DbSet definitions for custom application entities
         public DbSet<Message> Messages { get; set; }
         public DbSet<Chat> Chats { get; set; }
+        public DbSet<ChatUser> ChatUsers { get; set; }
         public DbSet<FriendList> FriendLists { get; set; }
         public DbSet<Notification> Notifications { get; set; }
-
 
         public SocialNetworkDbContext(DbContextOptions<SocialNetworkDbContext> options) : base(options) { }
 
@@ -26,62 +19,80 @@ namespace Utb_sc_Infrastructure.Database
         {
             base.OnModelCreating(modelBuilder);
 
-            // Pokud používáte ApplicationUser nebo jinou třídu dědící z IdentityUser
-            modelBuilder.Entity<IdentityUser>()
-                .Property(u => u.ProfilePicturePath)
-                .HasDefaultValue("/images/default.png");
-            modelBuilder.Entity<FriendList>()
-                .HasOne(f => f.Friend)
+            // Configure ChatUser relationships
+            modelBuilder.Entity<ChatUser>()
+                .HasKey(cu => new { cu.ChatsId, cu.ParticipantsId });
+
+            modelBuilder.Entity<ChatUser>()
+                .HasOne(cu => cu.Chat)
+                .WithMany(c => c.ChatUsers)
+                .HasForeignKey(cu => cu.ChatsId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<ChatUser>()
+                .HasOne<IdentityUser<int>>(cu => cu.Participant) // Explicitly reference AspNetUsers
                 .WithMany()
-                .HasForeignKey(f => f.FriendId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasForeignKey(cu => cu.ParticipantsId)
+                .OnDelete(DeleteBehavior.Cascade);
 
-
-            // Explicitně mapujeme IdentityRole<int> na tabulku AspNetRoles
-            modelBuilder.Entity<IdentityRole<int>>().ToTable("AspNetRoles");
-
-            // Seedování rolí
-            modelBuilder.Entity<IdentityRole<int>>().HasData(new List<IdentityRole<int>>
-            {
-                new IdentityRole<int> { Id = 1, Name = "Admin", NormalizedName = "ADMIN" },
-                new IdentityRole<int> { Id = 2, Name = "User", NormalizedName = "USER" },
-                new IdentityRole<int> { Id = 3, Name = "Moderator", NormalizedName = "MODERATOR" }
-            });
-
-            // Seedování uživatelů
-            modelBuilder.Entity<IdentityUser>().HasData(new List<IdentityUser>
-            {
-                new IdentityUser
-                {
-                    Id = 1,
-                    UserName = "admin",
-                    NormalizedUserName = "ADMIN",
-                    Email = "admin@example.com",
-                    NormalizedEmail = "ADMIN@EXAMPLE.COM",
-                    EmailConfirmed = true,
-                    PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "Admin@123"),
-                    SecurityStamp = Guid.NewGuid().ToString("D")
-                }
-            });
-
-            // Seedování vztahů mezi uživateli a rolemi
-            modelBuilder.Entity<IdentityUserRole<int>>().HasData(new List<IdentityUserRole<int>>
-            {
-                new IdentityUserRole<int> { UserId = 1, RoleId = 1 } // Admin uživatel přiřazen k roli Admin
-            });
-
-            // Konfigurace vztahů mezi entitami pro FriendList
+            // Configure FriendList relationships
             modelBuilder.Entity<FriendList>()
-                .HasOne(fl => fl.User)
-                .WithMany(u => u.Friends)
+                .HasOne<IdentityUser<int>>(fl => fl.User) // Explicitly reference AspNetUsers
+                .WithMany()
                 .HasForeignKey(fl => fl.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<FriendList>()
-                .HasOne(fl => fl.Friend)
-                .WithMany(u => u.FriendOf)
+                .HasOne<IdentityUser<int>>(fl => fl.Friend) // Explicitly reference AspNetUsers
+                .WithMany()
                 .HasForeignKey(fl => fl.FriendId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            // Configure Message relationships
+            modelBuilder.Entity<Message>()
+                .HasOne<IdentityUser<int>>(m => m.Sender) // Explicitly reference AspNetUsers
+                .WithMany()
+                .HasForeignKey(m => m.SenderId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Message>()
+                .HasOne(m => m.Chat)
+                .WithMany(c => c.Messages)
+                .HasForeignKey(m => m.ChatId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Configure Notification relationships
+            modelBuilder.Entity<Notification>()
+                .HasOne<IdentityUser<int>>(n => n.User) // Explicitly reference AspNetUsers
+                .WithMany()
+                .HasForeignKey(n => n.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Seed roles and an admin user
+            modelBuilder.Entity<IdentityRole<int>>().HasData(new IdentityRole<int>
+            {
+                Id = 1,
+                Name = "Admin",
+                NormalizedName = "ADMIN"
+            });
+
+            modelBuilder.Entity<IdentityUser<int>>().HasData(new IdentityUser<int>
+            {
+                Id = 1,
+                UserName = "admin",
+                NormalizedUserName = "ADMIN",
+                Email = "admin@example.com",
+                NormalizedEmail = "ADMIN@EXAMPLE.COM",
+                EmailConfirmed = true,
+                PasswordHash = new PasswordHasher<IdentityUser<int>>().HashPassword(null, "Admin@123"),
+                SecurityStamp = Guid.NewGuid().ToString()
+            });
+
+            modelBuilder.Entity<IdentityUserRole<int>>().HasData(new IdentityUserRole<int>
+            {
+                UserId = 1,
+                RoleId = 1
+            });
         }
     }
 }
