@@ -1,0 +1,49 @@
+﻿/* Celkový styl pro navbar */
+.navbar {
+    background-color: #E8DEF8;
+    border-radius: 12px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+}
+
+/* Styl pro název UTB Chatter */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    color: #497FA5;
+}
+
+/* Styl pro tlačítka Home, Friends, Admin, Profile */
+.nav-link {
+    font-weight: bold !important; /* Zruší tučné písmo */
+    color: #497FA5 !important;
+    transition: background-color 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+
+    .nav-link.active {
+        font-weight: bold !important;
+        color: #497FA5 !important;
+        background-color: #E8F0FE;
+    }
+
+    .nav-link:hover {
+        background-color: #E8F0FE !important;
+        color: #497FA5 !important;
+    }
+
+
+/* Styl pro tlačítko Logout */
+.navbar-nav .nav-item:last-child .nav-link {
+    font-weight: bold;
+    color: #497FA5;
+    transition: background-color 0.3s ease;
+}
+
+    .navbar-nav .nav-item:last-child .nav-link:hover {
+        background-color: #E8F0FE;
+        color: #497FA5;
+    }

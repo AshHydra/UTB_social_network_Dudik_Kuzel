@@ -4,37 +4,7 @@
     ViewData["Title"] = "Main Page";
 }
 
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">UTB Chatter</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" asp-controller="Home" asp-action="MainPage">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Contacts">Contacts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Admin">Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Profile">Profile</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" asp-controller="Account" asp-action="Logout">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+<partial name="_NavBar" />
 
 <div class="container-fluid chat-container mt-4">
     <div class="row">
@@ -55,7 +25,10 @@
                     }
                 </div>
 
-                <button id="newConversationBtn" class="btn btn-primary mt-4">New Conversation</button>
+                <a href="Contacts" id="newConversationBtn" class="btn btn-primary mt-4">
+                    Start a new chat by adding your Friend!
+                </a>
+
             </div>
         </div>
 

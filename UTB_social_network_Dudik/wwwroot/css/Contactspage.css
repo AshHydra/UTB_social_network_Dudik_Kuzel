@@ -23,10 +23,10 @@
 
 .contacts-title {
     color: #497FA5;
-    font-weight: bold;
-    letter-spacing: 1px;
+    font-weight: 300;
+    letter-spacing: 2px;
     margin-bottom: 20px;
-    font-size: 1.8em;
+    font-size: 35px;
 }
 
 .form-label {
@@ -44,15 +44,26 @@
     border: none;
     border-radius: 5px;
     font-weight: bold;
-    color: #000000;
+    color: #497FA5;
+    box-sizing: border-box;
+}
+
+email.form-input {
+    width: 100%;
+    padding: 10px;
+    background-color: #E9ECEF;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #497FA5;
     box-sizing: border-box;
 }
 
 .form-button {
     margin-top: 10px;
-    padding: 10px 15px;
-    background-color: transparent;
-    color: #497FA5;
+    padding: 4px 15px;
+    background-color: #497FA5;
+    color: #FFFFFF;
     font-weight: bold;
     border: 2px solid #497FA5;
     border-radius: 5px;
@@ -68,36 +79,64 @@
     color: #497FA5;
     font-weight: bold;
     margin-top: 30px;
-    font-size: 1.5em;
+    font-style: italic;
+    font-size: 20px;
 }
 
 .contacts-list {
-    list-style: none;
+    list-style: none; /* Odstraníme výchozí číslování/puntíky */
     padding: 0;
-    margin-top: 15px;
+    margin: 0;
 }
 
 .contact-item {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
 }
 
+    .contact-item:hover {
+        background-color: #f1f1f1;
+        cursor: pointer;
+    }
+
 .contact-icon {
-    width: 20px;
-    height: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Kruhový profilový obrázek */
     margin-right: 10px;
+    object-fit: cover;
+}
+
+.contact-username {
+    font-weight: bold;
+    color: #497FA5;
 }
 
 .contact-email {
     color: #497FA5;
-    font-weight: bold;
-    margin-right: 5px;
+    font-weight: initial;
 }
 
-.contact-username {
-    color: #497FA5;
+.contact-bullet {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #497FA5; /* Barva markeru */
+    margin-right: 10px; /* Mezera mezi markerem a obsahem */
+    flex-shrink: 0;
 }
+
+.no-contacts {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 15px;
+}
+
 
 .alert {
     padding: 10px;
@@ -115,31 +154,9 @@
     color: #721c24;
 }
 
-.contact-item:hover {
-    background-color: #f1f1f1;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.form-button:focus, .form-button:active {
+.form-button:focus,
+.form-button:active {
     outline: none;
     border-color: #497FA5;
     background-color: #f1f1f1;
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    padding: 10px;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-}
-
-.contact-icon {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-    border-radius: 50%;
 }

@@ -318,7 +318,7 @@ namespace UTB_social_network_Dudik.Controllers
             // Automatically create a chat for the two users
             var newChat = new Chat
             {
-                Name = $"Chat between {currentUser.UserName} and {friend.UserName}",
+                Name = $"{friend.UserName}",
                 IsGroupChat = false
             };
             _dbContext.Chats.Add(newChat);

@@ -4,7 +4,7 @@
 
 <div class="page-container">
     <div class="contacts-window">
-        <h1 class="contacts-title">Contacts</h1>
+        <h1 class="contacts-title">Friends List</h1>
 
         <!-- Zobrazení úspěšných nebo chybových zpráv -->
         @if (TempData["SuccessMessage"] != null)
@@ -23,30 +23,37 @@
 
         <!-- Formulář pro přidání nového kontaktu -->
         <form method="post" asp-controller="User" asp-action="AddContacts" class="add-contact-form">
-            <label for="email" class="form-label">Add contact by email:</label>
+            <label for="email" class="form-label">Add a friend by email:</label>
             <input type="email" class="form-input" id="email" name="email" required placeholder="Enter email..." />
             <button type="submit" class="form-button">Add</button>
         </form>
 
         <!-- Seznam kontaktů -->
-        <h3 class="contacts-list-title">Contacts List:</h3>
+        <h3 class="contacts-list-title">Your friends:</h3>
         <ul class="contacts-list">
-            @if (Model.Contacts != null && Model.Contacts.Any())
-            {
-                <ul>
-                    @foreach (var contact in Model.Contacts)
-                    {
-                        <li>
-                            <img src="@contact.ProfilePicturePath" alt="Profilová fotka" width="50" height="50" />
-                            <strong>@contact.UserName</strong> - @contact.Email
-                        </li>
-                    }
-                </ul>
-            }
-            else
-            {
-                <li class="no-contacts">No contacts found. Add a contact to get started.</li>
-            }
+            <ul class="contacts-list">
+                @if (Model.Contacts != null && Model.Contacts.Any())
+                {
+                    <ul>
+                        @foreach (var contact in Model.Contacts)
+                        {
+                            <li class="contact-item">
+                                <span class="contact-bullet"></span>
+                                <img class="contact-icon" src="@contact.ProfilePicturePath" alt="Profilová fotka" width="45" height="45" />
+                                <div>
+                                    <strong class="contact-username">@contact.UserName</strong>
+                                    <span class="contact-email">@contact.Email</span>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <li class="no-contacts">No user found. Add a user to get started.</li>
+                }
+            </ul>
+
         </ul>
 
     </div>

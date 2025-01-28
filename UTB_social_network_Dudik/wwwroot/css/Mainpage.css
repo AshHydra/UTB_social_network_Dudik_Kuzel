@@ -62,6 +62,7 @@ html, body {
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
+    font-weight: bold;
     cursor: pointer;
     text-align: left;
     justify-content: space-between;
@@ -73,6 +74,8 @@ html, body {
 #chatTabs {
     display: flex;
     flex-direction: column;
+    font-weight: bold;
+
 }
 
 .chat-tab:hover {
@@ -82,7 +85,7 @@ html, body {
 
 .chat-tab.active {
     font-weight: bold;
-    border: 3.5px solid #497FA5;
+    border: 2px solid #497FA5;
 }
 
 .chat-content {
@@ -133,6 +136,7 @@ html, body {
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
+
 }
 
 .chat-details {
@@ -212,7 +216,6 @@ html, body {
     display: flex;
     margin-top: 20px;
     width: 100%;
-    background-color: #E8DEF8;
 }
 
 
@@ -251,14 +254,33 @@ html, body {
     border-radius: 10px;
     margin-bottom: 10px; /* Mezera mezi zprávami */
     font-style: italic;
+ 
     font-weight: bold;
 }
+
+#newConversationBtn {
+    background-color: #497FA5;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    #newConversationBtn:hover {
+        background-color: #3A638A;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+        transform: scale(1.05);
+    }
+
 
 .chat-message.sender {
     align-self: flex-end; /* Zarovnání na pravou stranu */
     background-color: #497FA5; /* Barva pozadí */
     color: #FFFFFF; /* Barva textu */
-
 }
 
     .chat-message.receiver {
