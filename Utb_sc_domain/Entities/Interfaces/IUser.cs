@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Utb_sc_Domain.Entities.Interfaces
 {
@@ -13,5 +9,7 @@ namespace Utb_sc_Domain.Entities.Interfaces
         string? FirstName { get; set; }
         string? LastName { get; set; }
         string? PasswordHash { get; set; }
+        string? ProfilePicturePath { get; set; } // Path to the user's profile picture
+
     }
 }

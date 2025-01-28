@@ -12,7 +12,6 @@ using Microsoft.EntityFrameworkCore;
 
 // Alias pro jmenné prostory
 using IdentityUser = Utb_sc_Infrastructure.Identity.User;
-using DomainUser = Utb_sc_Domain.Entities.User;
 
 
 namespace UTB_social_network_Dudik.Controllers
@@ -43,15 +42,13 @@ namespace UTB_social_network_Dudik.Controllers
         [HttpGet]
         public async Task<IActionResult> Profile()
         {
-            // Fetch the currently logged-in user
             var user = await _userManager.GetUserAsync(User);
 
             if (user == null)
             {
-                return NotFound("User not found."); // Return 404 if the user is not found
+                return NotFound("User not found.");
             }
 
-            // Populate the ProfileViewModel
             var model = new ProfileViewModel
             {
                 Id = user.Id,
@@ -59,7 +56,8 @@ namespace UTB_social_network_Dudik.Controllers
                 Email = user.Email,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                PhoneNumber = user.PhoneNumber
+                PhoneNumber = user.PhoneNumber,
+                ProfilePicturePath = user.ProfilePicturePath ?? "/images/default.png"
             };
 
             return View("~/Views/Profile/Profile.cshtml", model);
@@ -69,80 +67,55 @@ namespace UTB_social_network_Dudik.Controllers
         [HttpPost]
         public async Task<IActionResult> Profile(ProfileViewModel model)
         {
-            Console.WriteLine("Profile update POST method called.");
-
             if (!ModelState.IsValid)
             {
-                Console.WriteLine("ModelState is invalid.");
-                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
-                {
-                    Console.WriteLine($"- {error.ErrorMessage}");
-                }
-
-                TempData["ErrorMessage"] = "Failed to update profile. Please check the input.";
+                TempData["ErrorMessage"] = "Profile update failed. Please check your input.";
                 return View("~/Views/Profile/Profile.cshtml", model);
             }
 
-            // Fetch the user based on their ID
             var user = await _userManager.FindByIdAsync(model.Id.ToString());
             if (user == null)
             {
-                Console.WriteLine("User not found in the database.");
                 TempData["ErrorMessage"] = "User not found.";
                 return View("~/Views/Profile/Profile.cshtml", model);
             }
 
-            Console.WriteLine($"User found: {user.UserName}");
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
             user.PhoneNumber = model.PhoneNumber;
 
-            // Handle password change if provided
             if (!string.IsNullOrEmpty(model.CurrentPassword) &&
                 !string.IsNullOrEmpty(model.NewPassword) &&
                 !string.IsNullOrEmpty(model.ConfirmNewPassword))
             {
-                Console.WriteLine("Attempting password change.");
-
-                // Verify the current password
                 var isPasswordValid = await _userManager.CheckPasswordAsync(user, model.CurrentPassword);
                 if (!isPasswordValid)
                 {
-                    Console.WriteLine("Current password is invalid.");
                     ModelState.AddModelError("CurrentPassword", "The current password is incorrect.");
-                    TempData["ErrorMessage"] = "Failed to update profile. The current password is incorrect.";
+                    TempData["ErrorMessage"] = "Failed to update profile. Current password is incorrect.";
                     return View("~/Views/Profile/Profile.cshtml", model);
                 }
 
-                // Change the password
-                var passwordResult = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
-                if (!passwordResult.Succeeded)
+                var passwordChangeResult = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+                if (!passwordChangeResult.Succeeded)
                 {
-                    foreach (var error in passwordResult.Errors)
+                    foreach (var error in passwordChangeResult.Errors)
                     {
-                        Console.WriteLine($"- {error.Description}");
                         ModelState.AddModelError(string.Empty, error.Description);
                     }
-
                     TempData["ErrorMessage"] = "Failed to change password.";
                     return View("~/Views/Profile/Profile.cshtml", model);
                 }
-
-                Console.WriteLine("Password updated successfully.");
-                TempData["SuccessMessage"] = "Profile updated successfully, including password!";
             }
 
-            // Update other user details
             var updateResult = await _userManager.UpdateAsync(user);
             if (!updateResult.Succeeded)
             {
                 foreach (var error in updateResult.Errors)
                 {
-                    Console.WriteLine($"- {error.Description}");
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
-
-                TempData["ErrorMessage"] = "Failed to update profile.";
+                TempData["ErrorMessage"] = "Profile update failed.";
                 return View("~/Views/Profile/Profile.cshtml", model);
             }
 
@@ -212,15 +185,17 @@ namespace UTB_social_network_Dudik.Controllers
                     .ToListAsync();
 
                 // Naètení uživatelských dat pro pøátele
-                var friendDetails = await _dbContext.Users
+                var friendDetailsRaw = await _dbContext.Users
                     .Where(u => friends.Select(f => f.FriendId).Contains(u.Id))
-                    .Select(u => new UserViewModel
-                    {
-                        Email = u.Email,
-                        UserName = u.UserName,
-                        ProfilePicturePath = u.ProfilePicturePath ?? "/images/default.png"
-                    })
-                    .ToListAsync();
+                    .ToListAsync(); // Bring data into memory
+
+                // Step 2: Process data in memory
+                var friendDetails = friendDetailsRaw.Select(u => new UserViewModel
+                {
+                    Email = u.Email,
+                    UserName = u.UserName,
+                    ProfilePicturePath = (u as Utb_sc_Infrastructure.Identity.User)?.ProfilePicturePath ?? "/images/default.png" // Cast to custom User and access ProfilePicturePath
+                }).ToList();
 
                 var model = new ContactsViewModel
                 {
@@ -248,9 +223,33 @@ namespace UTB_social_network_Dudik.Controllers
 
 
         // GET: /Home/MainPage
-        public IActionResult MainPage()
+        public async Task<IActionResult> MainPage()
         {
-            return View("~/Views/Mainpage/Mainpage.cshtml");
+            var currentUser = await _userManager.GetUserAsync(User);
+            if (currentUser == null)
+            {
+                TempData["ErrorMessage"] = "User not found.";
+                return RedirectToAction("Index");
+            }
+
+            // Get chats where the user is a participant
+            var userChats = await _dbContext.ChatUsers
+                .Where(cu => cu.UserId == currentUser.Id)
+                .Include(cu => cu.Chat) // Load the related Chat entity
+                .Select(cu => cu.Chat)
+                .ToListAsync();
+
+            var model = new MainPageViewModel
+            {
+                UserChats = userChats.Select(chat => new ChatViewModel
+                {
+                    Id = chat.Id,
+                    Name = chat.Name,
+                    IsGroupChat = chat.IsGroupChat
+                }).ToList()
+            };
+
+            return View("~/Views/Mainpage/Mainpage.cshtml", model);
         }
 
         // GET: /Home/Index

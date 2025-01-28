@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 using Utb_sc_Domain.Entities.Interfaces;
 
 namespace Utb_sc_Infrastructure.Identity
@@ -11,5 +12,7 @@ namespace Utb_sc_Infrastructure.Identity
         public virtual string? FirstName { get; set; }
         public virtual string? LastName { get; set; }
         public string ProfilePicturePath { get; set; } = "/images/default.png";
+
+        
     }
 }

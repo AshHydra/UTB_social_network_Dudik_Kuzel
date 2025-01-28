@@ -16,7 +16,7 @@ namespace UTB_social_network_Dudik.Models
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
-        public string PasswordHash { get; set; }
+        public string Password { get; set; } // Added Password instead of PasswordHash
 
         [Required]
         [Display(Name = "First Name")]
@@ -27,4 +27,3 @@ namespace UTB_social_network_Dudik.Models
         public string LastName { get; set; }
     }
 }
-

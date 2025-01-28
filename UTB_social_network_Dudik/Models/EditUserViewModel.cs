@@ -4,7 +4,7 @@ namespace UTB_social_network_Dudik.Models
 {
     public class EditUserViewModel
     {
-        public int Id { get; set; } // User ID
+        public int Id { get; set; }
 
         [Required]
         [Display(Name = "Username")]
@@ -21,11 +21,10 @@ namespace UTB_social_network_Dudik.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Phone]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "Roles (IDs)")]
-        public string RoleIds { get; set; } // A comma-separated string of role IDs
+        [Display(Name = "Roles")]
+        public string RoleIds { get; set; }
     }
 }

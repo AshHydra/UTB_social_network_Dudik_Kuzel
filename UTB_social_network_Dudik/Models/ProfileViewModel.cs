@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace UTB_social_network_Dudik.Models
 {
     public class ProfileViewModel
     {
-        public int Id { get; set; } // User ID
-
-
+        public int Id { get; set; }
 
         [Required]
         [Display(Name = "Username")]
@@ -23,11 +22,16 @@ namespace UTB_social_network_Dudik.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Phone]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
-        // Password fields for password change
+        [Display(Name = "Profile Picture")]
+        public string ProfilePicturePath { get; set; }
+
+        [DataType(DataType.Upload)]
+        [Display(Name = "Upload Profile Picture")]
+        public IFormFile ProfilePictureFile { get; set; }
+
         [DataType(DataType.Password)]
         [Display(Name = "Current Password")]
         public string CurrentPassword { get; set; }
@@ -38,13 +42,7 @@ namespace UTB_social_network_Dudik.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm New Password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Compare("NewPassword", ErrorMessage = "Passwords do not match.")]
         public string ConfirmNewPassword { get; set; }
-
-        [Display(Name = "Profile Picture")]
-        public string ProfilePicturePath { get; set; } = "/images/default.png";  // Výchozí hodnota
-
-        [DataType(DataType.Upload)]
-        public IFormFile ProfilePictureFile { get; set; }
     }
 }

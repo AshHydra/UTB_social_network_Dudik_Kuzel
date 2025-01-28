@@ -31,44 +31,52 @@ namespace UTB_social_network_Dudik.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                if (await _userManager.FindByEmailAsync(model.Email) != null)
-                {
-                    ModelState.AddModelError("Email", "Email is already taken.");
-                    return View("~/Views/Register/register.cshtml", model);
-                }
-
-                if (await _userManager.FindByNameAsync(model.UserName) != null)
-                {
-                    ModelState.AddModelError("UserName", "Username is already taken.");
-                    return View("~/Views/Register/register.cshtml", model);
-                }
-
-                var user = new User
-                {
-                    UserName = model.UserName,
-                    Email = model.Email,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName
-                };
-
-                var result = await _userManager.CreateAsync(user, model.PasswordHash);
-
-                if (result.Succeeded)
-                {
-                    await _userManager.AddToRoleAsync(user, "User");
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("MainPage", "Home"); // Redirect to MainPage
-                }
-
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
+                return View(model);
             }
 
-            return View("~/Views/Register/register.cshtml", model);
+            // Check if username already exists
+            var existingUser = await _userManager.FindByNameAsync(model.UserName);
+            if (existingUser != null)
+            {
+                ModelState.AddModelError("UserName", "The username is already taken.");
+                return View(model);
+            }
+
+            // Check if email already exists
+            var existingEmail = await _userManager.FindByEmailAsync(model.Email);
+            if (existingEmail != null)
+            {
+                ModelState.AddModelError("Email", "The email is already registered.");
+                return View(model);
+            }
+
+            // Create user
+            var user = new User
+            {
+                UserName = model.UserName,
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName
+            };
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                // Assign the "User" role by default
+                await _userManager.AddToRoleAsync(user, "User");  // ✅ Assigns role during registration
+
+                return RedirectToAction("Login", "Account");
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+
+            return View(model);
         }
 
         // GET: Login

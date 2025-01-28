@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Utb_sc_Domain.Entities.Interfaces;
 
 namespace Utb_sc_Domain.Entities
 {
@@ -11,9 +7,8 @@ namespace Utb_sc_Domain.Entities
         public string Content { get; set; }
         public DateTime SentAt { get; set; }
 
-        // Vztahy
         public int SenderId { get; set; }
-        public User Sender { get; set; }
+        public IUser<int> Sender { get; set; } // Reference to IUser<int>
 
         public int ChatId { get; set; }
         public Chat Chat { get; set; }
