@@ -34,6 +34,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFVzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ash31/OneDrive/Dokumenty/GitHub/UTB_social_network_Dudik_Kuzel/UTB_social_network_Dudik/Views/Admin/ManageChats.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlQ2hhdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ash31/OneDrive/Dokumenty/GitHub/UTB_social_network_Dudik_Kuzel/UTB_social_network_Dudik/Views/Admin/ManageFriendLists.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlRnJpZW5kTGlzdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ash31/OneDrive/Dokumenty/GitHub/UTB_social_network_Dudik_Kuzel/UTB_social_network_Dudik/Views/Admin/ManageMessages.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlTWVzc2FnZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ash31/OneDrive/Dokumenty/GitHub/UTB_social_network_Dudik_Kuzel/UTB_social_network_Dudik/Views/Admin/ManageUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlVXNlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ash31/OneDrive/Dokumenty/GitHub/UTB_social_network_Dudik_Kuzel/UTB_social_network_Dudik/Views/Contacts/Contactspage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udGFjdHNcQ29udGFjdHNwYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

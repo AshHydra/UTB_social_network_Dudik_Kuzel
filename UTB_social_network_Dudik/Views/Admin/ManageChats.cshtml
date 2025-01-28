@@ -1,0 +1,56 @@
+﻿@model List<Utb_sc_Domain.Entities.Chat>
+
+<h1>Manage Chats</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Chat Name</th>
+            <th>Participants</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var chat in Model)
+        {
+            <tr>
+                <td>@chat.Name</td>
+                <td>
+                    @if (chat.Participants != null && chat.Participants.Any())
+                    {
+                        foreach (var participant in chat.Participants)
+                        {
+                            <span>@participant.User.UserName</span>
+
+                            <br />
+                        }
+                    }
+                    else
+                    {
+                        <span>No Participants</span>
+                    }
+                </td>
+                <td>
+                    <form asp-controller="Admin" asp-action="EditChat" method="post">
+                        <input type="hidden" name="chatId" value="@chat.Id" />
+                        <input type="text" name="newName" value="@chat.Name" class="form-control" />
+                        <button type="submit" class="btn btn-primary mt-1">Save</button>
+                    </form>
+
+                    <form asp-controller="Admin" asp-action="DeleteChat" method="post">
+                        <input type="hidden" name="chatId" value="@chat.Id" />
+                        <button type="submit" class="btn btn-danger mt-1">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- RETURN BUTTON -->
+<a href="@Url.Action("Admin", "Home")" class="btn btn-secondary mt-3">Return to Admin</a>
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/Mainpage.css" asp-append-version="true" />
+}

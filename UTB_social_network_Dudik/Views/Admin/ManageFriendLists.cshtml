@@ -1,0 +1,38 @@
+﻿@model List<Utb_sc_Domain.Entities.FriendList>
+
+<h1>Manage Friend Lists</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Friend</th>
+            <th>Friends Since</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var friendship in Model)
+        {
+            <tr>
+                <td>@friendship.User.UserName</td>
+                <td>@friendship.Friend.UserName</td>
+                <td>@friendship.FriendsSince.ToShortDateString()</td>
+                <td>
+                    <form asp-controller="Admin" asp-action="DeleteFriend" method="post">
+                        <input type="hidden" name="friendId" value="@friendship.FriendId" />
+                        <button type="submit" class="btn btn-danger">Remove Friend</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- RETURN BUTTON -->
+<a href="@Url.Action("Admin", "Home")" class="btn btn-secondary mt-3">Return to Admin</a>
+
+@section Styles
+                    {
+    <link rel="stylesheet" href="~/css/Mainpage.css" asp-append-version="true" />
+}

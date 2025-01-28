@@ -1,0 +1,26 @@
+﻿@model List<Utb_sc_Infrastructure.Identity.User>
+
+<h2>Manage Users</h2>
+
+<table class="table">
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+            <td>
+                <a asp-action="EditUser" asp-route-id="@user.Id" class="btn btn-primary">Edit</a>
+            </td>
+        </tr>
+    }
+</table>
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/Mainpage.css" asp-append-version="true" />
+}

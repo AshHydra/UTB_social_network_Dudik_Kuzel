@@ -1,40 +1,32 @@
-﻿@model List<UTB_social_network_Dudik.Models.EditUserViewModel>
-
-@{
-    ViewData["Title"] = "Admin Page";
+﻿@{
+    ViewData["Title"] = "Admin Panel";
 }
 
-<!-- Navigation Bar -->
+<!-- Main Navigation Bar (Already Exists) -->
 <partial name="_NavBar" />
 
-<div class="container mt-4">
-    <h1>Admin Page</h1>
-    <p>Welcome to the admin panel!</p>
-
-    @if (Model != null && Model.Any())
-    {
-        <div class="user-list mt-4">
-            @foreach (var user in Model)
-            {
-                <div class="user-bar p-3 mb-3 border rounded">
-                    <div class="user-info">
-                        <p><strong>Username:</strong> @user.UserName</p>
-                        <p><strong>Email:</strong> @user.Email</p>
-                        <p><strong>Roles:</strong> @user.RoleIds</p>
-                    </div>
-                    <div class="user-actions mt-2">
-                        <a asp-action="Edit" asp-controller="User" asp-route-id="@user.Id" class="btn btn-primary">Edit User</a>
-                    </div>
-                </div>
-            }
+<!-- Admin-specific Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Admin Panel</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="adminNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="ManageChats" asp-controller="Admin">Manage Chats</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="ManageMessages" asp-controller="Admin">Manage Messages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="ManageFriendLists" asp-controller="Admin">Manage Friend Lists</a>
+                </li>
+            </ul>
         </div>
-    }
-    else
-    {
-        <p>No users found.</p>
-    }
-</div>
-
+    </div>
+</nav>
 @section Styles
 {
     <link rel="stylesheet" href="~/css/Mainpage.css" asp-append-version="true" />

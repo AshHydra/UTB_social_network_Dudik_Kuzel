@@ -1,0 +1,44 @@
+﻿@model List<Utb_sc_Domain.Entities.Message>
+
+<h1>Manage Messages</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Sender</th>
+            <th>Chat</th>
+            <th>Content</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var message in Model)
+        {
+            <tr>
+                <td>@message.Sender.UserName</td>
+                <td>@message.Chat.Name</td>
+                <td>
+                    <form asp-controller="Admin" asp-action="EditMessage" method="post">
+                        <input type="hidden" name="messageId" value="@message.Id" />
+                        <input type="text" name="newContent" value="@message.Content" class="form-control" />
+                        <button type="submit" class="btn btn-primary mt-1">Save</button>
+                    </form>
+                </td>
+                <td>
+                    <form asp-controller="Admin" asp-action="DeleteMessage" method="post">
+                        <input type="hidden" name="messageId" value="@message.Id" />
+                        <button type="submit" class="btn btn-danger mt-1">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- RETURN BUTTON -->
+<a href="@Url.Action("Admin", "Home")" class="btn btn-secondary mt-3">Return to Admin</a>
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/Mainpage.css" asp-append-version="true" />
+}
