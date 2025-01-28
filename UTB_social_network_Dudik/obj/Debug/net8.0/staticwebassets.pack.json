@@ -297,6 +297,14 @@
       "PackagePath": "staticwebassets\\uploads\\edsel dope_2.jpeg"
     },
     {
+      "Id": "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\wwwroot\\uploads\\mek_back.png",
+      "PackagePath": "staticwebassets\\uploads\\mek_back.png"
+    },
+    {
+      "Id": "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\wwwroot\\uploads\\mek_right_side.png",
+      "PackagePath": "staticwebassets\\uploads\\mek_right_side.png"
+    },
+    {
       "Id": "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\UTB_social_network_Dudik\\wwwroot\\uploads\\pepe.png",
       "PackagePath": "staticwebassets\\uploads\\pepe.png"
     },

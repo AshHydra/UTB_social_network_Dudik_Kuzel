@@ -36,6 +36,13 @@ namespace UTB_social_network_Dudik.Controllers
                 return View(model);
             }
 
+            // Check if password meets length requirement
+            if (model.Password.Length < 4)
+            {
+                TempData["Error"] = "The password must be at least 4 characters long.";
+                return RedirectToAction("Register");
+            }
+
             // Check if username already exists
             var existingUser = await _userManager.FindByNameAsync(model.UserName);
             if (existingUser != null)
@@ -66,7 +73,7 @@ namespace UTB_social_network_Dudik.Controllers
             if (result.Succeeded)
             {
                 // Assign the "User" role by default
-                await _userManager.AddToRoleAsync(user, "User");  // ✅ Assigns role during registration
+                await _userManager.AddToRoleAsync(user, "User");
 
                 return RedirectToAction("Login", "Account");
             }
@@ -104,7 +111,6 @@ namespace UTB_social_network_Dudik.Controllers
 
                         // Po přihlášení přesměrujeme na stránku s kontakty
                         return RedirectToAction("MainPage", "Home");
-                        Console.WriteLine("ID aktuálního uživatele: " + user.Id); // Použij 'user' místo 'currentUser'
                     }
                 }
 
@@ -113,8 +119,6 @@ namespace UTB_social_network_Dudik.Controllers
 
             return View("~/Views/Home/Index.cshtml", model);
         }
-
-
 
         // Log out
         public async Task<IActionResult> Logout()

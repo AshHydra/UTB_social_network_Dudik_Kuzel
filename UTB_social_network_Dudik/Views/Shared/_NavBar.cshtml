@@ -14,6 +14,10 @@
                         <a class="nav-link" asp-controller="Home" asp-action="Contacts">Friends</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+
                     @if (User.IsInRole("Admin"))
                     {
                         <li class="nav-item">
@@ -24,6 +28,8 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Home" asp-action="Profile">Profile</a>
                     </li>
+
+
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">

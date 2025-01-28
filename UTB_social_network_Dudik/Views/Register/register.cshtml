@@ -18,6 +18,14 @@
         <p>Join the realtime UTB Chatter community</p>
     </div>
 
+    <!-- Error Alert -->
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Error"]
+        </div>
+    }
+
     <!-- Register Form -->
     <div class="center-container">
         <div class="form-box">

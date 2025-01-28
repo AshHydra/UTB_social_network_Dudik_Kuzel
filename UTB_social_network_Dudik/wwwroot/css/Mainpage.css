@@ -13,7 +13,7 @@ html, body {
 
 .chat-container {
     background-color: #E8DEF8;
-    width: 100%;
+    width: 80%;
     border-radius: 10px;
     display: flex;
     height: 100%; /* Změněno na 100% */
