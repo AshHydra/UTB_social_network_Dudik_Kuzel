@@ -105,16 +105,28 @@ html, body {
     border-radius: 10px;
 }
 
-.chat-default-message {
-    font-size: 30px;
-    color: #497FA5;
-    font-style: italic;
-    letter-spacing: 3px;
-    display: inline-block;
-    text-align: center;
-    background-color: #E8DEF8;
+.chat-message {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px;
+    border-radius: 10px;
+    margin: 5px;
+    max-width: 60%;
+    word-wrap: break-word;
 }
 
+.my-message {
+    align-self: flex-end;
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+.other-message {
+    align-self: flex-start;
+    background-color: #eee;
+    color: black;
+}
 
 
 .chat-details {

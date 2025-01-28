@@ -223,30 +223,29 @@ namespace UTB_social_network_Dudik.Controllers
 
 
         // GET: /Home/MainPage
+        [HttpGet]
         public async Task<IActionResult> MainPage()
         {
             var currentUser = await _userManager.GetUserAsync(User);
             if (currentUser == null)
             {
-                TempData["ErrorMessage"] = "User not found.";
                 return RedirectToAction("Index");
             }
 
-            // Get chats where the user is a participant
-            var userChats = await _dbContext.ChatUsers
+            // Fetch only the chats where the user is a participant
+            var chats = await _dbContext.ChatUsers
                 .Where(cu => cu.UserId == currentUser.Id)
-                .Include(cu => cu.Chat) // Load the related Chat entity
-                .Select(cu => cu.Chat)
+                .Select(cu => new ChatViewModel
+                {
+                    ChatId = cu.ChatId,
+                    ChatName = cu.Chat.Name
+                })
                 .ToListAsync();
 
+            // Wrap inside MainPageViewModel
             var model = new MainPageViewModel
             {
-                UserChats = userChats.Select(chat => new ChatViewModel
-                {
-                    Id = chat.Id,
-                    Name = chat.Name,
-                    IsGroupChat = chat.IsGroupChat
-                }).ToList()
+                Chats = chats
             };
 
             return View("~/Views/Mainpage/Mainpage.cshtml", model);

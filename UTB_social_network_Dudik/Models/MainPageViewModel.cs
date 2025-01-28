@@ -2,13 +2,11 @@
 {
     public class MainPageViewModel
     {
-        public List<ChatViewModel> UserChats { get; set; } = new List<ChatViewModel>();
+        public List<ChatViewModel> Chats { get; set; } = new List<ChatViewModel>(); // Ensure it's a list
     }
-
     public class ChatViewModel
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public bool IsGroupChat { get; set; }
+        public int ChatId { get; set; }
+        public string ChatName { get; set; }
     }
 }

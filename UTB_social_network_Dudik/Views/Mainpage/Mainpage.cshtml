@@ -1,4 +1,6 @@
-﻿@{
+﻿@model MainPageViewModel
+
+@{
     ViewData["Title"] = "Main Page";
 }
 
@@ -6,7 +8,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">UTB Chatter</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -37,42 +39,32 @@
 <div class="container-fluid chat-container mt-4">
     <div class="row">
         <div class="col-2">
-            <!-- Chat List -->
             <div class="chat-sidebar">
                 <div class="chats-title">Chats</div>
-                <input type="text" id="searchInput" placeholder="Search a conversation..." class="form-control mb-3 search-input" onkeyup="filterChats()" />
+                <input type="text" id="searchInput" placeholder="Search a conversation..." class="form-control mb-3" onkeyup="filterChats()" />
+
                 <div id="chatTabs">
-                    <div class="chat-tab" onclick="activateTab(this)">
-                        <span class="chat-name">Chat 1</span>
-                        <span class="message-icon-list">
-                            <img src="https://i.imgur.com/F8pNkMa.png" alt="message-icon" class="chat-icon">
-                        </span>
-                    </div>
-                    <div class="chat-tab" onclick="activateTab(this)">
-                        <span class="chat-name">Chat 2</span>
-                        <span class="message-icon-list">
-                            <img src="https://i.imgur.com/F8pNkMa.png" alt="message-icon" class="chat-icon">
-                        </span>
-                    </div>
-                    <div class="chat-tab" onclick="activateTab(this)">
-                        <span class="chat-name">Chat 3</span>
-                        <span class="message-icon-list">
-                            <img src="https://i.imgur.com/F8pNkMa.png" alt="message-icon" class="chat-icon">
-                        </span>
-                    </div>
+                    @foreach (var chat in Model.Chats)
+                    {
+                        <div class="chat-tab" onclick="activateTab(this, @chat.ChatId)">
+                            <span class="chat-name">@chat.ChatName</span>
+                            <span class="message-icon-list">
+                                <img src="https://i.imgur.com/F8pNkMa.png" alt="message-icon" class="chat-icon">
+                            </span>
+                        </div>
+                    }
                 </div>
-                <button id="newConversationBtn" class="btn btn-primary mt-4" onclick="createNewConversation()">New Conversation</button>
+
+                <button id="newConversationBtn" class="btn btn-primary mt-4">New Conversation</button>
             </div>
         </div>
+
         <div class="col-10">
-            <!-- Chat Window -->
             <div class="chat-content">
-                <div class="chat-default-message">
-                    No chat selected
-                </div>
+                <div class="chat-default-message">No chat selected</div>
                 <div class="chat-details">
                     <div class="chat-header">
-                        <span class="chat-name">Chat 1</span>
+                        <span class="chat-name"></span>
                         <span class="message-icon">
                             <img src="https://i.imgur.com/fSuzzAU.png" alt="message-icon">
                         </span>
@@ -91,34 +83,25 @@
     </div>
 </div>
 
-@section Styles {
-    <link rel="stylesheet" href="~/css/Mainpage.css" asp-append-version="true" />
-}
-
 @section Scripts {
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.0/signalr.min.js"></script>
+
     <script>
         const connection = new signalR.HubConnectionBuilder()
             .withUrl("/chathub")
             .configureLogging(signalR.LogLevel.Information)
             .build();
 
+        let currentChatId = null;
+        const currentUser = "@User.Identity.Name".trim().toLowerCase();
+
         connection.start()
-            .then(() => console.log("Connected to SignalR Hub"))
-            .catch(err => console.error("SignalR connection error:", err));
+            .then(() => console.log("✅ SignalR Connected"))
+            .catch(err => console.error("❌ SignalR Connection Error:", err));
 
-        function filterChats() {
-            const searchInput = document.getElementById('searchInput').value.toLowerCase();
-            const chatItems = document.querySelectorAll('.chat-tab');
+        function activateTab(tab, chatId) {
+            console.log(`🔄 Activating chat ID: ${chatId}`);
 
-            chatItems.forEach(chat => {
-                const chatText = chat.textContent.toLowerCase();
-                chat.style.display = chatText.includes(searchInput) ? '' : 'none';
-            });
-        }
-
-        function activateTab(tab) {
             const chatName = tab.querySelector('.chat-name').textContent.trim();
             const chatContent = document.querySelector('.chat-content');
 
@@ -126,108 +109,98 @@
             chatContent.querySelector('.chat-default-message').style.display = 'none';
             chatContent.querySelector('.chat-details').style.display = 'block';
 
-            connection.invoke("JoinChat", chatName)
-                .then(() => console.log(`Joined chat: ${chatName}`))
-                .catch(err => console.error("Error joining chat:", err));
+            currentChatId = chatId;
+            chatContent.setAttribute('data-chat-id', chatId);
+
+            console.log(`📢 Requesting chat history for chat: ${chatId}`);
+
+            connection.invoke("JoinChat", chatId)
+                .then(() => console.log(`✅ Joined chat: ${chatId}`))
+                .catch(err => console.error("❌ Error joining chat:", err));
         }
 
-        document.querySelector('.send-message-btn').addEventListener('click', sendMessage);
-
-        document.querySelector('.message-input').addEventListener('keydown', function (e) {
-            if (e.key === 'Enter') sendMessage();
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector('.send-message-btn').addEventListener('click', sendMessage);
+            document.querySelector('.message-input').addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') sendMessage();
+            });
         });
 
         function sendMessage() {
             const messageInput = document.querySelector('.message-input');
             const message = messageInput.value.trim();
-            if (!message) return;
 
-            const chatName = document.querySelector('.chat-name').textContent;
-            const sender = "@User.Identity.Name"; // Získání aktuálního uživatele ze serveru
+            if (!message || !currentChatId) {
+                console.warn("❌ No chat selected or message empty.");
+                return;
+            }
 
-            connection.invoke("SendMessage", chatName, sender, message)
-                .then(() => console.log(`Sent message to ${chatName}: ${message}`))
-                .catch(err => console.error("Error sending message:", err));
+            console.log(`📨 Sending message to chat ${currentChatId}: ${message}`);
 
-            messageInput.value = '';
+            connection.invoke("SendMessage", currentChatId, currentUser, message)
+                .then(() => {
+                    console.log(`✅ Message sent: ${message}`);
+                    messageInput.value = '';
+                })
+                .catch(err => console.error("❌ Send message error:", err));
         }
 
-        function createNewConversation() {
-            const username = prompt("Enter the username to start a conversation with:");
+        connection.on("ReceiveMessage", (chatId, sender, message) => {
+            console.log(`📥 New message received - Chat ID: ${chatId}, Sender: ${sender}, Message: ${message}`);
 
-            if (username) {
-                const currentUser = "@User.Identity.Name"; // Získání aktuálního uživatele ze serveru
-                const chatName = currentUser + "_" + username;
-
-                // Odeslání požadavku na server pro vytvoření nového chatu
-                connection.invoke("CreateNewChat", chatName, currentUser, username)
-                    .then(() => {
-                        console.log(`New conversation created with ${username}`);
-
-                        // Dynamicky přidat nový chat do seznamu na obou stranách
-                        const newChatTab = document.createElement('div');
-                        newChatTab.classList.add('chat-tab');
-                        newChatTab.onclick = () => activateTab(newChatTab);
-                        newChatTab.innerHTML = `
-                            <span class="chat-name">${chatName}</span>
-                            <span class="message-icon-list">
-                                <img src="https://i.imgur.com/F8pNkMa.png" alt="message-icon" class="chat-icon">
-                            </span>
-                        `;
-
-                        // Přidání nového chatu do seznamu
-                        document.getElementById('chatTabs').appendChild(newChatTab);
-
-                        // Posílání informací druhé straně pro aktualizaci jejich seznamu
-                        connection.invoke("NotifyOtherUser", chatName, username)
-                            .then(() => {
-                                console.log("Notified other user about new chat.");
-                            })
-                            .catch(err => console.error("Error notifying other user:", err));
-
-                        // Automaticky otevřít nový chat
-                        activateTab(newChatTab);
-                    })
-                    .catch(err => console.error("Error creating new chat:", err));
+            if (chatId != currentChatId) {
+                console.warn(`⚠ Message received for a different chat (Current: ${currentChatId}, Received: ${chatId})`);
+                return;
             }
+
+            addMessageToChat(sender, message);
+        });
+
+        connection.on("LoadChatHistory", (chatId, messages) => {
+            console.log(`📥 Chat history received for chat ID: ${chatId}`);
+            console.table(messages);
+
+            if (chatId != currentChatId) {
+                console.warn(`⚠ Chat history does not match current chat. Ignoring.`);
+                return;
+            }
+
+            const messagesWrapper = document.querySelector('.messages-wrapper');
+            messagesWrapper.innerHTML = '';
+
+            messages.forEach(msg => {
+                if (!msg || !msg.content || !msg.sender) {
+                    console.error("🚨 Invalid message format received:", msg);
+                    return;
+                }
+
+                console.log(`📜 Processing message from ${msg.sender}: ${msg.content}`);
+                addMessageToChat(msg.sender, msg.content);
+            });
+
+            messagesWrapper.scrollTop = messagesWrapper.scrollHeight;
+        });
+
+        function addMessageToChat(sender, message) {
+            console.log(`🖊️ Rendering message - Sender: ${sender}, Content: ${message}`);
+
+            const messagesWrapper = document.querySelector('.messages-wrapper');
+            const messageElem = document.createElement('div');
+
+            const isCurrentUser = sender.trim().toLowerCase() === currentUser;
+            messageElem.classList.add('chat-message', isCurrentUser ? 'my-message' : 'other-message');
+
+            messageElem.innerHTML = `
+                        <div class="message-sender">${sender}</div>
+                        <div class="message-text">${message}</div>
+                    `;
+
+            messagesWrapper.appendChild(messageElem);
+            messagesWrapper.scrollTop = messagesWrapper.scrollHeight;
         }
-
-        connection.on("ReceiveMessage", (chatName, sender, message) => {
-            const activeChat = document.querySelector('.chat-name').textContent.trim();
-            if (activeChat === chatName) {
-                const messagesWrapper = document.querySelector('.messages-wrapper');
-                const messageElem = document.createElement('div');
-
-                const isCurrentUser = sender === "@User.Identity.Name"; // Porovná aktuální uživatelské jméno
-                messageElem.classList.add('chat-message');
-                messageElem.classList.add(isCurrentUser ? 'my-message' : 'other-message');
-
-                messageElem.innerHTML = `
-                    <div class="message-sender">${sender}</div>
-                    <div class="message-text">${message}</div>
-                `;
-
-                messagesWrapper.appendChild(messageElem);
-                messagesWrapper.scrollTop = messagesWrapper.scrollHeight;
-            }
-        });
-
-        connection.on("ReceiveNewChat", (chatName) => {
-            // Dynamicky přidat nový chat do seznamu na straně druhého uživatele
-            const newChatTab = document.createElement('div');
-            newChatTab.classList.add('chat-tab');
-            newChatTab.onclick = () => activateTab(newChatTab);
-            newChatTab.innerHTML = `
-                <span class="chat-name">${chatName}</span>
-                <span class="message-icon-list">
-                    <img src="https://i.imgur.com/F8pNkMa.png" alt="message-icon" class="chat-icon">
-                </span>
-            `;
-
-            // Přidání nového chatu do seznamu
-            document.getElementById('chatTabs').appendChild(newChatTab);
-        });
     </script>
+}
 
-
+@section Styles {
+    <link rel="stylesheet" href="~/css/Mainpage.css" asp-append-version="true" />
 }

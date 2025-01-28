@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Utb_sc_Infrastructure.Database;
 using Microsoft.AspNetCore.Identity;
 using Utb_sc_Infrastructure.Identity;
-using UTB_social_network_Dudik.Hubs;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
