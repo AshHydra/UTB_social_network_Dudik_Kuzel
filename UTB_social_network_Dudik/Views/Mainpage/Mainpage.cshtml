@@ -83,6 +83,7 @@
     </div>
 </div>
 
+
 @section Scripts {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.0/signalr.min.js"></script>
 
@@ -93,16 +94,42 @@
             .build();
 
         let currentChatId = null;
-        const currentUser = "@User.Identity.Name".trim().toLowerCase();
+        const currentUser = "@User.Identity.Name".trim();
+        const defaultProfilePic = "/images/default.png";
 
         connection.start()
             .then(() => console.log("✅ SignalR Connected"))
             .catch(err => console.error("❌ SignalR Connection Error:", err));
 
-        function activateTab(tab, chatId) {
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("📌 DOM Loaded - Attaching Event Listeners");
+
+            document.querySelectorAll(".chat-tab").forEach(tab => {
+                tab.addEventListener("click", function () {
+                    const chatId = this.getAttribute("onclick").match(/\d+/)?.[0];
+                    if (chatId) {
+                        activateTab(parseInt(chatId, 10), this);
+                    } else {
+                        console.error("❌ Failed to extract chat ID");
+                    }
+                });
+            });
+
+            document.querySelector('.send-message-btn').addEventListener('click', sendMessage);
+            document.querySelector('.message-input').addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') sendMessage();
+            });
+        });
+
+        function activateTab(chatId, tabElement) {
+            if (!chatId) {
+                console.error("❌ Chat ID is undefined");
+                return;
+            }
+
             console.log(`🔄 Activating chat ID: ${chatId}`);
 
-            const chatName = tab.querySelector('.chat-name').textContent.trim();
+            const chatName = tabElement.querySelector('.chat-name')?.textContent.trim() || "Unknown Chat";
             const chatContent = document.querySelector('.chat-content');
 
             chatContent.querySelector('.chat-name').textContent = chatName;
@@ -119,13 +146,6 @@
                 .catch(err => console.error("❌ Error joining chat:", err));
         }
 
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelector('.send-message-btn').addEventListener('click', sendMessage);
-            document.querySelector('.message-input').addEventListener('keydown', function (e) {
-                if (e.key === 'Enter') sendMessage();
-            });
-        });
-
         function sendMessage() {
             const messageInput = document.querySelector('.message-input');
             const message = messageInput.value.trim();
@@ -135,71 +155,97 @@
                 return;
             }
 
-            console.log(`📨 Sending message to chat ${currentChatId}: ${message}`);
+            console.log(`📨 Attempting to send message: "${message}" to Chat ID: ${currentChatId}`);
+
+            if (connection.state !== signalR.HubConnectionState.Connected) {
+                console.error("❌ SignalR connection is not active, message not sent.");
+                return;
+            }
 
             connection.invoke("SendMessage", currentChatId, currentUser, message)
                 .then(() => {
-                    console.log(`✅ Message sent: ${message}`);
-                    messageInput.value = '';
+                    console.log(`✅ Successfully sent message: "${message}"`);
+                    messageInput.value = ''; // Clear input field
                 })
-                .catch(err => console.error("❌ Send message error:", err));
+                .catch(err => {
+                    console.error("❌ Send message error:", err);
+                });
         }
 
-        connection.on("ReceiveMessage", (chatId, sender, message) => {
+
+        connection.on("ReceiveMessage", (chatId, sender, message, profilePicture) => {
             console.log(`📥 New message received - Chat ID: ${chatId}, Sender: ${sender}, Message: ${message}`);
 
-            if (chatId != currentChatId) {
+            if (chatId !== currentChatId) {
                 console.warn(`⚠ Message received for a different chat (Current: ${currentChatId}, Received: ${chatId})`);
                 return;
             }
 
-            addMessageToChat(sender, message);
+            saveProfileToStorage(sender, profilePicture);
+            addMessageToChat(sender, message, profilePicture);
         });
 
-        connection.on("LoadChatHistory", (chatId, messages) => {
-            console.log(`📥 Chat history received for chat ID: ${chatId}`);
-            console.table(messages);
+        function saveProfileToStorage(user, profilePic) {
+            if (!user || !profilePic) return;
+            console.log(`💾 Saving profile for ${user}: ${profilePic}`);
+            localStorage.setItem(`profile_${user.toLowerCase()}`, profilePic);
+        }
 
-            if (chatId != currentChatId) {
-                console.warn(`⚠ Chat history does not match current chat. Ignoring.`);
-                return;
+        function getProfileFromStorage(user) {
+            const storedPic = localStorage.getItem(`profile_${user.toLowerCase()}`);
+            if (!storedPic) {
+                console.warn(`⚠ No profile picture found for ${user}, using default.`);
             }
+            return storedPic || defaultProfilePic;
+        }
+
+        connection.on("LoadChatHistory", (chatId, messages) => {
+            console.log("✅ Chat history received:", messages);
+
+            if (chatId !== currentChatId) return;
 
             const messagesWrapper = document.querySelector('.messages-wrapper');
-            messagesWrapper.innerHTML = '';
+            messagesWrapper.innerHTML = ''; // Clear previous messages
 
             messages.forEach(msg => {
-                if (!msg || !msg.content || !msg.sender) {
-                    console.error("🚨 Invalid message format received:", msg);
-                    return;
-                }
-
-                console.log(`📜 Processing message from ${msg.sender}: ${msg.content}`);
-                addMessageToChat(msg.sender, msg.content);
+                console.log(`📩 Rendering message:`, msg);
+                addMessageToChat(msg.sender, msg.content, getProfileFromStorage(msg.sender));
             });
 
             messagesWrapper.scrollTop = messagesWrapper.scrollHeight;
         });
 
-        function addMessageToChat(sender, message) {
-            console.log(`🖊️ Rendering message - Sender: ${sender}, Content: ${message}`);
-
+        function addMessageToChat(sender, message, profilePicture) {
             const messagesWrapper = document.querySelector('.messages-wrapper');
-            const messageElem = document.createElement('div');
 
-            const isCurrentUser = sender.trim().toLowerCase() === currentUser;
+            if (!profilePicture) {
+                profilePicture = "/images/default.png"; // Fallback if missing
+            }
+
+            const messageElem = document.createElement('div');
+            const isCurrentUser = sender.trim().toLowerCase() === currentUser.trim().toLowerCase();
+
             messageElem.classList.add('chat-message', isCurrentUser ? 'my-message' : 'other-message');
 
             messageElem.innerHTML = `
+                <div class="message-container">
+                    <img class="profile-pic" src="${profilePicture}" alt="${sender}" onerror="this.onerror=null;this.src='/images/default.png';" />
+                    <div class="message-content">
                         <div class="message-sender">${sender}</div>
                         <div class="message-text">${message}</div>
-                    `;
+                    </div>
+                </div>
+            `;
 
             messagesWrapper.appendChild(messageElem);
             messagesWrapper.scrollTop = messagesWrapper.scrollHeight;
         }
     </script>
 }
+
+
+
+
 
 @section Styles {
     <link rel="stylesheet" href="~/css/Mainpage.css" asp-append-version="true" />

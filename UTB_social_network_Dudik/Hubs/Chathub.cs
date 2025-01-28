@@ -20,7 +20,7 @@ public class ChatHub : Hub
 
     public async Task SendMessage(int chatId, string sender, string message)
     {
-        var user = await _userManager.FindByNameAsync(sender);
+        var user = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == sender);
         if (user == null)
         {
             Console.WriteLine($"❌ User not found: {sender}");
@@ -38,12 +38,15 @@ public class ChatHub : Hub
         };
 
         _dbContext.Messages.Add(chatMessage);
-        await _dbContext.SaveChangesAsync();
+        await _dbContext.SaveChangesAsync(); // Ensure message is saved before sending
 
         Console.WriteLine("✅ Message saved in DB.");
 
-        await Clients.Group(chatId.ToString()).SendAsync("ReceiveMessage", chatId, sender, message);
+        string profilePicture = user.ProfilePicturePath ?? "/images/default.png";
+
+        await Clients.Group(chatId.ToString()).SendAsync("ReceiveMessage", chatId, sender, message, profilePicture);
     }
+
 
     public async Task JoinChat(int chatId)
     {
@@ -54,17 +57,17 @@ public class ChatHub : Hub
             .OrderBy(m => m.SentAt)
             .Select(m => new
             {
-                Sender = _dbContext.Users.Where(u => u.Id == m.SenderId).Select(u => u.UserName).FirstOrDefault(),
+                Sender = m.Sender.UserName,
                 Content = m.Content,
-                SentAt = m.SentAt
+                SentAt = m.SentAt,
+                ProfilePicture = m.Sender.ProfilePicturePath ?? "/images/default.png"
             })
             .ToListAsync();
 
-        Console.WriteLine($"✅ Loaded {messages.Count} messages for chat {chatId}");
-
+        Console.WriteLine($"✅ Sending {messages.Count} messages for chat {chatId}");
         foreach (var msg in messages)
         {
-            Console.WriteLine($"📨 Sending Message: Sender: {msg.Sender}, Content: {msg.Content}, SentAt: {msg.SentAt}");
+            Console.WriteLine($"➡️ Message: Sender={msg.Sender}, Content={msg.Content}, Picture={msg.ProfilePicture}");
         }
 
         await Clients.Caller.SendAsync("LoadChatHistory", chatId, messages);
