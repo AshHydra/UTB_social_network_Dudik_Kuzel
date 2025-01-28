@@ -124,5 +124,54 @@ namespace UTB_social_network_Dudik.Controllers
             TempData["SuccessMessage"] = "Friend removed successfully!";
             return RedirectToAction("ManageFriendLists");
         }
+
+        // **Manage Users**
+        [HttpGet("ManageUsers")]
+        public async Task<IActionResult> ManageUsers()
+        {
+            var users = await _userManager.Users.ToListAsync();
+            return View("~/Views/Admin/ManageUsers.cshtml", users);
+        }
+
+        [HttpPost("EditUser")]
+        public async Task<IActionResult> EditUser(string userId, string newEmail, string newUserName)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null) return NotFound();
+
+            user.Email = newEmail;
+            user.UserName = newUserName;
+
+            var result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                TempData["SuccessMessage"] = "User updated successfully!";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = string.Join(", ", result.Errors.Select(e => e.Description));
+            }
+
+            return RedirectToAction("ManageUsers");
+        }
+
+        [HttpPost("DeleteUser")]
+        public async Task<IActionResult> DeleteUser(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null) return NotFound();
+
+            var result = await _userManager.DeleteAsync(user);
+            if (result.Succeeded)
+            {
+                TempData["SuccessMessage"] = "User deleted successfully!";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = string.Join(", ", result.Errors.Select(e => e.Description));
+            }
+
+            return RedirectToAction("ManageUsers");
+        }
     }
 }
