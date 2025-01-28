@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Application\\Utb_sc_Application.csproj": {}
+    "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Application\\Utb_sc_Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Application\\Utb_sc_Application.csproj": {
+    "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Application\\Utb_sc_Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Application\\Utb_sc_Application.csproj",
+        "projectUniqueName": "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Application\\Utb_sc_Application.csproj",
         "projectName": "Utb_sc_Application",
-        "projectPath": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Application\\Utb_sc_Application.csproj",
-        "packagesPath": "C:\\Users\\pepin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Application\\obj\\",
+        "projectPath": "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Application\\Utb_sc_Application.csproj",
+        "packagesPath": "C:\\Users\\Adam\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\pepin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Adam\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,17 +26,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj": {
-                "projectPath": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj"
+              "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj": {
+                "projectPath": "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj"
               },
-              "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj"
+              "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj"
               }
             }
           }
@@ -49,9 +50,8 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+          "auditMode": "direct"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -82,24 +82,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj": {
+    "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj",
         "projectName": "Utb_sc_Domain",
-        "projectPath": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj",
-        "packagesPath": "C:\\Users\\pepin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\obj\\",
+        "projectPath": "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\Utb_sc_Domain.csproj",
+        "packagesPath": "C:\\Users\\Adam\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\pepin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Adam\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -108,6 +108,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -124,9 +125,8 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+          "auditMode": "direct"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -157,24 +157,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj": {
+    "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj",
         "projectName": "Utb_sc_Infrastructure",
-        "projectPath": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\pepin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\obj\\",
+        "projectPath": "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\Utb_sc_Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Adam\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Infrasctucture\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\pepin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Adam\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -183,14 +183,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Domain\\Utb_sc_Domain.csproj": {
-                "projectPath": "C:\\Users\\pepin\\Desktop\\Chatt\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Domain\\Utb_sc_Domain.csproj"
+              "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Domain\\Utb_sc_Domain.csproj": {
+                "projectPath": "C:\\Users\\Adam\\Documents\\GitHub\\UTB_social_network_Dudik_Kuzel\\Utb_sc_Domain\\Utb_sc_Domain.csproj"
               }
             }
           }
@@ -203,9 +204,8 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+          "auditMode": "direct"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -256,7 +256,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
